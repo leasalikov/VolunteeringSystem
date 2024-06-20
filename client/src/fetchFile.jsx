@@ -7,7 +7,6 @@ import React from "react";
     async function fetchPostReq(route, body) {
         console.log("fetchPostReq");
         console.log(body)
-        let data;
         try {
             const response = await fetch(`http://localhost:8080/${route}`, {
                 method: 'POST',
@@ -16,7 +15,9 @@ import React from "react";
                 headers: { "Content-type": "application/json; charset=UTF-8", },
             })
             console.log(body)
-            data = await response.json();
+            const json =  await response.json();
+            const data = await json;
+            return data;
             // if (data.resualt == "userName duplicate") {
             //     alert('userName exist')
             // }
@@ -27,7 +28,7 @@ import React from "react";
         catch (err) {
             console.log(err)
         }
-        return data;
+        
     }
 // }
 export { fetchPostReq }

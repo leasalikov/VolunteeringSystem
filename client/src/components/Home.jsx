@@ -93,6 +93,7 @@ function Home() {
         }
 
         const response = fetchPostReq("needy", paramsToSend);
+        const data = await response
                 // if (response.resualt == "userName duplicate") 
                 //     alert('userName exist')
                 // else {
