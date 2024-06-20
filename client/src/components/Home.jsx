@@ -26,27 +26,29 @@ function Home() {
         }
         console.log("paramsToSend ", paramsToSend)
 
-        //יותר נכון:
 
-        try {
-            const response = await fetch('http://localhost:8080/volunteer', {
-                method: 'POST',
-                body: JSON.stringify(paramsToSend),
-                //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
-                headers: { "Content-type": "application/json; charset=UTF-8", },
-            })
-            const data = await response.json();
-            if (data.resualt == "userName duplicate") {
-                alert('userName exist')
+        const 
+        // //יותר נכון:
 
-            }
-            else {
-                navigate(`/users/${currentUser.idUser}/volunteer`)
-            }
-        }
-        catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     const response = await fetch('http://localhost:8080/volunteer', {
+        //         method: 'POST',
+        //         body: JSON.stringify(paramsToSend),
+        //         //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
+        //         headers: { "Content-type": "application/json; charset=UTF-8", },
+        //     })
+        //     const data = await response.json();
+        //     if (data.resualt == "userName duplicate") {
+        //         alert('userName exist')
+
+        //     }
+        //     else {
+        //         navigate(`/users/${currentUser.idUser}/volunteer`)
+        //     }
+        // }
+        // catch (err) {
+        //     console.log(err)
+        // }
 
         // fetch('http://localhost:8080/volunteer', {
         //     method: 'POST',
