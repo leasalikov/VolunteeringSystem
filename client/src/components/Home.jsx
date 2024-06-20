@@ -28,7 +28,6 @@ function Home() {
 
         //fetch req
         const response = fetchPostReq("volunteer", paramsToSend);
-        // const data = await response.json();
         console.log(response);
         // if (data.resualt == "userName duplicate") {
         //     alert('userName exist')
