@@ -1,6 +1,7 @@
 import { UserContext } from '../App';
 import { React, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchPostReq } from '../fetchFile';
 
 
 function Home() {
@@ -24,10 +25,17 @@ function Home() {
             "usernamevolenteers": username,
             "namecategory": trueCategoriesArray
         }
-        console.log("paramsToSend ", paramsToSend)
 
-
-        const 
+        //fetch req
+        const response = fetchPostReq("volunteer", paramsToSend);
+        console.log(response.data)
+        // if (data.resualt == "userName duplicate") {
+        //     alert('userName exist')
+        // }
+        // else {
+        //     navigate(`/users/${currentUser.idUser}/volunteer`)
+        // }
+        navigate(`/users/${currentUser.idUser}/volunteer`)
         // //יותר נכון:
 
         // try {
@@ -83,21 +91,30 @@ function Home() {
             "usernameneedies": username,
             "namecategory": trueCategoriesArray
         }
-        fetch('http://localhost:8080/needy', {
-            method: 'POST',
-            body: JSON.stringify(paramsToSend),
-            headers: { "Content-type": "application/json; charset=UTF-8", },
 
-        })
-            .then(response => response.json())
-            .then(response => {
-                if (response.resualt == "userName duplicate") alert('userName exist')
-                else {
-                    // setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone })
-                    navigate(`/users/${currentUser.idUser}/needy`)
-                }
-            })
-            .catch(error => console.error('Error:', error));
+        const response = fetchPostReq("needy", paramsToSend);
+                // if (response.resualt == "userName duplicate") 
+                //     alert('userName exist')
+                // else {
+                //     // setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone })
+                //     navigate(`/users/${currentUser.idUser}/needy`)
+                // }
+        navigate(`/users/${currentUser.idUser}/needy`)
+        // fetch('http://localhost:8080/needy', {
+        //     method: 'POST',
+        //     body: JSON.stringify(paramsToSend),
+        //     headers: { "Content-type": "application/json; charset=UTF-8", },
+
+        // })
+        //     .then(response => response.json())
+        //     .then(response => {
+        //         if (response.resualt == "userName duplicate") alert('userName exist')
+        //         else {
+        //             // setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone })
+        //             navigate(`/users/${currentUser.idUser}/needy`)
+        //         }
+        //     })
+        //     .catch(error => console.error('Error:', error));
     }
     return (
         <>
