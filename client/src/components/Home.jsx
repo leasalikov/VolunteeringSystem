@@ -28,14 +28,14 @@ function Home() {
 
         //fetch req
         const response = fetchPostReq("volunteer", paramsToSend);
-        console.log(response);
-        // if (data.resualt == "userName duplicate") {
-        //     alert('userName exist')
-        // }
-        // else {
-        //     navigate(`/users/${currentUser.idUser}/volunteer`)
-        // }
-        navigate(`/users/${currentUser.idUser}/volunteer`)
+        const data = await response;
+        console.log("data", data);
+        if (data.resualt == "userName duplicate") {
+            alert('userName exist')
+        }
+        else {
+            navigate(`/users/${currentUser.idUser}/volunteer`)
+        }
         // //יותר נכון:
 
         // try {
@@ -93,7 +93,6 @@ function Home() {
         }
 
         const response = fetchPostReq("needy", paramsToSend);
-        const data = await response
                 // if (response.resualt == "userName duplicate") 
                 //     alert('userName exist')
                 // else {
