@@ -28,7 +28,8 @@ function Home() {
 
         //fetch req
         const response = fetchPostReq("volunteer", paramsToSend);
-        console.log(response.data)
+        // const data = await response.json();
+        console.log(response);
         // if (data.resualt == "userName duplicate") {
         //     alert('userName exist')
         // }
@@ -78,7 +79,7 @@ function Home() {
     }
 
     function getHelp(event) {
-        event.preventDefault();;
+        event.preventDefault();
         // setCurrentUser({ currentUser: currentUser, categoryArray: categoriesArray, type: "needy" })
         var trueCategoriesArray = [];
         Object.keys(categoriesArray).forEach(key => {

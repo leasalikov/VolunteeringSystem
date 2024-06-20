@@ -7,7 +7,7 @@ import React from "react";
     async function fetchPostReq(route, body) {
         console.log("fetchPostReq");
         console.log(body)
-
+        let response;
         try {
             const response = await fetch(`http://localhost:8080/${route}`, {
                 method: 'POST',
@@ -27,7 +27,7 @@ import React from "react";
         catch (err) {
             console.log(err)
         }
-        return data;
+        return response;
     }
 // }
 export { fetchPostReq }
