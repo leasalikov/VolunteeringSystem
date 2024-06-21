@@ -1,34 +1,44 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
 
-// function FetchFile() {
-    // const navigate = useNavigate();
-
-    async function fetchPostReq(route, body) {
-        console.log("fetchPostReq");
+async function fetchPostReq(route, body) {
+    console.log("fetchPostReq");
+    console.log(body)
+    try {
+        const response = await fetch(`http://localhost:8080/${route}`, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
+            headers: { "Content-type": "application/json; charset=UTF-8", },
+        })
         console.log(body)
-        try {
-            const response = await fetch(`http://localhost:8080/${route}`, {
-                method: 'POST',
-                body: JSON.stringify(body),
-                //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
-                headers: { "Content-type": "application/json; charset=UTF-8", },
-            })
-            console.log(body)
-            const json =  await response.json();
-            const data = await json;
-            return data;
-            // if (data.resualt == "userName duplicate") {
-            //     alert('userName exist')
-            // }
-            // else {
-                // navigate(`/users/${currentUser.idUser}/volunteer`)
-            // }
-        }
-        catch (err) {
-            console.log(err)
-        }
-        
+        const json = await response.json();
+        const data = await json;
+        return data;
     }
-// }
-export { fetchPostReq }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+async function fetchGetReq(route, body) {
+    console.log("fetchPostReq");
+    console.log(body)
+    try {
+        const response = await fetch(`http://localhost:8080/${route}`, {
+            method: 'GET',
+            body: JSON.stringify(body),
+            //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
+            headers: { "Content-type": "application/json; charset=UTF-8", },
+        })
+        console.log(body)
+        const json = await response.json();
+        const data = await json;
+        return data;
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+export { fetchPostReq, fetchGetReq }

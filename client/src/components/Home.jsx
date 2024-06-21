@@ -7,7 +7,6 @@ import { fetchPostReq } from '../fetchFile';
 function Home() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [categoriesArray, setCategoriesArray] = useState([{ food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
-
     const navigate = useNavigate();
 
     async function volunteering(event) {
@@ -77,7 +76,7 @@ function Home() {
 
     }
 
-    function getHelp(event) {
+    async function getHelp(event) {
         event.preventDefault();
         // setCurrentUser({ currentUser: currentUser, categoryArray: categoriesArray, type: "needy" })
         var trueCategoriesArray = [];
@@ -91,30 +90,15 @@ function Home() {
             "usernameneedies": username,
             "namecategory": trueCategoriesArray
         }
-
+//fetch post req
         const response = fetchPostReq("needy", paramsToSend);
-                // if (response.resualt == "userName duplicate") 
-                //     alert('userName exist')
-                // else {
-                //     // setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone })
-                //     navigate(`/users/${currentUser.idUser}/needy`)
-                // }
-        navigate(`/users/${currentUser.idUser}/needy`)
-        // fetch('http://localhost:8080/needy', {
-        //     method: 'POST',
-        //     body: JSON.stringify(paramsToSend),
-        //     headers: { "Content-type": "application/json; charset=UTF-8", },
-
-        // })
-        //     .then(response => response.json())
-        //     .then(response => {
-        //         if (response.resualt == "userName duplicate") alert('userName exist')
-        //         else {
-        //             // setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone })
-        //             navigate(`/users/${currentUser.idUser}/needy`)
-        //         }
-        //     })
-        //     .catch(error => console.error('Error:', error));
+        const data = await response;
+        console.log("data", data);
+        if (response.resualt == "userName duplicate")
+            alert('userName exist')
+        else {
+            navigate(`/users/${currentUser.idUser}/needy`)
+        }
     }
     return (
         <>
@@ -132,7 +116,6 @@ function Home() {
                 <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
                 <button><submit button onClick={volunteering}>התנדבות</submit></button>
                 <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
-
             </form>}
         </>
     )
