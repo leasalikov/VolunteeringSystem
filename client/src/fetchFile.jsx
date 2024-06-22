@@ -18,7 +18,6 @@ async function fetchPostReq(route, body) {
     catch (err) {
         console.log(err)
     }
-
 }
 
 async function fetchGetReq(route, body) {

@@ -4,8 +4,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 // import '../styles/RegisterAndLogin.css';
 import { UserContext } from '../App';
 import { useContext } from "react";
+import {fetchPostReq} from '../fetchFile'
 const Login = () => {
-   const {currentUser, setCurrentUser} = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedInUser, setIsLoggedInUser] = useState(false);
@@ -13,35 +14,50 @@ const Login = () => {
   // const [user, setUser] = useState({});
 
   // const navigate = useNavigate();
- 
-  const handleLogin = () => {
-    if (userName == '' || password == '') {
-      alert("Enter name and password");
-      return;
-    }
-  
-    fetch(`http://localhost:8080/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "username": userName, "password": password })
-    })
-      .then(response => response.json())
-      .then(jsonUser => {
-        if (jsonUser == "wrong details")
-          alert('please try again or register.');
-        else if (jsonUser.result == "blocked")
-          alert("you tried too many times, you are blocked! try again later");
-        else {
-          setCurrentUser(jsonUser.user[0])
-          localStorage.setItem("currentUser", JSON.stringify(jsonUser.user));
-          setIsLoggedInUser(true);
-        }
-        setUserName('');
-        setPassword('');
-      })
-      .catch(error => console.error('Error:', error));
-  };
 
+  const handleLogin = () => {
+    (async () => {
+      if (userName == '' || password == '') {
+        alert("Enter name and password");
+        return;
+      }
+      const paramsToSend = { "username": userName, "password": password }
+      //req
+      const response = fetchPostReq("login", paramsToSend);
+      const jsonUser = await response;
+      if (jsonUser == "wrong details")
+        alert('please try again or register.');
+      else if (jsonUser.result == "blocked")
+        alert("you tried too many times, you are blocked! try again later");
+      else {
+        setCurrentUser(jsonUser.user[0])
+        localStorage.setItem("currentUser", JSON.stringify(jsonUser.user));
+        setIsLoggedInUser(true);
+      }
+      setUserName('');
+      setPassword('');
+      // fetch(`http://localhost:8080/login`, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ "username": userName, "password": password })
+      // })
+      //   .then(response => response.json())
+      //   .then(jsonUser => {
+      //     if (jsonUser == "wrong details")
+      //       alert('please try again or register.');
+      //     else if (jsonUser.result == "blocked")
+      //       alert("you tried too many times, you are blocked! try again later");
+      //     else {
+      //       setCurrentUser(jsonUser.user[0])
+      //       localStorage.setItem("currentUser", JSON.stringify(jsonUser.user));
+      //       setIsLoggedInUser(true);
+      //     }
+      //     setUserName('');
+      //     setPassword('');
+      //   })
+      //   .catch(error => console.error('Error:', error));
+    })();
+  };
 
   const goToRegister = () => {
     setToRegister(true);
@@ -49,7 +65,7 @@ const Login = () => {
 
   return (
     <div>
-      <Navigate to={isLoggedInUser ? `/users/${currentUser.idUser}/home` : toRegister ? "/register" : "/login"}  />
+      <Navigate to={isLoggedInUser ? `/users/${currentUser.idUser}/home` : toRegister ? "/register" : "/login"} />
       <div className='signUpLogin-container'>
         <h2>insert user</h2>
         <input

@@ -29,7 +29,7 @@ function Home() {
         const response = fetchPostReq("volunteer", paramsToSend);
         const data = await response;
         console.log("data", data);
-        if (data.resualt == "userName duplicate") {
+        if (data.resualt == "userName duplicate") {////
             alert('userName exist')
         }
         else {
@@ -94,7 +94,7 @@ function Home() {
         const response = fetchPostReq("needy", paramsToSend);
         const data = await response;
         console.log("data", data);
-        if (response.resualt == "userName duplicate")
+        if (data.resualt == "userName duplicate")/////
             alert('userName exist')
         else {
             navigate(`/users/${currentUser.idUser}/needy`)
@@ -117,6 +117,7 @@ function Home() {
                 <button><submit button onClick={volunteering}>התנדבות</submit></button>
                 <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
             </form>}
+            {/* <h4>{data}</h4> */}
         </>
     )
 }

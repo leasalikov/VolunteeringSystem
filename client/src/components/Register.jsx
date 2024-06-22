@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from '../App';
+import { fetchPostReq } from '../fetchFile'
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -9,40 +10,48 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const {currentUser, setCurrentUser} = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  function checkEmail(strEmail){
+  function checkEmail(strEmail) {
     return /^\w+@([\w\-]+\.)+\w{2,3}$/.test(strEmail);
   }
 
   const handleRegister = () => {
-    if (verifyPassword != password||verifyPassword=="") {
-      alert('Please validate your password.');
-      return;
-    }
-   
-    const validate = "/^([A-Za-z0-9_\-\.])"
-    if (name==""||username==""|| !checkEmail(email)) {
-      alert("the parameters you entered are not correct")
-      return
-    }
-    const newUser = { "name": name, "userName": username, "email": email, "phone": phone, "password": password }
-    fetch('http://localhost:8080/user', {
-      method: 'POST',
-      body: JSON.stringify(newUser),
-      headers: { "Content-type": "application/json; charset=UTF-8", },
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.resualt == "userName duplicate") alert('userName exist')
+    // (async () => {
+      if (verifyPassword != password || verifyPassword == "") {
+        alert('Please validate your password.');
+        return;
+      }
+      const validate = "/^([A-Za-z0-9_\-\.])"
+      if (name == "" || username == "" || !checkEmail(email)) {
+        alert("the parameters you entered are not correct")
+        return;
+      }
+      const newUser = { "name": name, "userName": username, "email": email, "phone": phone, "password": password }
+      //req
+      const response = fetchPostReq("user", newUser);
+      // const jsonUser = await response;
+      if (response.resualt == "userName duplicate") alert('userName exist')
         else {
-         setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone });
-          navigate(`/users/${response.insertId}/home`, { state: { user: user } })
+          setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone });
+          navigate(`/users/${response.insertId}/home`, { state: { user: "user" } })
         }
-      })
-      .catch(error => console.error('Error:', error));
-
+      // fetch('http://localhost:8080/user', {
+      //   method: 'POST',
+      //   body: JSON.stringify(newUser),
+      //   headers: { "Content-type": "application/json; charset=UTF-8", },
+      // })
+      //   .then(response => response.json())
+      //   .then(response => {
+      //     if (response.resualt == "userName duplicate") alert('userName exist')
+      //     else {
+      //       setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone });
+      //       navigate(`/users/${response.insertId}/home`, { state: { user: user } })
+      //     }
+      //   })
+      //   .catch(error => console.error('Error:', error));
+    // })();
   };
 
   return (
