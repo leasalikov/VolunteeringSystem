@@ -11,11 +11,14 @@ export class UserService {
     }
 
     async getBy(tableName, sortByObj) {
+        console.log("sortByObj",sortByObj)
         const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
         const query = getByQuery(tableName, keys);
-        console.log(values)
-        return await executeQuery(query, values);
+        console.log(query)
+        const a= await executeQuery(query, values);
+        console.log("a",a)
+        return a;
     }
 
     async add(users, userItem) {

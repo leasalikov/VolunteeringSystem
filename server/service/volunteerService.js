@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery2} from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery2, getByQuery3, getByQuery4} from './query.js'
 
 
 export class VolunteerService {
@@ -17,7 +17,7 @@ export class VolunteerService {
         const values = Object.values(sortByObj);
         const query = getByQuery2();        //check if user exist in the volunteers
         console.log("query: ", query)
-        result = await executeQuery(query, values);   
+        result = await executeQuery(query, values);
         console.log("result getBy: ", result)
         return result;
     }
@@ -28,62 +28,55 @@ export class VolunteerService {
         let query3;
         //gets the cateroryIdArray
         const categoryArray = volunteerItem.namecategory;
-        console.log("ca===========  ", categoryArray)
         for (let element = 0; element <= categoryArray.length - 1; element++) {
             query3 = getByQuery("category", ["namecategory"]);
             result3 = await executeQuery(query3, [categoryArray[element]]);
             idcategory.push(result3[0].idcategory)
-            console.log("idcategory ", idcategory[element])
         };
-        // console.log("volunteerItem ", volunteerItem);
         delete volunteerItem.namecategory;
-        console.log("volunteerItem ", volunteerItem)
 
         // add the user to volunteer
         const result = await this.getBy(volunteerItem)
-        console.log("resultfeht", result)
         var result1;
-        // console.log(result[0]["COUNT(*)"])
         var id;
         if (result.length == 0) {
-            console.log("count = 0")
             const values = Object.values(volunteerItem)
             const keys = Object.keys(volunteerItem);
             const query = addQuery(volunteers, keys);
             result1 = await executeQuery(query, values);
             id = result1.insertId;
         }
-        else{
+        else {
             const values = Object.values(volunteerItem)
             const query = getByQuery2();
             result1 = await executeQuery(query, values);
-            console.log("result1: ", result1)
             id = result1[0].idvolunteers;
         }
 
-        console.log("idcat " + idcategory);
-        console.log("resultid:", id)
         // add the user to categoryvolunteers
-        let objects;
-        let values2;
-        let keys2;
-        let query2;
-        let result2 = [];
-        console.log("adddddddddddddddddd")
+        ////find all the needies that suit the volunteer
+        let objects, values2, keys2, query2, query4, query5, idneedies = [], result4 = [], result2 = [];
         for (let element = 0; element <= categoryArray.length - 1; element++) {
+            query4 = getByQuery4("categoryneedies", "idcategory")
+            idneedies.push(await executeQuery(query4, [idcategory[element]]));
+            console.log("idneedies", idneedies)
+      
             objects = { "idvolunteers": id, "idcategory": idcategory[element] }
             values2 = Object.values(objects)
-            console.log("v2" + values2)
             keys2 = Object.keys(objects)
-            console.log("v2 ", values2)////
-            console.log("k2 ", keys2)
             query2 = addQuery("categoryvolunteers", keys2);
-            console.log("query2 ", query2)
             result2.push(await executeQuery(query2, values2));
-            console.log("result2" + result2[element])
         }
+        for (let e = 0; e <= idneedies.length - 1; e++) {
+            for (let p = 0; p <= idneedies[e].length - 1; p++) {
+                query5 = getByQuery3("idneedies")
+                result4.push(await executeQuery(query5, Object.values(idneedies[e][p])));
+            }
+        }
+        console.log("Array:", result4)
+
         delete volunteerItem.categoryArray;
-        return { result1, result2 }
+        return { result1, result2, result4 }
     }
 
     async update(tableName, volunteerItem, id) {

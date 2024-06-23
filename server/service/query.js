@@ -8,9 +8,14 @@ function getByQuery2() {
   return  `SELECT * FROM system.volunteers WHERE usernamevolenteers = ?`
 } 
 
-function getByQuery3() {
+function getByQuery3(key) {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
-  return  `SELECT * FROM system.needies WHERE usernameneedies = ?`
+  return  ` SELECT * FROM system.needies WHERE ${key} = ?`
+} 
+
+function getByQuery4(tablename, keys) {
+    // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
+  return  `SELECT DISTINCT idneedies FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
 } 
 
 function getByQuery( tableName, keys) {
@@ -40,5 +45,6 @@ export {
     updateQuery,
     limit,
     getByQuery2,
-    getByQuery3
+    getByQuery3,
+    getByQuery4
 }

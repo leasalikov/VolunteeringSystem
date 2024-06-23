@@ -23,15 +23,16 @@ const Login = () => {
       }
       const paramsToSend = { "username": userName, "password": password }
       //req
-      const response = fetchPostReq("login", paramsToSend);
-      const jsonUser = await response;
-      if (jsonUser == "wrong details")
+      const response =await fetchPostReq("login", paramsToSend);
+      // const jsonUser =  response;
+      console.log(response)
+      if (response == "wrong details")
         alert('please try again or register.');
-      else if (jsonUser.result == "blocked")
-        alert("you tried too many times, you are blocked! try again later");
+      // else if (jsonUser.result == "blocked")
+      //   alert("you tried too many times, you are blocked! try again later");
       else {
-        setCurrentUser(jsonUser.user[0])
-        localStorage.setItem("currentUser", JSON.stringify(jsonUser.user));
+        setCurrentUser(response.user[0])
+        localStorage.setItem("currentUser", JSON.stringify(response.user));
         setIsLoggedInUser(true);
       }
       setUserName('');
