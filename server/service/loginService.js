@@ -7,11 +7,12 @@ import { UserService } from './userService.js';
 export class LoginService {
 
     async checkPassword(loginObj) {
+        console.log("loginObj",loginObj)
         const service = new UserService();
         const userName=loginObj.username;
         console.log("userName " + userName);
         const userByName = await service.getBy("users",{"username": userName });
-        console.log("userByName!!!!!!!!!!!");
+        console.log(userByName,"userByName!!!!!!!!!!!");
         if (userByName.length == 0) {
             return { "result": 0 };
         }

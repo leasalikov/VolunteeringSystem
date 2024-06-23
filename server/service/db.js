@@ -10,6 +10,7 @@ async function executeQuery(query, params) {
         host: 'localhost',
         user: 'root',
         database: process.env.DB_NAME,
+      
         password: process.env.PASSWORD
     });
     try {

@@ -23,12 +23,10 @@ export class VolunteerService {
     }
 
     async addVolunteer(volunteers, volunteerItem) {
-        const idcategory = [];
-        let result3;
-        let query3;
+        const idcategory = [] ; 
+        let result3 , query3;
         //gets the cateroryIdArray
         const categoryArray = volunteerItem.namecategory;
-        console.log("ca===========  ", categoryArray)
         for (let element = 0; element <= categoryArray.length - 1; element++) {
             query3 = getByQuery("category", ["namecategory"]);
             result3 = await executeQuery(query3, [categoryArray[element]]);
@@ -43,7 +41,6 @@ export class VolunteerService {
         const result = await this.getBy(volunteerItem)
         console.log("resultfeht", result)
         var result1;
-        // console.log(result[0]["COUNT(*)"])
         var id;
         if (result.length == 0) {
             console.log("count = 0")
@@ -69,18 +66,12 @@ export class VolunteerService {
         let keys2;
         let query2;
         let result2 = [];
-        console.log("adddddddddddddddddd")
         for (let element = 0; element <= categoryArray.length - 1; element++) {
             objects = { "idvolunteers": id, "idcategory": idcategory[element] }
             values2 = Object.values(objects)
-            console.log("v2" + values2)
             keys2 = Object.keys(objects)
-            console.log("v2 ", values2)////
-            console.log("k2 ", keys2)
             query2 = addQuery("categoryvolunteers", keys2);
-            console.log("query2 ", query2)
             result2.push(await executeQuery(query2, values2));
-            console.log("result2" + result2[element])
         }
         delete volunteerItem.categoryArray;
         return { result1, result2 }
