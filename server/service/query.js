@@ -8,9 +8,9 @@ function getByQuery2() {
   return  `SELECT * FROM system.volunteers WHERE usernamevolenteers = ?`
 } 
 
-function getByQuery3(key) {
+function getByQuery3(tablename,key) {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
-  return  ` SELECT * FROM system.needies WHERE ${key} = ?`
+  return  ` SELECT * FROM system.${tablename} WHERE ${key} = ?`
 } 
 
 function getByQuery4(tablename, keys) {

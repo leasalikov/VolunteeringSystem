@@ -54,23 +54,30 @@ export class VolunteerService {
         }
 
         // add the user to categoryvolunteers
-        ////find all the needies that suit the volunteer
         let objects, values2, keys2, query2, query4, query5, idneedies = [], result4 = [], result2 = [];
         for (let element = 0; element <= categoryArray.length - 1; element++) {
             query4 = getByQuery4("categoryneedies", "idcategory")
             idneedies.push(await executeQuery(query4, [idcategory[element]]));
-            console.log("idneedies", idneedies)
-      
             objects = { "idvolunteers": id, "idcategory": idcategory[element] }
             values2 = Object.values(objects)
             keys2 = Object.keys(objects)
             query2 = addQuery("categoryvolunteers", keys2);
             result2.push(await executeQuery(query2, values2));
         }
+
+
+      ////find all the needies that suit the volunteer
         for (let e = 0; e <= idneedies.length - 1; e++) {
             for (let p = 0; p <= idneedies[e].length - 1; p++) {
-                query5 = getByQuery3("idneedies")
-                result4.push(await executeQuery(query5, Object.values(idneedies[e][p])));
+                query5 = getByQuery3("needies","idneedies")
+                const needy=await executeQuery(query5, Object.values(idneedies[e][p]));
+                query5 = getByQuery3("users","username")
+                console.log(query5)
+                const allNeedy=await executeQuery(query5, Object.values(needy[0].usernameneedies));
+                if(allNeedy[0].username!==result[0].usernamevolenteers){
+                    // delete needy[0].idneedies;
+                     result4.push(allNeedy)
+                }
             }
         }
         console.log("Array:", result4)
