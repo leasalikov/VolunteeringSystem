@@ -90,7 +90,7 @@ function Home() {
             "usernameneedies": username,
             "namecategory": trueCategoriesArray
         }
-//fetch post req
+        //fetch post req
         const response = fetchPostReq("needy", paramsToSend);
         const data = await response;
         console.log("data", data);

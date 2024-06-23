@@ -20,24 +20,32 @@ async function fetchPostReq(route, body) {
     }
 }
 
-async function fetchGetReq(route, body) {
-    console.log("fetchPostReq");
-    console.log(body)
-    try {
-        const response = await fetch(`http://localhost:8080/${route}`, {
-            method: 'GET',
-            body: JSON.stringify(body),
-            //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
-            headers: { "Content-type": "application/json; charset=UTF-8", },
-        })
-        console.log(body)
-        const json = await response.json();
-        const data = await json;
-        return data;
-    }
-    catch (err) {
-        console.log(err)
-    }
+// fetch(`http://localhost:8080/products?${searchQuery}`)
+//     .then((response) => response.json())
+//     .then((response) => {
+//         console.log(response)
+//         setProducts(response)
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//     });
 
-}
-export { fetchPostReq, fetchGetReq }
+// async function fetchGetReq(route) {
+//     console.log("fetchGetReq");
+//     // console.log(body)
+//     try {
+//         const response = await fetch(`http://localhost:8080/${route}`, {
+//             method: 'GET',
+//             // body: JSON.stringify(body),
+//             //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
+//             // headers: { "Content-type": "application/json; charset=UTF-8", },
+//         })
+//         const json = await response.json();
+//         const data = await json;
+//         return data;
+//     }
+//     catch (err) {
+//         console.log(err)
+//     }
+// }
+export { fetchPostReq }
