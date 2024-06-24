@@ -11,8 +11,11 @@ export class VolunteerController {
             const service = new VolunteerService();
             const resultItems = await service.get(tableName);
             resultItems.forEach((resultItem, i) => delete resultItem.isActive);
+            // const result = await volunteerService.addVolunteer(tableName, req.body);
+            // if (result == undefined)
+            //     return res.status(401).json({ resualt: "volunteerName duplicate" });
             console.log("req: get all volunteers, res: successfull")
-            return res.status(200).json(resultItems);
+            return res.status(200).json(resultItems);                
         }
         catch (ex) {
             const err = {};

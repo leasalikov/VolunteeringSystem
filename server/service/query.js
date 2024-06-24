@@ -7,8 +7,11 @@ function getByQuery2() {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return  `SELECT * FROM system.volunteers WHERE usernamevolenteers = ?`
 } 
-
-function getByQuery3(tablename,key) {
+function getByQuery5() {
+    // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
+  return  `SELECT * FROM system.needies WHERE usernameneedies = ?`
+} 
+function getByQuery3(tablename, key) {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return  ` SELECT * FROM system.${tablename} WHERE ${key} = ?`
 } 
@@ -46,5 +49,6 @@ export {
     limit,
     getByQuery2,
     getByQuery3,
-    getByQuery4
+    getByQuery4, 
+    getByQuery5
 }

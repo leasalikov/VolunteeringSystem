@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 // import '../styles/RegisterAndLogin.css';
 import { UserContext } from '../App';
 import { useContext } from "react";
-import {fetchPostReq} from '../fetchFile'
+import { fetchPostReq } from '../fetchFile'
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [userName, setUserName] = useState('');
@@ -23,7 +23,7 @@ const Login = () => {
       }
       const paramsToSend = { "username": userName, "password": password }
       //req
-      const response =await fetchPostReq("login", paramsToSend);
+      const response = await fetchPostReq("login", paramsToSend);
       // const jsonUser =  response;
       console.log(response)
       if (response == "wrong details")

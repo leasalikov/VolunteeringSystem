@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3} from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5} from './query.js'
 
 
 export class NeedyService {
@@ -13,9 +13,10 @@ export class NeedyService {
     async getBy(sortByObj) {
         var result;
         console.log("sortByObj: ", sortByObj);
+        console.log("tableName")
         // const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
-        const query = getByQuery3();        //check if user exist in the needies
+        const query = getByQuery5();   //check if user exist in the needies
         console.log("query: ", query)
         result = await executeQuery(query, values);   
         console.log("result getBy: ", result)
@@ -58,7 +59,7 @@ export class NeedyService {
         }
         else{
             const values = Object.values(needyItem)
-            const query = getByQuery3();
+            const query = getByQuery5();
             result1 = await executeQuery(query, values);
             console.log("result1: ", result1)
             id = result1[0].idneedies;

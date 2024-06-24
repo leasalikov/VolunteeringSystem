@@ -24,17 +24,17 @@ function Home() {
             "usernamevolenteers": username,
             "namecategory": trueCategoriesArray
         }
-
         //fetch req
         const response = fetchPostReq("volunteer", paramsToSend);
         const data = await response;
-        console.log("data", data);
         if (data.resualt == "userName duplicate") {////
             alert('userName exist')
         }
         else {
-            navigate(`/users/${currentUser.idUser}/volunteer`)
+          console.log(data)
+            navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
         }
+
         // //יותר נכון:
 
         // try {
@@ -73,7 +73,6 @@ function Home() {
         //         }
         //     })
         //     .catch(error => console.error('Error:', error));
-
     }
 
     async function getHelp(event) {
@@ -94,8 +93,7 @@ function Home() {
         const response = fetchPostReq("needy", paramsToSend);
         const data = await response;
         console.log("data", data);
-        if (data.resualt == "userName duplicate")/////
-            alert('userName exist')
+        if (data.result == "userName duplicate") (alert('userName exist'))
         else {
             navigate(`/users/${currentUser.idUser}/needy`)
         }
@@ -117,7 +115,6 @@ function Home() {
                 <button><submit button onClick={volunteering}>התנדבות</submit></button>
                 <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
             </form>}
-            {/* <h4>{data}</h4> */}
         </>
     )
 }
