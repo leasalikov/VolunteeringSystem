@@ -1,8 +1,8 @@
+import '../Style.css';
 import { UserContext } from '../App';
 import { React, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
-
 
 function Home() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -31,7 +31,7 @@ function Home() {
             alert('userName exist')
         }
         else {
-          console.log(data)
+            console.log(data)
             navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
         }
 
@@ -100,21 +100,27 @@ function Home() {
     }
     return (
         <>
-            <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
-            <h2>הנכם מוזמנים לקחת חלק </h2>
-            <h3>{currentUser.username}</h3>
-            {<form onSubmit={volunteering}>
-                <label for="food">אוכל</label>
-                <input type="checkbox" id="food" name="food" value={categoriesArray.food} onChange={(e) => setCategoriesArray({ food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
-                <label for="hosting">אירוח</label>
-                <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.hosting} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
-                <label for="toys">משחקים</label>
-                <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
-                <label for="babysitter">ביביסיטר</label>
-                <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
-                <button><submit button onClick={volunteering}>התנדבות</submit></button>
-                <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
-            </form>}
+            <div className="background-animation">
+                <img className="image1" />
+                <img className="image2" />
+                <img className="image3" />
+                {/* <img src="image3.jpg" alt="Image 3" className="image3" /> */}
+                <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
+                <h2>הנכם מוזמנים לקחת חלק </h2>
+                <h3>{currentUser.username}</h3>
+                {<form onSubmit={volunteering}>
+                    <label for="food">אוכל</label>
+                    <input type="checkbox" id="food" name="food" value={categoriesArray.food} onChange={(e) => setCategoriesArray({ food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
+                    <label for="hosting">אירוח</label>
+                    <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.hosting} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
+                    <label for="toys">משחקים</label>
+                    <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
+                    <label for="babysitter">ביביסיטר</label>
+                    <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
+                    <button><submit button onClick={volunteering}>התנדבות</submit></button>
+                    <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
+                </form>}
+            </div>
         </>
     )
 }
