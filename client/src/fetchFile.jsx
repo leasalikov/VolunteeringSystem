@@ -12,7 +12,7 @@ async function fetchPostReq(route, body) {
         })
         console.log(body)
         const json = await response.json();
-        const data =await json;
+        const data = await json;
         return data;
     }
     catch (err) {
