@@ -1,4 +1,3 @@
-import React from "react";
 
 async function fetchPostReq(route, body) {
     console.log("fetchPostReq");

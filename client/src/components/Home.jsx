@@ -101,10 +101,9 @@ function Home() {
     return (
         <>
             <div className="background-animation">
-                <img className="image1" />
+                {/* <img className="image1" />
                 <img className="image2" />
-                <img className="image3" />
-                {/* <img src="image3.jpg" alt="Image 3" className="image3" /> */}
+                <img className="image3" /> */}
                 <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
                 <h2>הנכם מוזמנים לקחת חלק </h2>
                 <h3>{currentUser.username}</h3>

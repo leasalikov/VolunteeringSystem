@@ -22,28 +22,27 @@ export class VolunteerService {
         return result;
     }
 
-    async addvolunteercategory(idcategory,id) {
+    async addvolunteercategory(idcategory, id) {
         // add the user to categoryvolunteers
         let objects, values2, keys2, query2, query4, idneedies = [], result2 = [];
         console.log("yeiiiii")
         for (let element = 0; element <= idcategory.length - 1; element++) {
-          
+
             query4 = getByQuery4("categoryneedies", "idcategory")
             idneedies.push(await executeQuery(query4, [idcategory[element]]));
-         
+
             objects = { "idvolunteers": id, "idcategory": idcategory[element] }
-            console.log("objects",objects)
+            console.log("objects", objects)
             values2 = Object.values(objects)
             keys2 = Object.keys(objects)
             query2 = addQuery("categoryvolunteers", keys2);
             result2.push(await executeQuery(query2, values2));
         }
-        console.log("result2"+result2 + " " + idneedies)
+        console.log("result2" + result2 + " " + idneedies)
         return { result2, idneedies }
     }
 
     async addVolunteer(volunteers, volunteerItem) {
-
         const idcategory = [];
         let result3, query3;
         //gets the categoryIdArray
@@ -71,7 +70,7 @@ export class VolunteerService {
             result1 = await executeQuery(query, values);
             id = result1[0].idvolunteers;
         }
-        const addvolunteercategory = await this.addvolunteercategory(idcategory,id)
+        const addvolunteercategory = await this.addvolunteercategory(idcategory, id)
         let idneedies = addvolunteercategory.idneedies
 
         ////find all the needies that suit the volunteer
@@ -94,18 +93,6 @@ export class VolunteerService {
         delete volunteerItem.categoryArray;
         return { result1, result4 }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     async update(tableName, volunteerItem, id) {
         const keys = Object.keys(volunteerItem);
