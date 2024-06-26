@@ -28,13 +28,13 @@ function Home() {
         //fetch req
         const response = fetchPostReq("volunteer", paramsToSend);
         const data = await response;
-        if (data.resualt == "userName duplicate") {////
-            alert('userName exist')
-        }
-        else {
+        // if (data.resualt == "userName duplicate") {////
+        //     alert('userName exist')
+        // }
+        // else {
             console.log(data)
             navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
-        }
+        // }
 
         // //יותר נכון:
 
