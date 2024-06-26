@@ -9,8 +9,8 @@ import { needyRouter } from './routers/needyRouter.js';
 
 const app = express();
 
-const express = require('express');
-const nodemailer = require('nodemailer');
+// const express = require('express');
+// const nodemailer = require('nodemailer');
 
 app.use(express.json());
 app.use(cors());
