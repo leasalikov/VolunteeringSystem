@@ -10,6 +10,7 @@ function Home() {
     const navigate = useNavigate();
 
     async function volunteering(event) {
+        console.log("email ", currentUser.email)
         event.preventDefault();
         // setCurrentUser({ currentUser: currentUser, categoryArray: categoriesArray, type: "volunteer" });
         var trueCategoriesArray = [];
