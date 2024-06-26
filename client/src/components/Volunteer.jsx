@@ -11,18 +11,27 @@ const Volunteer = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const location = useLocation();
     console.log("data ", location.state.data[0][0].idUser)
+    console.log("namecategory ", location.state.data[0].namecategory[0].namecategory)
+    console.log("result4 ", location.state.data)
+    console.log("current ", currentUser)
 
     async function linking(item) {
-        console.log("id: ", item.idUser)
+        const paramsToSent = {
+            "idneedies": item[0].idUser, //needy id
+            "idcategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
+            "username": currentUser.username, //volunteer username
+        };
+        console.log("paramsToSent: ", paramsToSent)
         const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
         if (result) {
             setShowEndMassage(true)
             setShowComponent(false)
-            const emailParams = {
-                email: currentUser.email,
-                message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
-            };
-
+            const response = await fetchPostReq("volunteer", paramsToSent)
+            const data = await response;
+            // const emailParams = {
+            //     email: currentUser.email,
+            //     message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
+            // };
             // const emailResponse = await fetch('http://localhost:8080/send-email', {
             //     method: 'POST',
             //     headers: {
@@ -59,6 +68,7 @@ const Volunteer = () => {
                             <th>name</th>
                             <th>email</th>
                             <th>phone</th>
+                            <th>category</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +77,9 @@ const Volunteer = () => {
                                 <td>{item[0].username}</td>
                                 <td>{item[0].email}</td>
                                 <td>{item[0].phone}</td>
-                                <button onClick={() => linking(item[0])}>V</button>
+                                <td>{item.namecategory[0].namecategory}</td>
+                                <td>{item[0].idUser}</td>
+                                <button onClick={() => linking(item)}>V</button>
                             </tr>
                         ))}
                     </tbody>
