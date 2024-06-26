@@ -23,21 +23,19 @@ const Volunteer = () => {
                 message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
             };
 
-            const emailResponse = await fetch('http://localhost:8080/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(emailParams),
-            });
-
-            const emailData = await emailResponse.json();
-
-            if (emailData.success) {
-                console.log("Email sent successfully");
-            } else {
-                console.error("Failed to send email");
-            }
+            // const emailResponse = await fetch('http://localhost:8080/send-email', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(emailParams),
+            // });
+            // const emailData = await emailResponse.json();
+            // if (emailData.success) {
+            //     console.log("Email sent successfully");
+            // } else {
+            //     console.error("Failed to send email");
+            // }
         }
     }
     function addVolunting() {
