@@ -16,9 +16,14 @@ function getByQuery3(tablename, key) {
   return  ` SELECT * FROM system.${tablename} WHERE ${key} = ?`
 } 
 
+function getByQuery7(tablename, key) {
+    // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
+  return  ` SELECT namecategory FROM system.${tablename} WHERE ${key} = ?`
+} 
+
 function getByQuery4(tablename, keys) {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
-  return  `SELECT DISTINCT idneedies FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
+  return  `SELECT DISTINCT idneedies,idcategory FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
 } 
 
 function getByQuery( tableName, keys) {
@@ -51,4 +56,5 @@ export {
     getByQuery3,
     getByQuery4, 
     getByQuery5
+    ,getByQuery7
 }

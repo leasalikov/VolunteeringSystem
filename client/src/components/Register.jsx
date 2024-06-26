@@ -32,11 +32,11 @@ const Register = () => {
       //req
       const response = fetchPostReq("user", newUser);
       // const jsonUser = await response;
-      if (response.resualt == "userName duplicate") alert('userName exist')
-        else {
+      // if (response.resualt == "userName duplicate") alert('userName exist')
+      //   else {
           setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone });
           navigate(`/users/${response.insertId}/home`, { state: { user: "user" } })
-        }
+        // }
       // fetch('http://localhost:8080/user', {
       //   method: 'POST',
       //   body: JSON.stringify(newUser),
