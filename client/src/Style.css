@@ -2,17 +2,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-  
+
     color-scheme: #e21a1a;
     color: rgba(255, 255, 255, 0.87);
     background-color: #e21a1a;
-  
+
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-  }
+}
 
 @keyframes backgroundAnimation {
     /* 0% {
@@ -21,9 +21,7 @@
     100% {
         background-image: url('Photos/image2.jpeg');
     } */
-    /* 100% {
-        background-image: url('Photos/image3.jpeg');
-    } */}
+}
 
 body {
     margin: 0;
@@ -35,10 +33,14 @@ body {
     animation: backgroundAnimation 5s infinite;
     color: rgb(135, 158, 135);
     text-shadow: 0 0 0px black, 0 0 0px black, 0 0 0px black;
-
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
 }
 
-input{
+input {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -50,12 +52,45 @@ input{
     transition: border-color 0.25s;
 }
 
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+button:hover {
+    background-color: rgb(109, 138, 109);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
 .image2.jpeg {
     opacity: 0.7;
 }
+
 .image3.jpeg {
     opacity: 0.7;
 }
+
 .image1.jpeg {
     opacity: 0.7;
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: #535bf2;
 }

@@ -7,9 +7,10 @@ import Login from './components/Login';
 import Home from './components/Home';
 import React, { createContext, useState } from "react";
 import Volunteer from './components/Volunteer'
-
+import About from './components/About';
 import Register from './components/Register';
 import Needy from './components/Needy';
+// import About from './components/About';
 export const UserContext = createContext();
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -22,6 +23,7 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="volunteer" element={<Volunteer />} />
               <Route path="needy" element={<Needy />} />
+              <Route path="about" element={<About />} />
             </Route>
             <Route path="/" element={<Login />} />
             <Route path="login" element={<Login />} />

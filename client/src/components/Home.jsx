@@ -100,12 +100,13 @@ function Home() {
             navigate(`/users/${currentUser.idUser}/needy`)
         }
     }
+    function AboutUs(){
+        navigate(`/users/${currentUser.idUser}/about`)
+    }
     return (
         <>
-            <div className="background-animation" >
-                {/* <img className="image1" />
-                <img className="image2" />
-                <img className="image3" /> */}
+        <button onClick={AboutUs}>About Us</button>
+            {/* <div className="background-animation" > */}
                 <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
                 <h2>הנכם מוזמנים לקחת חלק </h2>
                 <h3>{currentUser.username}</h3>
@@ -121,7 +122,7 @@ function Home() {
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>
                     <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
                 </form>}
-            </div>
+            {/* </div> */}
         </>
     )
 }

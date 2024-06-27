@@ -18,7 +18,7 @@ const Volunteer = () => {
     async function linking(item) {
         const paramsToSent = {
             "idneedies": item[0].idUser, //needy id
-            "idcategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
+            "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
             "username": currentUser.username, //volunteer username
         };
         console.log("paramsToSent: ", paramsToSent)
@@ -26,8 +26,9 @@ const Volunteer = () => {
         if (result) {
             setShowEndMassage(true)
             setShowComponent(false)
-            const response = await fetchPostReq("volunteer", paramsToSent)
+            const response = await fetchPostReq("linking", paramsToSent)
             const data = await response;
+            console.log()
             // const emailParams = {
             //     email: currentUser.email,
             //     message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
