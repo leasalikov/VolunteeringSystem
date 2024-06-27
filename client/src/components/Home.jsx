@@ -28,6 +28,7 @@ function Home() {
         //fetch req
         const response = fetchPostReq("volunteer", paramsToSend);
         const data = await response;
+        console.log("dataaaaaaaaaa", data)
         // if (data.resualt == "userName duplicate") {////
         //     alert('userName exist')
         // }
@@ -99,28 +100,29 @@ function Home() {
             navigate(`/users/${currentUser.idUser}/needy`)
         }
     }
+    function AboutUs(){
+        navigate(`/users/${currentUser.idUser}/about`)
+    }
     return (
         <>
-            <div className="background-animation">
-                {/* <img className="image1" />
-                <img className="image2" />
-                <img className="image3" /> */}
+        <button onClick={AboutUs}>About Us</button>
+            {/* <div className="background-animation" > */}
                 <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
                 <h2>הנכם מוזמנים לקחת חלק </h2>
                 <h3>{currentUser.username}</h3>
                 {<form onSubmit={volunteering}>
-                    <label for="food">אוכל</label>
+                    <label for="food">ארוחות חמות</label>
                     <input type="checkbox" id="food" name="food" value={categoriesArray.food} onChange={(e) => setCategoriesArray({ food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
                     <label for="hosting">אירוח</label>
                     <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.hosting} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
-                    <label for="toys">משחקים</label>
+                    <label for="toys">משחקים לילדים</label>
                     <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
                     <label for="babysitter">ביביסיטר</label>
                     <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>
                     <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
                 </form>}
-            </div>
+            {/* </div> */}
         </>
     )
 }
