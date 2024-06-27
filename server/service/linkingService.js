@@ -1,21 +1,41 @@
 
-// import { executeQuery } from './db.js';
+import { executeQuery } from './db.js';
 // import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
 // import { UserService } from './userService.js';
-// import { Service } from '../service/service.js';
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9 } from './query.js'
 
+import { CategoryService } from './categoryService.js';
+import { NeedyService } from './needyService.js';
+import { VolunteerService } from './volunteerService.js';
 export class LinkingService {
 
-    async addLinking(linkingObj) {
-        console.log("linkingObj", linkingObj)
-       
+    async addLinking(idneedies, namecategory, usernamevolenteers) {
+
         // const linkingservice = new LinkingService();
-        const usernamevolunteers = linkingObj.usernamevolunteers;
-        console.log("usernamevolunteers " + usernamevolunteers);
-        const idcategory = linkingObj.idcategory;
-        console.log("idcategory " + idcategory);
-        const idneedies = linkingObj.idneedies;
+        console.log("usernamevolunteers " + usernamevolenteers);
+        console.log("namecategory " + namecategory);
         console.log("idneedies " + idneedies);
+        const categoryService = new CategoryService();
+        const idcategory = await categoryService.getBy({ "namecategory": namecategory }, "idcategory")
+        console.log("idcategory", idcategory[0])
+        const volunteerService = new VolunteerService();
+        const idvolunteers = await volunteerService.getvolunteerBy({ "usernamevolenteers": usernamevolenteers }, "volunteers", "idvolunteers")
+        console.log("idddddddddd", idvolunteers)
+        const idcategoryvolunteers = await volunteerService.getvolunteercategory({ "idvolunteers": idvolunteers[0].idvolunteers, "idcategory": idcategory[0].idcategory },
+            "categoryvolunteers", "idcategoryvolunteers")
+        console.log("idcategoryvolunteers", idcategoryvolunteers)
+        const needyService = new NeedyService();
+        const idcategoryneedies = await needyService.getneedycategory({ "idneedies": idneedies, "idcategory": idcategory[0].idcategory },
+            "categoryneedies", "idcategoryneedies")
+        console.log("idcategoryneedies", idcategoryneedies)
+
+
+
+        const query = addQuery("linking", ["idcategoryvolunteers", "idcategoryneedies"]);
+        console.log(query)
+        return await executeQuery(query, [idcategoryvolunteers[0].idcategoryvolunteers, idcategoryneedies[0].idcategoryneedies]);
+
+        // const object=Object.keys
         // const userByName = await service.getBy("users", { "username": userName });
         // console.log("userByName!!!!! ", userByName);
         // if (userByName.length == 0) {
