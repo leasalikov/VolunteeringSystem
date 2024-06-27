@@ -23,7 +23,7 @@ function getByQuery7(tablename, key) {
 
 function getByQuery4(tablename, keys) {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
-  return  `SELECT DISTINCT idneedies,idcategory FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
+  return  `SELECT DISTINCT idneedies,idcategory,idcategoryneedies FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
 } 
 
 function getByQuery( tableName, keys) {
