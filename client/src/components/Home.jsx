@@ -33,8 +33,8 @@ function Home() {
         //     alert('userName exist')
         // }
         // else {
-            console.log(data)
-            navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
+        console.log(data)
+        navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
         // }
 
         // //יותר נכון:
@@ -100,13 +100,15 @@ function Home() {
             navigate(`/users/${currentUser.idUser}/needy`)
         }
     }
-    function AboutUs(){
+    const about = () => {
         navigate(`/users/${currentUser.idUser}/about`)
     }
     return (
         <>
-        <button onClick={AboutUs}>About Us</button>
-            {/* <div className="background-animation" > */}
+            <button onClick={about}>קצת עלינו</button>
+            <div className="background-animation" >
+                <img className="image1" />
+                <img className="image2" />
                 <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
                 <h2>הנכם מוזמנים לקחת חלק </h2>
                 <h3>{currentUser.username}</h3>
@@ -122,7 +124,7 @@ function Home() {
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>
                     <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
                 </form>}
-            {/* </div> */}
+            </div>
         </>
     )
 }

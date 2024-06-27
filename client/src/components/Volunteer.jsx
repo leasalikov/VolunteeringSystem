@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { UserContext } from '../App';
 import { useLocation } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
+// import { PostUser } from "./UserFunctions";
+
 const Volunteer = () => {
 
     const [showEndMassage, setShowEndMassage] = useState(false)
@@ -26,26 +28,39 @@ const Volunteer = () => {
         if (result) {
             setShowEndMassage(true)
             setShowComponent(false)
-            const response = await fetchPostReq("linking", paramsToSent)
-            const data = await response;
-            console.log()
-            // const emailParams = {
-            //     email: currentUser.email,
-            //     message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
-            // };
-            // const emailResponse = await fetch('http://localhost:8080/send-email', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(emailParams),
-            // });
-            // const emailData = await emailResponse.json();
-            // if (emailData.success) {
-            //     console.log("Email sent successfully");
-            // } else {
-            //     console.error("Failed to send email");
+            // const response = await fetchPostReq("linking", paramsToSent)
+            // const data = await response;
+            // const PostEmail = async (id, name, email) => {
+            //     const h = { Id: currentUser.idUser, Name: currentUser.username, Email: currentUser.email }
+            //     await PostUser()
+            //     fetch('http://localhost:8000/api/Email', {
+            //         method: 'POST', body: JSON.stringify(h)
+            //         , mode: 'cors', headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //     }).then((response) => {
+            //         return response.json()
+            //     })
+            //         .catch(h => console.log(h));
             // }
+            // console.log("PostEmail ",PostEmail)
+            const emailParams = {
+                email: currentUser.email,
+                message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
+            };
+            const emailResponse = await fetch('http://localhost:8080/api/Email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(emailParams),
+            });
+            const emailData = await emailResponse.json();
+            if (emailData.success) {
+                console.log("Email sent successfully");
+            } else {
+                console.error("Failed to send email");
+            }
         }
     }
     function addVolunting() {

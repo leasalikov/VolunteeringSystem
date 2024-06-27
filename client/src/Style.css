@@ -29,7 +29,7 @@ body {
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgb(218, 241, 224);
+    /* background-color: rgb(218, 241, 224); */
     animation: backgroundAnimation 5s infinite;
     color: rgb(135, 158, 135);
     text-shadow: 0 0 0px black, 0 0 0px black, 0 0 0px black;
