@@ -17,7 +17,12 @@ const Volunteer = () => {
     console.log("result4 ", location.state.data)
     console.log("current ", currentUser)
 
+    // gets needies that suit to volunteer
+    // const response = await fetchGetReq("needy", currentUser.id);
+    // const data = await response;
+    
     async function linking(item) {
+
         const paramsToSent = {
             "idneedies": item[0].idUser, //needy id
             "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
@@ -28,6 +33,7 @@ const Volunteer = () => {
         if (result) {
             setShowEndMassage(true)
             setShowComponent(false)
+
             // const response = await fetchPostReq("linking", paramsToSent)
             // const data = await response;
             // const PostEmail = async (id, name, email) => {
@@ -44,23 +50,25 @@ const Volunteer = () => {
             //         .catch(h => console.log(h));
             // }
             // console.log("PostEmail ",PostEmail)
-            const emailParams = {
-                email: currentUser.email,
-                message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
-            };
-            const emailResponse = await fetch('http://localhost:8080/api/Email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(emailParams),
-            });
-            const emailData = await emailResponse.json();
-            if (emailData.success) {
-                console.log("Email sent successfully");
-            } else {
-                console.error("Failed to send email");
-            }
+
+
+            // const emailParams = {
+            //     email: currentUser.email,
+            //     message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
+            // };
+            // const emailResponse = await fetch('http://localhost:8080/api/Email', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(emailParams),
+            // });
+            // const emailData = await emailResponse.json();
+            // if (emailData.success) {
+            //     console.log("Email sent successfully");
+            // } else {
+            //     console.error("Failed to send email");
+            // }
         }
     }
     function addVolunting() {
