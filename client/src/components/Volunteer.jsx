@@ -78,8 +78,8 @@ const Volunteer = () => {
                                 <td>{item[0].email}</td>
                                 <td>{item[0].phone}</td>
                                 <td>{item.namecategory[0].namecategory}</td>
-                                <td>{item[0].idUser}</td>
-                                <button onClick={() => linking(item)}>V</button>
+                                {/* <td>{item[0].idUser}</td> */}
+                                <td><button onClick={() => linking(item)}>V</button></td>
                             </tr>
                         ))}
                     </tbody>

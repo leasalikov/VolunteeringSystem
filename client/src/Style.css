@@ -1,3 +1,19 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    color-scheme: #e21a1a;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #e21a1a;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+  }
+
 @keyframes backgroundAnimation {
     /* 0% {
         background-image: url('Photos/image1.jpeg');
@@ -13,12 +29,15 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    /* Make sure the body takes up the full viewport height */
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: rgb(218, 241, 224);
     animation: backgroundAnimation 5s infinite;
-    /* Apply the animation to the body element */
+    color: rgb(135, 158, 135);
+    text-shadow: 0 0 0px black, 0 0 0px black, 0 0 0px black;
+
 }
+
 input{
     border-radius: 8px;
     border: 1px solid transparent;
@@ -33,13 +52,10 @@ input{
 
 .image2.jpeg {
     opacity: 0.7;
-    /* Adjust the opacity level as needed */
 }
 .image3.jpeg {
     opacity: 0.7;
-    /* Adjust the opacity level as needed */
 }
 .image1.jpeg {
     opacity: 0.7;
-    /* Adjust the opacity level as needed */
 }
