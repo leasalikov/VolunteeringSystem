@@ -104,18 +104,14 @@ export class VolunteerService {
                 const namecategory = await executeQuery(query5, [idcategoryarray[e]]);
                 console.log("category", namecategory)
                 query5 = getByQuery3("users", "username")
+              
                 const allNeedy =Object.assign({},await executeQuery(query5, Object.values(needy[0].usernameneedies)),{"namecategory":namecategory}) ;
+                
                 if (allNeedy[0].username !== result[0].usernamevolenteers) {
-
-                    // delete needy[0].idneedies;
+                    console.log("allNeedy[0].username",allNeedy[0].username)
                     result4.push(allNeedy)
                 }
-          
         }
-        delete volunteerItem.namecategory;
-
-        console.log("idcategoryvolunteers:", idcategoryvolunteers)
-        // delete volunteerItem.categoryArray;
         
         return { result1, result4  }
     }
