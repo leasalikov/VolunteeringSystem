@@ -114,9 +114,10 @@ export class VolunteerService {
         }
         delete volunteerItem.namecategory;
 
-        console.log("Array:", result4)
+        console.log("idcategoryvolunteers:", idcategoryvolunteers)
         // delete volunteerItem.categoryArray;
-        return { result1, result4 }
+        
+        return { result1, result4  }
     }
 
     async update(tableName, volunteerItem, id) {
