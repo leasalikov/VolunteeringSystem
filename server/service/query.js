@@ -11,6 +11,13 @@ function getByQuery5() {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return  `SELECT * FROM system.needies WHERE usernameneedies = ?`
 } 
+function getByQuery6(tableName,key,column) {
+  // return `SELECT ${column} FROM system.${tableName} WHERE ${key.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')} isActive = 1`;     
+return  `SELECT ${column} FROM system.${tableName} WHERE ${key} = ?`
+} 
+function getByQuery9(tableName,key,column) {
+  return `SELECT ${column} FROM system.${tableName} WHERE ${key.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')} isActive = 1 limit 1`;  
+}
 function getByQuery3(tablename, key) {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return  ` SELECT * FROM system.${tablename} WHERE ${key} = ?`
@@ -55,6 +62,8 @@ export {
     getByQuery2,
     getByQuery3,
     getByQuery4, 
-    getByQuery5
-    ,getByQuery7
+    getByQuery5,
+    getByQuery6
+    ,getByQuery7,
+    getByQuery9
 }

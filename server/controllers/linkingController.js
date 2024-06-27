@@ -36,8 +36,9 @@ export class LinkingController {
     async addlinking(req, res, next) {
         try {
             const linkingService = new LinkingService();
-            console.log(req.body.idcategory)
-            const addLinking = await linkingService.addLinking(req.body.username, req.body.idneedies, req.body.idcategory);
+            console.log(req.body.namecategory)
+            const addLinking = await linkingService.addLinking(req.body.idneedies, req.body.namecategory, req.body.usernamevolenteers);
+            console.log("addLinking",addLinking)
             return res.status(200).json(addLinking);
         }
         catch (ex) {

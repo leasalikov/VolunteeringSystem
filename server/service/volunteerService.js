@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4 ,getByQuery7} from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4 ,getByQuery7,getByQuery6,getByQuery9} from './query.js'
 
 
 export class VolunteerService {
@@ -10,16 +10,30 @@ export class VolunteerService {
         return await executeQuery(query);
     }
 
-    async getBy(sortByObj) {
+    async getvolunteerBy(sortByObj,tablename,column) {
         var result;
         console.log("sortByObj: ", sortByObj);
         // const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
-        const query = getByQuery2();        //check if user exist in the volunteers
+        const key = Object.keys(sortByObj);
+        const query = getByQuery6(tablename,key,column);        //check if user exist in the volunteers
         console.log("query: ", query)
         result = await executeQuery(query, values);
         console.log("result getBy: ", result)
         return result;
+    }
+   async getvolunteercategory(sortByObj,tablename,column){
+    var result;
+    console.log("sortByObj: ", sortByObj);
+    // const keys = Object.keys(sortByObj);
+    const values = Object.values(sortByObj);
+    console.log("valeus",values)
+    const key = Object.keys(sortByObj);
+    const query = getByQuery9(tablename,key,column);        //check if user exist in the volunteers
+    console.log("query: ", query)
+    result = await executeQuery(query, values);
+    console.log("result getBy: ", result)
+    return result;
     }
 
     async addvolunteer(tablename, details) {
@@ -73,9 +87,10 @@ export class VolunteerService {
     async addVolunteer(volunteers, volunteerItem) {
         //gets the categoryIdArray
         const idcategory = await this.getcategory(volunteerItem)
+        console.log("uuuuuuuuuuuuuuuuu")
         // add the user to volunteer
         delete volunteerItem.namecategory;
-        const result = await this.getBy(volunteerItem)//check if user exist
+        const result = await this.getvolunteerBy(volunteerItem,"volunteers","idvolunteers")//check if user exist
         var result1, id;
         if (result.length == 0) {
             const values = Object.values(volunteerItem)
@@ -86,7 +101,9 @@ export class VolunteerService {
         }
         else {
             const values = Object.values(volunteerItem)
-            const query = getByQuery2();
+           
+            const query = getByQuery6("volunteers","usernamevolenteers","*");////
+            console.log(query)
             result1 = await executeQuery(query, values);
             id = result1[0].idvolunteers;
         }
