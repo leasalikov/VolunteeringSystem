@@ -2,7 +2,6 @@
 function getQuery(tableName) {
     return `SELECT * FROM system.${tableName} WHERE isActive = 1`;
 }
-
 function getByQuery2() {
     // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return  `SELECT * FROM system.volunteers WHERE usernamevolenteers = ?`
@@ -14,7 +13,7 @@ function getByQuery5() {
 function getByQuery6(tableName,key,column) {
   // return `SELECT ${column} FROM system.${tableName} WHERE ${key.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')} isActive = 1`;     
 return  `SELECT ${column} FROM system.${tableName} WHERE ${key} = ?`
-} 
+}
 function getByQuery9(tableName,key,column) {
   return `SELECT ${column} FROM system.${tableName} WHERE ${key.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')} isActive = 1 limit 1`;  
 }
