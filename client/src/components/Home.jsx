@@ -10,7 +10,6 @@ function Home() {
     const navigate = useNavigate();
 
     async function volunteering(event) {
-        console.log("email ", currentUser.email)
         event.preventDefault();
         // setCurrentUser({ currentUser: currentUser, categoryArray: categoriesArray, type: "volunteer" });
         var trueCategoriesArray = [];
@@ -18,25 +17,24 @@ function Home() {
             if (categoriesArray[key] == true)
                 trueCategoriesArray.push(key);
         })
-        console.log("trueCategoriesArray " + Object.keys(trueCategoriesArray) + Object.values(trueCategoriesArray))
-        console.log(trueCategoriesArray);
         const username = currentUser.username;
         const paramsToSend = {
             "usernamevolenteers": username,
             "namecategory": trueCategoriesArray
         }
         //fetch req
-        const response = fetchPostReq("volunteer", paramsToSend);
-        const data = await response;
-        console.log("dataaaaaaaaaa", data)
-        // if (data.resualt == "userName duplicate") {////
-        //     alert('userName exist')
-        // }
-        // else {
-            console.log(data)
+        if(trueCategoriesArray.length == 0) (alert("לא בוצעה בחירה"));
+        else{
+            const response = fetchPostReq("volunteer", paramsToSend);
+            const data = await response;
+            // if (data.resualt == "userName duplicate") {////
+            //     alert('userName exist')
+            // }
+            // else {
+                console.log(data)
             navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
-        // }
-
+            // }
+        }
         // //יותר נכון:
 
         // try {
@@ -100,13 +98,15 @@ function Home() {
             navigate(`/users/${currentUser.idUser}/needy`)
         }
     }
-    function AboutUs(){
+    const about = () => {
         navigate(`/users/${currentUser.idUser}/about`)
     }
     return (
         <>
-        <button onClick={AboutUs}>About Us</button>
-            {/* <div className="background-animation" > */}
+            <button onClick={about}>קצת עלינו</button>
+            <div className="background-animation" >
+                <img className="image1" />
+                <img className="image2" />
                 <h1>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h1>
                 <h2>הנכם מוזמנים לקחת חלק </h2>
                 <h3>{currentUser.username}</h3>
@@ -122,7 +122,7 @@ function Home() {
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>
                     <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
                 </form>}
-            {/* </div> */}
+            </div>
         </>
     )
 }

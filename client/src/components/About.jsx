@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
     // const { currentUser, setCurrentUser } = useContext(UserContext);
     return(
-        <p>About us</p>
+        <p>קצת עלינו</p>
     )
 };
 export default About;

@@ -6,10 +6,12 @@ import './App.css';
 import Login from './components/Login';
 import Home from './components/Home';
 import React, { createContext, useState } from "react";
-import Volunteer from './components/Volunteer'
+import Volunteer from './components/Volunteer';
 import About from './components/About';
 import Register from './components/Register';
 import Needy from './components/Needy';
+// import DesignPatterns fr
+
 // import About from './components/About';
 export const UserContext = createContext();
 function App() {
@@ -35,5 +37,4 @@ function App() {
   )
 }
 
-export default App
-
+export default App;
