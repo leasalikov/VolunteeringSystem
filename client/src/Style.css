@@ -1,11 +1,11 @@
 @keyframes backgroundAnimation {
-    0% {
+    /* 0% {
         background-image: url('Photos/image1.jpeg');
     }
 
     100% {
         background-image: url('Photos/image2.jpeg');
-    }
+    } */
 
     /* 100% {
         background-image: url('Photos/image3.jpeg');

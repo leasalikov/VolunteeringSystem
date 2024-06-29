@@ -73,7 +73,8 @@ const Volunteer = () => {
     }
     function addVolunting() {
         setShowEndMassage(false);
-        setShowComponent(true)
+        setShowComponent(true);
+        //
     }
 
     return (
