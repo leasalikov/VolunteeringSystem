@@ -1,0 +1,82 @@
+@keyframes backgroundAnimation {
+    0% {
+        background-image: url('Photos/image1.jpeg');
+    }
+
+    100% {
+        background-image: url('Photos/image2.jpeg');
+    }
+
+    /* 100% {
+        background-image: url('Photos/image3.jpeg');
+    } */
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: backgroundAnimation 5s infinite;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+button {
+    border-radius: 14px;
+    border: 2px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: rgb(107, 144, 107);
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+label{
+    font-size: large;
+}
+input{
+    background-color: rgb(107, 144, 107);
+    border-radius: 1pc;
+    /* height: 2pc; */
+    border-radius: 14px;
+    border: 2px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin-bottom: 5%;
+}
+button:hover {
+    border-color: aliceblue;
+    background-color: rgb(107, 144, 107);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+.image1.jpeg {
+    opacity: 0.7;
+    /* Adjust the opacity level as needed */
+}
+.image2.jpeg {
+    opacity: 0.7;
+    /* Adjust the opacity level as needed */
+}
+.image3.jpeg {
+    opacity: 0.7;
+    /* Adjust the opacity level as needed */
+}

@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5} from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5,getByQuery9} from './query.js'
 
 
 export class NeedyService {
@@ -22,6 +22,20 @@ export class NeedyService {
         console.log("result getBy: ", result)
         return result;
     }
+
+    async getneedycategory(sortByObj,tablename,column){
+        var result;
+        console.log("sortByObj: ", sortByObj);
+        // const keys = Object.keys(sortByObj);
+        const values = Object.values(sortByObj);
+        console.log("valeus",values)
+        const key = Object.keys(sortByObj);
+        const query = getByQuery9(tablename,key,column);        //check if user exist in the volunteers
+        console.log("query: ", query)
+        result = await executeQuery(query, values);
+        console.log("result getBy: ", result)
+        return result;
+        }
 
     async addNeedy(needies, needyItem) {
         const idcategory = [];

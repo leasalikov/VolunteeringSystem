@@ -1,4 +1,3 @@
-import React from "react";
 
 async function fetchPostReq(route, body) {
     console.log("fetchPostReq");
@@ -30,22 +29,21 @@ async function fetchPostReq(route, body) {
 //         console.error(err);
 //     });
 
-// async function fetchGetReq(route) {
-//     console.log("fetchGetReq");
-//     // console.log(body)
-//     try {
-//         const response = await fetch(`http://localhost:8080/${route}`, {
-//             method: 'GET',
-//             // body: JSON.stringify(body),
-//             //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
-//             // headers: { "Content-type": "application/json; charset=UTF-8", },
-//         })
-//         const json = await response.json();
-//         const data = await json;
-//         return data;
-//     }
-//     catch (err) {
-//         console.log(err)
-//     }
-// }
-export { fetchPostReq }
+async function fetchGetReq(route, params) {
+    console.log("fetchGetReq");
+    try {
+        const response = await fetch(`http://localhost:8080/${route}`, {
+            method: 'GET',
+            // body: JSON.stringify(body),
+            //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
+            // headers: { "Content-type": "application/json; charset=UTF-8", },
+        })
+        const json = await response.json();
+        const data = await json;
+        return data;
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+export { fetchPostReq, fetchGetReq }
