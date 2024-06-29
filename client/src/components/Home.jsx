@@ -109,11 +109,11 @@ function Home() {
                 <h2>הנכם מוזמנים לקחת חלק </h2>
                 <h3>{currentUser.username}</h3>
                 {<form onSubmit={volunteering}>
-                    <label for="food">אוכל</label>
+                    <label for="food">ארוחות חמות</label>
                     <input type="checkbox" id="food" name="food" value={categoriesArray.food} onChange={(e) => setCategoriesArray({ food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
                     <label for="hosting">אירוח</label>
                     <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.hosting} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
-                    <label for="toys">משחקים</label>
+                    <label for="toys">משחקים לילדים</label>
                     <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
                     <label for="babysitter">ביביסיטר</label>
                     <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />

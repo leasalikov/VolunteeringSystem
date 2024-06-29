@@ -68,7 +68,7 @@ const Login = () => {
     <div>
       <Navigate to={isLoggedInUser ? `/users/${currentUser.idUser}/home` : toRegister ? "/register" : "/login"} />
       <div className='signUpLogin-container'>
-        <h2>insert user</h2>
+        <h2>Login</h2>
         <input
           type="text"
           placeholder="User Name"
@@ -83,6 +83,7 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
+        {/* <br/> */}
         <button className='loginBtn' onClick={handleLogin}>Login</button>
         <button className='signUpBtn' onClick={() => goToRegister()}>Register</button>
       </div>
