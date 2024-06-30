@@ -16,42 +16,41 @@ async function Volunteer() {
     const [showComponent, setShowComponent] = useState(true)
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const location = useLocation();
-    // console.log("data ", location.state.data)
-    // console.log("namecategory ", location.state.data[0].namecategory[0].namecategory)
-    // console.log("result4 ", location.state.data)
-    // console.log("current ", currentUser)
+
     console.log("location  ", location.state.data.idcategoryArray)
     console.log("currentUser  ", currentUser)
 
     // gets needies that suit to volunteer
     const Array = JSON.stringify(location.state.data.idcategoryArray);
+    console.log("location.state.data ", location.state.data)
+
     console.log("Array ", Array)
     try {
         const response = await fetchGetReq("needyVolunteers", Array);
         const data = await response;
-        console.log(data)
+        console.log("fetchGetReq data ", data)
     }
     catch (error) {
         console.error(error);
     }
 
-    async function linking(item) {
-        const paramsToSent = {
-            "idneedies": item[0].idUser, //needy id
-            "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
-            "username": currentUser.username, //volunteer username
-        };
-        console.log("paramsToSent: ", paramsToSent)
-        const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
-        if (result) {
-            setShowEndMassage(true)
-            setShowComponent(false)
-            //post to linking
-            const response = await fetchPostReq("linking", paramsToSent);
-            const data = await response;
-            console.log(data)
-        }
-    }
+    // async function linking(item) {
+    //     const paramsToSent = {
+    //         "idneedies": item[0].idUser, //needy id
+    //         "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
+    //         "username": currentUser.username, //volunteer username
+    //     };
+    //     console.log("paramsToSent: ", paramsToSent)
+    //     const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
+    //     if (result) {
+    //         setShowEndMassage(true)
+    //         setShowComponent(false)
+    //         //post to linking
+    //         const response = await fetchPostReq("linking", paramsToSent);
+    //         const data = await response;
+    //         console.log(data)
+    //     }
+    // }
 
     async function addVolunting() {
         setShowEndMassage(false);
@@ -69,30 +68,34 @@ async function Volunteer() {
             {showComponent && <div>
                 <h1>שלום {currentUser.username}!!</h1>
                 <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>phone</th>
-                            <th>category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {location.state.data.map((item, i) => (
-                            <tr key={i}>
-                                <td>{item[0].username}</td>
-                                <td>{item[0].email}</td>
-                                <td>{item[0].phone}</td>
-                                <td>{item.namecategory[0].namecategory}</td>
-                                {/* <td>{item[0].idUser}</td> */}
-                                <td><button onClick={() => linking(item)}>V</button></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+               
+                
             </div>}
         </>
     )
 };
 export default Volunteer;
+
+
+// <table>
+// <thead>
+//     <tr>
+//         <th>name</th>
+//         <th>email</th>
+//         <th>phone</th>
+//         <th>category</th>
+//     </tr>
+// </thead>
+// <tbody>
+//     {location.state.data.map((item, i) => (
+//         <tr key={i}>
+//             <td>{item[0].username}</td>
+//             <td>{item[0].email}</td>
+//             <td>{item[0].phone}</td>
+//             <td>{item.namecategory[0].namecategory}</td>
+//             {/* <td>{item[0].idUser}</td> */}
+//             <td><button onClick={() => linking(item)}>V</button></td>
+//         </tr>
+//     ))}
+// </tbody>
+// </table>
