@@ -125,8 +125,8 @@ export class NeedyService {
 
     async getNeedyByVolunteer(idcategoryArray) {
 
-        console.log("idcategoryArray", idcategoryArray.idcategoryneedy)
-        idcategoryArray=idcategoryArray.idcategoryneedy
+        console.log("idcategogfrjtyryArray", idcategoryArray)
+        // idcategoryArray=idcategoryArray.idcategoryneedy
         let allNeedies = [], query
         // const query2=join()
         // console.log("query",query2)
