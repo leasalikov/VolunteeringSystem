@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { UserContext } from '../App';
 import Header from './Header';
 import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 // import { fetchPostReq } from '../fetchFile';
 import { fetchGetReq } from '../fetchFile';
 
@@ -15,18 +16,24 @@ async function Volunteer() {
     const [showComponent, setShowComponent] = useState(true)
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const location = useLocation();
-    console.log("data ", location.state.data[0][0].idUser)
-    console.log("namecategory ", location.state.data[0].namecategory[0].namecategory)
-    console.log("result4 ", location.state.data)
-    console.log("current ", currentUser)
+    // console.log("data ", location.state.data)
+    // console.log("namecategory ", location.state.data[0].namecategory[0].namecategory)
+    // console.log("result4 ", location.state.data)
+    // console.log("current ", currentUser)
+    console.log("location  ", location.state.data.idcategoryArray)
+    console.log("currentUser  ", currentUser)
 
     // gets needies that suit to volunteer
-    const response = await fetchGetReq("needy", currentUser.id);
-    const data = await response;
-    console.log(data)
+    try {
+        const response = await fetchGetReq("needyVolunteers", { "namecategory": location.state.data.idcategoryArray });
+        const data = await response;
+        console.log(data)
+    }
+    catch (error) {
+        console.error(error);
+    }
 
     async function linking(item) {
-
         const paramsToSent = {
             "idneedies": item[0].idUser, //needy id
             "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
@@ -37,48 +44,16 @@ async function Volunteer() {
         if (result) {
             setShowEndMassage(true)
             setShowComponent(false)
-
-            // const response = await fetchPostReq("linking", paramsToSent)
-            // const data = await response;
-            // const PostEmail = async (id, name, email) => {
-            //     const h = { Id: currentUser.idUser, Name: currentUser.username, Email: currentUser.email }
-            //     await PostUser()
-            //     fetch('http://localhost:8000/api/Email', {
-            //         method: 'POST', body: JSON.stringify(h)
-            //         , mode: 'cors', headers: {
-            //             'Content-Type': 'application/json'
-            //         },
-            //     }).then((response) => {
-            //         return response.json()
-            //     })
-            //         .catch(h => console.log(h));
-            // }
-            // console.log("PostEmail ",PostEmail)
-
-
-            // const emailParams = {
-            //     email: currentUser.email,
-            //     message: "בקשת ההתנדבות שלך הוגשה בהצלחה."
-            // };
-            // const emailResponse = await fetch('http://localhost:8080/api/Email', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(emailParams),
-            // });
-            // const emailData = await emailResponse.json();
-            // if (emailData.success) {
-            //     console.log("Email sent successfully");
-            // } else {
-            //     console.error("Failed to send email");
-            // }
+            //post to linking
+            const response = await fetchPostReq("linking", paramsToSent);
+            const data = await response;
+            console.log(data)
         }
     }
-    function addVolunting() {
+
+    async function addVolunting() {
         setShowEndMassage(false);
         setShowComponent(true);
-        //
     }
 
     return (

@@ -23,7 +23,8 @@ function ToVolunteer() {
             "usernamevolenteers": username,
             "namecategory": trueCategoriesArray
         }
-        //fetch req
+        //post req 
+        //add the user to volunteer and to categoryVolunteer
         if (trueCategoriesArray.length == 0) (alert("לא בוצעה בחירה"));
         else {
             const response = fetchPostReq("volunteer", paramsToSend);
@@ -32,8 +33,8 @@ function ToVolunteer() {
             //     alert('userName exist')
             // }
             // else {
-            console.log(data)
-            navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data.result4 } })
+            console.log("data in ToVolunteer", data)
+            navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data } })
             // }
         }
     }

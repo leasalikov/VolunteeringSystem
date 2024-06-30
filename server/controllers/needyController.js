@@ -23,6 +23,7 @@ export class NeedyController {
 
     async getNeedyByVolunteer(req, res, next) {
         try {
+            console.log("idcategoryArray  ", req.params.idcategoryArray)
             const service = new NeedyService();
             // const id = req.params.id;
             const resultItem = await service.getNeedyByVolunteer(req.body);
