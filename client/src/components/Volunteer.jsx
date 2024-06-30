@@ -2,11 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { UserContext } from '../App';
+import Header from './Header';
 import { useLocation } from 'react-router-dom';
-import { fetchPostReq } from '../fetchFile';
+// import { fetchPostReq } from '../fetchFile';
+import { fetchGetReq } from '../fetchFile';
+
 // import { PostUser } from "./UserFunctions";
 
-const Volunteer = () => {
+async function Volunteer() {
 
     const [showEndMassage, setShowEndMassage] = useState(false)
     const [showComponent, setShowComponent] = useState(true)
@@ -18,9 +21,10 @@ const Volunteer = () => {
     console.log("current ", currentUser)
 
     // gets needies that suit to volunteer
-    // const response = await fetchGetReq("needy", currentUser.id);
-    // const data = await response;
-    
+    const response = await fetchGetReq("needy", currentUser.id);
+    const data = await response;
+    console.log(data)
+
     async function linking(item) {
 
         const paramsToSent = {
@@ -79,6 +83,7 @@ const Volunteer = () => {
 
     return (
         <>
+            <Header />
             {showEndMassage &&
                 <div>
                     <h2>!תודה ותזכו למצוות<br />כעת ישלח אליך מייל עם פרטי המזמין ליצירת קשר</h2>

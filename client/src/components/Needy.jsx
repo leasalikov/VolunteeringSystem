@@ -2,12 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from '../App';
-const Needy = () => {
+// import { fetchPostReq } from '../fetchFile';
+import Header from './Header';
+const ToNeedy = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    return(
+    const [categoriesArray, setCategoriesArray] = useState([{ food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
+    const navigate = useNavigate();
+
+    return (
         <>
-        <h1>Hi {currentUser.username}</h1>
+            <Header />
+            <div className="background-animation" >
+                <p>בקשתך התקבלה, בקרוב ניצור איתך קשר</p>
+            </div>
+
         </>
     )
 };
-export default Needy;
+export default ToNeedy;
