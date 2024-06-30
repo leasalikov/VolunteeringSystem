@@ -98,23 +98,6 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* .Header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgb(107, 144, 107);
-    text-align: center;
-} */
-
-/* .HeaderButton {
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: rgb(107, 144, 107);
-    cursor: pointer;
-    transition: background-color 0.25s;
-    border-radius: 0%;
-} */
 .Header {
     position: fixed;
     top: 0;
