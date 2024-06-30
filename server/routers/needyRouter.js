@@ -4,7 +4,7 @@ import { NeedyController } from "../controllers/needyController.js";
 const needyRouter = express.Router();
 const needyController = new NeedyController();
 
-needyRouter.get("/:id", needyController.getVolunteerById);
+needyRouter.get("/", needyController.getNeedyByVolunteer);
 needyRouter.get("/", needyController.getVolunteer);
 needyRouter.post("/", needyController.addNeedy);
 // needyRouter.post("/:id", needyController.addVolunteer);

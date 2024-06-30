@@ -2,7 +2,7 @@
 import { executeQuery } from './db.js';
 // import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
 // import { UserService } from './userService.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9 } from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9, a, b } from './query.js'
 
 import { CategoryService } from './categoryService.js';
 import { NeedyService } from './needyService.js';
@@ -10,27 +10,39 @@ import { VolunteerService } from './volunteerService.js';
 export class LinkingService {
 
     async addLinking(idneedies, namecategory, usernamevolenteers) {
-
+        console.log("idcategoryneediesgffghfghj")
         // const linkingservice = new LinkingService();
-        console.log("usernamevolunteers " + usernamevolenteers);
-        console.log("namecategory " + namecategory);
-        console.log("idneedies " + idneedies);
-        const categoryService = new CategoryService();
-        const idcategory = await categoryService.getBy({ "namecategory": namecategory }, "idcategory")
-        console.log("idcategory", idcategory[0])
-        const volunteerService = new VolunteerService();
-        const idvolunteers = await volunteerService.getvolunteerBy({ "usernamevolenteers": usernamevolenteers }, "volunteers", "idvolunteers")
-        console.log("idddddddddd", idvolunteers)
-        const idcategoryvolunteers = await volunteerService.getvolunteercategory({ "idvolunteers": idvolunteers[0].idvolunteers, "idcategory": idcategory[0].idcategory },
-            "categoryvolunteers", "idcategoryvolunteers")
-        console.log("idcategoryvolunteers", idcategoryvolunteers)
-        const needyService = new NeedyService();
-        const idcategoryneedies = await needyService.getneedycategory({ "idneedies": idneedies, "idcategory": idcategory[0].idcategory },
-            "categoryneedies", "idcategoryneedies")
+        // console.log("usernamevolunteers " + usernamevolenteers);
+        // console.log("namecategory " + namecategory);
+        // console.log("idneedies " + idneedies);
+        // const categoryService = new CategoryService();
+        // const idcategory = await categoryService.getBy({ "namecategory": namecategory }, "idcategory")
+        // console.log("idcategory", idcategory[0])
+        // const idvolunteers = await volunteerService.getvolunteerBy({ "usernamevolenteers": usernamevolenteers }, "volunteers", "idvolunteers")
+        // console.log("idddddddddd", idvolunteers)
+        // const idcategoryvolunteers = await volunteerService.getvolunteercategory({ "idvolunteers": idvolunteers[0].idvolunteers, "idcategory": idcategory[0].idcategory },
+        //     "categoryvolunteers", "idcategoryvolunteers")
+        const queryidcategoryvolunteers = a()
+        console.log(queryidcategoryvolunteers)
+        const idcategoryvolunteers = await executeQuery(queryidcategoryvolunteers, [usernamevolenteers, namecategory]);
+        console.log("idcategoryvolunteers",idcategoryvolunteers)
+        console.log("idcategoryneediesgffghfghj")
+        
+        // const idcategoryneedies = await needyService.getneedycategory({ "idneedies": idneedies, "idcategory": idcategory[0].idcategory },
+        // "categoryneedies", "idcategoryneedies")
+        const queryidcategoryneedies = b()
+
+        const idcategoryneedies = await executeQuery(queryidcategoryneedies, [idneedies, namecategory]);
+      
+       
         console.log("idcategoryneedies", idcategoryneedies)
+        const volunteerService = new VolunteerService();
+        const needyService = new NeedyService();
 
-
-
+        const w= await volunteerService.delete(idcategoryvolunteers[0].idcategoryvolunteers)
+        console.log("w", w)
+        const s= await needyService.delete(idcategoryneedies[0].idcategoryneedies)
+        console.log("idcategoryneedies",idcategoryneedies)
         const query = addQuery("linking", ["idcategoryvolunteers", "idcategoryneedies"]);
         console.log(query)
         return await executeQuery(query, [idcategoryvolunteers[0].idcategoryvolunteers, idcategoryneedies[0].idcategoryneedies]);

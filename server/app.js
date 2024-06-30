@@ -20,7 +20,7 @@ app.use('/volunteer', volunteerRouter);
 app.use('/needy', needyRouter);
 app.use('/linking',linkingRouter);
 app.use('/email',emailRouter)
-
+app.use('/needyVolunteers',needyRouter)
 // app.use(logErrors);
 
 app.listen(8080, (err) => {

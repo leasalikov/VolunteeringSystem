@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4, getByQuery7, getByQuery6, getByQuery9 } from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4, getByQuery7, getByQuery6, getByQuery9,join } from './query.js'
 
 
 export class VolunteerService {
@@ -106,43 +106,11 @@ export class VolunteerService {
     //    let idneedies = addvolunteercategory.idneedies
     //     let idcategoryarray = addvolunteercategory.idcategoryarray
 
-        return { result1 }
+        return { result1,idcategoryArray,volunteerItem }
     }
     ////find all the needies that suit the volunteer
 
-    async getVolunteersNeedies( volunteerItem) {
-        let idneedies = [],idcategoryarray = [],query
-        for (let element = 0; element <= idcategory.length - 1; element++) {
 
-            query = getByQuery4("categoryneedies", "idcategory")
-            const neediesmuch = await executeQuery(query, [idcategory[element]])
-            console.log("a", a)
-            idneedies.push(a[0].idneedies);
-            console.log("a.idcategory " + a[0].idcategory)
-            idcategoryarray.push(a[0].idcategory)
-            //  return idneedies, idcategoryarray
-        }
-        let query5, result4 = [];
-        for (let e = 0; e <= idneedies.length - 1; e++) {
-            query5 = getByQuery3("needies", "idneedies")
-            const needy = await executeQuery(query5, [idneedies[e]]);
-            console.log("needy", needy)
-            query5 = getByQuery7("category", "idcategory");
-            const namecategory = await executeQuery(query5, [idcategoryarray[e]]);
-            console.log("category", namecategory)
-            query5 = getByQuery3("users", "username")
-
-            const allNeedy = Object.assign({}, await executeQuery(query5, Object.values(needy[0].usernameneedies)), { "namecategory": namecategory });
-
-            if (allNeedy[0].username !== result[0].usernamevolenteers) {
-                console.log("allNeedy[0].username", allNeedy[0].username)
-                result4.push(allNeedy)
-            }
-        }
-              // let idneedies = addvolunteercategory.idneedies
-        // let idcategoryarray = addvolunteercategory.idcategoryarray
-        return result4;
-    }
 
     async update(tableName, volunteerItem, id) {
         const keys = Object.keys(volunteerItem);
@@ -152,10 +120,10 @@ export class VolunteerService {
         await executeQuery(query, values);
     }
 
-    // async delete(tableName, id) {
-    //     const query = deleteQuery(tableName);
-    //     await executeQuery(query, [id]);
-    // }
+    async delete( id) {
+        const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
+        await executeQuery(query, [id]);
+    }
 
     // async limit(tableName, numOfLimit, startLimit) {
     //     const query = limit(tableName);

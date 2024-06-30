@@ -21,13 +21,13 @@ export class NeedyController {
         }
     }
 
-    async getVolunteerById(req, res, next) {
+    async getNeedyByVolunteer(req, res, next) {
         try {
-            const service = new Service();
-            const id = req.params.id;
-            const resultItem = await service.getBy(tableName, { "id": id });
-            delete resultItem[0].isActive;
-            console.log("req: get volunteer by id= " + id + ", res: successfull")
+            const service = new NeedyService();
+            // const id = req.params.id;
+            const resultItem = await service.getNeedyByVolunteer(req.body);
+            // delete resultItem[0].isActive;
+            // console.log("req: get volunteer by id= " + id + ", res: successfull")
             res.status(200).json(resultItem);
         }
         catch (ex) {

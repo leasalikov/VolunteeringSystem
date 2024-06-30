@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5,getByQuery9} from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9 ,join} from './query.js'
 
 
 export class NeedyService {
@@ -18,24 +18,24 @@ export class NeedyService {
         const values = Object.values(sortByObj);
         const query = getByQuery5();   //check if user exist in the needies
         console.log("query: ", query)
-        result = await executeQuery(query, values);   
+        result = await executeQuery(query, values);
         console.log("result getBy: ", result)
         return result;
     }
 
-    async getneedycategory(sortByObj,tablename,column){
+    async getneedycategory(sortByObj, tablename, column) {
         var result;
         console.log("sortByObj: ", sortByObj);
         // const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
-        console.log("valeus",values)
+        console.log("valeus", values)
         const key = Object.keys(sortByObj);
-        const query = getByQuery9(tablename,key,column);        //check if user exist in the volunteers
+        const query = getByQuery9(tablename, key, column);        //check if user exist in the volunteers
         console.log("query: ", query)
         result = await executeQuery(query, values);
         console.log("result getBy: ", result)
         return result;
-        }
+    }
 
     async addNeedy(needies, needyItem) {
         const idcategory = [];
@@ -71,7 +71,7 @@ export class NeedyService {
             result1 = await executeQuery(query, values);
             id = result1.insertId;
         }
-        else{
+        else {
             const values = Object.values(needyItem)
             const query = getByQuery5();
             result1 = await executeQuery(query, values);
@@ -113,13 +113,35 @@ export class NeedyService {
         await executeQuery(query, values);
     }
 
-    async delete(tableName, id) {
-        const query = deleteQuery(tableName);
+    async delete( id) {
+        const query = deleteQuery("categoryneedies","idcategoryneedies");
         await executeQuery(query, [id]);
     }
 
     async limit(tableName, numOfLimit, startLimit) {
         const query = limit(tableName);
         return await executeQuery(query, [numOfLimit, startLimit]);
+    }
+
+    async getNeedyByVolunteer(idcategoryArray) {
+
+        console.log("idcategoryArray", idcategoryArray.idcategoryneedy)
+        idcategoryArray=idcategoryArray.idcategoryneedy
+        let allNeedies = [], query
+        // const query2=join()
+        // console.log("query",query2)
+        for (let element = 0; element <= idcategoryArray.length - 1; element++) {
+            console.log("gffj")
+            query = join()
+            console.log("query",query)
+            const neediesmuch = await executeQuery(query, [idcategoryArray[element]])
+            console.log("neediesmuch", neediesmuch)
+            allNeedies.push(neediesmuch);
+            //  return idneedies, idcategoryarray
+        }
+console.log("allNeedies",allNeedies)
+
+        return allNeedies;
+
     }
 }
