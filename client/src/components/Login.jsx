@@ -65,7 +65,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='divStyle'>
       <Navigate to={isLoggedInUser ? `/users/${currentUser.idUser}/home` : toRegister ? "/register" : "/login"} />
       <div className='signUpLogin-container'>
         <h2>Login</h2>
