@@ -42,10 +42,12 @@ async function fetchGetReq(route, params) {
         })
         const json = await response.json();
         const data = await json;
+        // console.log(response)
+        // console.log(data)
         return data;
     }
     catch (err) {
         console.log(err)
     }
 }
-export { fetchPostReq, fetchGetReq }
+export { fetchPostReq, fetchGetReq };

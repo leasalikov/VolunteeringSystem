@@ -29,6 +29,8 @@ async function Volunteer() {
         const response = await fetchGetReq("needyVolunteers", Array);
         const data = await response;
         console.log("fetchGetReq data ", data)
+        console.log("rersppppppppppppp ", response)
+
     }
     catch (error) {
         console.error(error);
