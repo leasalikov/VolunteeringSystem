@@ -25,10 +25,10 @@ export class NeedyController {
     async getNeedyByVolunteer(req, res, next) {
         try {
             
-            const Array = JSON.parse(req.params)
-            console.log("idcategoryArray  ", Array)
+         
+            console.log("idcategoryArray  ", req.body.idcategoryArray)
             const service = new NeedyService();
-            // const id = req.params.id;
+            // const id = req.params.id;sfgd
             const resultItem = await service.getNeedyByVolunteer(Array);
             // delete resultItem[0].isActive;
             // console.log("req: get Needy by id= " + id + ", res: successfull")
