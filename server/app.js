@@ -21,7 +21,7 @@ app.use('/needy', needyRouter);
 app.use('/linking',linkingRouter);
 app.use('/email',emailRouter)
 app.use('/needyVolunteers',needyRouter)
-app.use('/needyVolunteers/idcategoryArray',needyRouter)
+app.use('/needyVolunteers/params',needyRouter)
 
 // app.use(logErrors);
 

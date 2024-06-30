@@ -1,3 +1,4 @@
+import { json } from "express";
 import { NeedyService } from "../service/needyService.js";
 
 
@@ -23,10 +24,11 @@ export class NeedyController {
 
     async getNeedyByVolunteer(req, res, next) {
         try {
-            console.log("idcategoryArray  ", req.params.idcategoryArray)
+            const Array = JSON.parse(req.params)
+            console.log("idcategoryArray  ", Array)
             const service = new NeedyService();
             // const id = req.params.id;
-            const resultItem = await service.getNeedyByVolunteer(req.body);
+            const resultItem = await service.getNeedyByVolunteer(Array);
             // delete resultItem[0].isActive;
             // console.log("req: get volunteer by id= " + id + ", res: successfull")
             res.status(200).json(resultItem);

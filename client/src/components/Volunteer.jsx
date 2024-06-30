@@ -24,8 +24,10 @@ async function Volunteer() {
     console.log("currentUser  ", currentUser)
 
     // gets needies that suit to volunteer
+    const Array = JSON.stringify(location.state.data.idcategoryArray);
+    console.log("Array ", Array)
     try {
-        const response = await fetchGetReq("needyVolunteers", { "namecategory": location.state.data.idcategoryArray });
+        const response = await fetchGetReq("needyVolunteers", Array);
         const data = await response;
         console.log(data)
     }
