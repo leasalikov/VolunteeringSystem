@@ -6,7 +6,7 @@ const tableName = "needies";
 
 export class NeedyController {
 
-    async getVolunteer(req, res, next) {
+    async getNeedy(req, res, next) {
         try {
             const service = new NeedyService();
             const resultItems = await service.get(tableName);
@@ -24,14 +24,14 @@ export class NeedyController {
 
     async getNeedyByVolunteer(req, res, next) {
         try {
-            console.log("ffffffffffffff")
-            const Array = JSON.parse(req.params.params)
+            
+            const Array = JSON.parse(req.params)
             console.log("idcategoryArray  ", Array)
             const service = new NeedyService();
             // const id = req.params.id;
             const resultItem = await service.getNeedyByVolunteer(Array);
             // delete resultItem[0].isActive;
-            // console.log("req: get volunteer by id= " + id + ", res: successfull")
+            // console.log("req: get Needy by id= " + id + ", res: successfull")
             res.status(200).json(resultItem);
         }
         catch (ex) {
@@ -60,11 +60,11 @@ export class NeedyController {
         }
     }
 
-    async deleteVolunteer(req, res, next) {
+    async deleteNeedy(req, res, next) {
         try {
             const needyService = new needyService();
-            const resultItem = await needyService.deleteVolunteer(tableName, req.params.id);
-            console.log("req: delete volunteer with id= " + resultItem.insertId + ", res: successfull")
+            const resultItem = await needyService.deleteNeedy(tableName, req.params.id);
+            console.log("req: delete Needy with id= " + resultItem.insertId + ", res: successfull")
             res.status(200).json(resultItem);
         }
         catch (ex) {
@@ -75,11 +75,11 @@ export class NeedyController {
         }
     }
 
-    async updateVolunteer(req, res, next) {
+    async updateNeedy(req, res, next) {
         try {
             const service = new Service();
             await service.update(tableName, req.body, req.params.id);
-            console.log("req: update volunteer with id= " + req.params.id + ", res: successfull")
+            console.log("req: update Needy with id= " + req.params.id + ", res: successfull")
             res.status(200).json({ status: 200, data: req.params.id });
         }
         catch (ex) {

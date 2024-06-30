@@ -168,7 +168,7 @@ export class NeedyService {
         return await executeQuery(query, [numOfLimit, startLimit]);
     }
 
-    async getNeedyByneedy(idcategoryArray) {
+    async getNeedyByVolunteer(idcategoryArray) {
 
         console.log("idcategogfrjtyryArray", idcategoryArray)
         // idcategoryArray=idcategoryArray.idcategoryneedy
