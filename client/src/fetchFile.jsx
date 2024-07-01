@@ -20,16 +20,6 @@ async function fetchPostReq(route, body) {
     }
 }
 
-// fetch(`http://localhost:8080/products?${searchQuery}`)
-//     .then((response) => response.json())
-//     .then((response) => {
-//         console.log(response)
-//         setProducts(response)
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//     });
-
 async function fetchGetReq(route, idcategoryArray, usernamevolunteers) {
     // console.log("fetchGetReq");
     // console.log("idcategoryArray ", params);
