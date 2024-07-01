@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9 ,join} from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery6, getByQuery9 ,join} from './query.js'
 
 
 export class NeedyService {
@@ -10,7 +10,7 @@ export class NeedyService {
         return await executeQuery(query);
     }
 
-    async getBy(sortByObj) {
+    async getneedyBy(sortByObj) {
         var result;
         console.log("sortByObj: ", sortByObj);
         console.log("tableName")
@@ -51,28 +51,57 @@ export class NeedyService {
         return idcategoryArray;
     }
 
+
+    async addneedycategory(idcategory, id) {
+        // add the user to categoryvolunteers
+        let objects, values, keys, query,  result = [];
+        console.log("her")
+        for (let element = 0; element <= idcategory.length - 1; element++) {
+
+            // query4 = getByQuery4("categoryneedies", "idcategory")
+            // const a = await executeQuery(query4, [idcategory[element]])
+            // console.log("a", a)
+            // idneedies.push(a[0].idneedies);
+            // console.log("a.idcategory " + a[0].idcategory)
+            // idcategoryarray.push(a[0].idcategory) return idneedies, idcategoryarray
+            objects = { "idneedies": id, "idcategory": idcategory[element] }
+            values = Object.values(objects)
+            keys = Object.keys(objects)
+            query = addQuery("categoryneedies", keys);
+            
+            result.push(await executeQuery(query, values));
+        }
+        return { result }
+    }
+
     async addneedy(needys, needyItem) {
 
         //gets the categoryIdArray
         const idcategoryArray = await this.getcategory(needyItem)
         delete needyItem.namecategory;
+        
         // add the user to needy
-        const result = await this.getneedyBy(needyItem, "needys", "idneedys")//check if user exist
+        const result = await this.getneedyBy(needyItem, "needies", "idneedies")//check if user exist
         var result1, id;
+        
         if (result.length == 0) {//if needy is not exist
             const values = Object.values(needyItem)
             const keys = Object.keys(needyItem);
             const query = addQuery(needys, keys);
             result1 = await executeQuery(query, values);
             id = result1.insertId;
+            // console.log("id",id)
         }
         else {//else, gets the data of needy
             const values = Object.values(needyItem)
-            const query = getByQuery6("needys", "usernamevolenteers", "*");////
-            console.log(query)
+            const query = getByQuery6("needies", "usernameneedies", "*");////
+            console.log("query111",query)
             result1 = await executeQuery(query, values);
-            id = result1[0].idneedys;
+            id = result1[0].idneedies;
+            console.log("id",id)
         }
+       
+     
         //add to needyCategory
         const addneedycategory = await this.addneedycategory(idcategoryArray, id)
     //    let idneedies = addneedycategory.idneedies

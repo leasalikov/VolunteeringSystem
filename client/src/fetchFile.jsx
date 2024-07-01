@@ -38,10 +38,10 @@ async function fetchGetReq(route, params) {
             method: 'GET',
             // body: JSON.stringify(body),
             //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
-            // headers: { "Content-type": "application/json; charset=UTF-8", },
+            headers: { "Content-type": "application/json; charset=UTF-8", },
         })
         const data = await response.json();
-        // const data = await json;
+        console.log("data1",data)
         return data;
     }
     catch (err) {

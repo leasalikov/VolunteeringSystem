@@ -27,9 +27,9 @@ async function Volunteer() {
     const Array = JSON.stringify(location.state.data.idcategoryArray);
     console.log("Array ", Array)
     try {
-        const response = await fetchGetReq("needyVolunteers", Array);
-        const data = await response;
-        console.log(data)
+        const data = await fetchGetReq("needyVolunteers", Array);
+        // const data = await response;
+        console.log("data",data)
     }
     catch (error) {
         console.error(error);
@@ -60,16 +60,17 @@ async function Volunteer() {
 
     return (
         <>
-            <Header />
-            {showEndMassage &&
+        <div>
+            {/* <Header /> */}
+            {/* {showEndMassage &&
                 <div>
                     <h2>!תודה ותזכו למצוות<br />כעת ישלח אליך מייל עם פרטי המזמין ליצירת קשר</h2>
                     <button onClick={addVolunting}>להוספת התנדבות</button>
                 </div>}
             {showComponent && <div>
-                <h1>שלום {currentUser.username}!!</h1>
+                <h1>שלום {currentUser.username}!!</h1> */}
                 <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                <table>
+                {/* <table>
                     <thead>
                         <tr>
                             <th>name</th>
@@ -79,19 +80,19 @@ async function Volunteer() {
                         </tr>
                     </thead>
                     <tbody>
-                        {location.state.data.map((item, i) => (
+                        {location.state.data.idcategoryArray.map((item, i) => (
                             <tr key={i}>
                                 <td>{item[0].username}</td>
                                 <td>{item[0].email}</td>
                                 <td>{item[0].phone}</td>
                                 <td>{item.namecategory[0].namecategory}</td>
-                                {/* <td>{item[0].idUser}</td> */}
+                                <td>{item[0].idUser}</td>
                                 <td><button onClick={() => linking(item)}>V</button></td>
                             </tr>
                         ))}
                     </tbody>
-                </table>
-            </div>}
+                </table> */}
+            </div>
         </>
     )
 };

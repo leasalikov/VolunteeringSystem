@@ -26,10 +26,10 @@ export class NeedyController {
         try {
             
          
-            console.log("idcategoryArray  ", req.body.idcategoryArray)
+            console.log("idcategoryArray  ", req.params.array)
             const service = new NeedyService();
             // const id = req.params.id;sfgd
-            const resultItem = await service.getNeedyByVolunteer(Array);
+            const resultItem = await service.getNeedyByVolunteer(req.params.array);
             // delete resultItem[0].isActive;
             // console.log("req: get Needy by id= " + id + ", res: successfull")
             res.status(200).json(resultItem);
@@ -47,7 +47,7 @@ export class NeedyController {
             const needyService = new NeedyService();
             // const body = Object.values(req.body)
             console.log("booodddyyy   ", req.body)
-            const result = await needyService.addNeedy(tableName, req.body);
+            const result = await needyService.addneedy(tableName, req.body);
             if (result == undefined)
                 return res.status(401).json({ resualt: "needyName duplicate" });
             res.status(200).json(result);
