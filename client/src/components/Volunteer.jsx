@@ -39,9 +39,11 @@ function Volunteer() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const params = JSON.stringify(location.state.data.idcategoryArray);// Example params
+                const idcategoryArray = JSON.stringify(location.state.data.idcategoryArray);// Example params
+                const usernamevolunteers = currentUser.username;
+                const params = { idcategoryArray, usernamevolunteers }
                 console.log("params", params)
-                const response = await fetchGetReq("needyVolunteers", params);
+                const response = await fetchGetReq("needyVolunteers", idcategoryArray, usernamevolunteers);
                 const fetchedData = await response;
                 console.log("fetchedData    ", fetchedData);
                 setData(fetchedData);
@@ -58,7 +60,7 @@ function Volunteer() {
     async function linking(item) {
         const paramsToSent = {
             "idneedies": item.idUser, //needy id
-            "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
+            "namecategory": item.namecategory, //id category - needy and volunteer 
             "username": currentUser.username, //volunteer username
         };
         console.log("paramsToSent: ", paramsToSent)
@@ -90,7 +92,7 @@ function Volunteer() {
                 {showComponent && <div>
                     <h1>שלום {currentUser.username}!!</h1>
                     <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                    <table>
+                    <table className='tableStyle'>
                         <thead>
                             <tr>
                                 <th>name</th>

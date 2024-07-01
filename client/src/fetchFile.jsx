@@ -29,19 +29,19 @@ async function fetchPostReq(route, body) {
 //         console.error(err);
 //     });
 
-async function fetchGetReq(route,params) {
+async function fetchGetReq(route, idcategoryArray, usernamevolunteers) {
     // console.log("fetchGetReq");
     // console.log("idcategoryArray ", params);
-    
+
     try {
-        const response = await fetch(`http://localhost:8080/${route}/${params}`, {
+        const response = await fetch(`http://localhost:8080/${route}/${idcategoryArray}/${usernamevolunteers}`, {
             method: 'GET',
             // body: JSON.stringify(body),
             //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
         const data = await response.json();
-        console.log("hgjgh",data)
+        console.log("hgjgh", data)
         return data;
     }
     catch (err) {

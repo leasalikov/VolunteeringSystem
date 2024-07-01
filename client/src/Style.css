@@ -125,12 +125,25 @@ button:focus-visible {
     background-color: rgb(188, 226, 190);
     padding: 20px;
     /* line-height: 2.5; */
-
     /* display: grid; */
-/* 
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;  */
+    gap: 10px;
+}
+.tableStyle{
+    /* display: flex; */
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    /* min-width: 320px;
+    min-height: 100vh; */
+    border-radius: 5px;
+    background-color: rgb(188, 226, 190);
+    padding: 20px;
+    /* line-height: 1; */
+    /* display: grid; */
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr; */
-
+    grid-template-rows: 1fr 1fr; 
     gap: 10px;
 }
 .divLogin{
@@ -144,6 +157,19 @@ button:focus-visible {
     /* background-color: #f2f2f2; */
     padding: 20px;
     line-height: 2.5;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
 }
 form {
     padding: '20px';
@@ -181,7 +207,6 @@ form {
 }
 .toysImg{
     background-image: url('Photos/toys.jpg');
-
 }
 .babysitterImg{
     background-image: url('Photos/babyS.jpg');
