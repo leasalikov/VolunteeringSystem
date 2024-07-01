@@ -110,7 +110,7 @@ function Volunteer() {
                         ))}
                     </tbody>
                 </table>
-            </div>}
+            </div>
         </>
     )
 };
