@@ -124,6 +124,7 @@ button:focus-visible {
     border-radius: 5px;
     background-color: rgb(188, 226, 190);
     padding: 20px;
+    /* font-size: 20px; */
     /* line-height: 2.5; */
     /* display: grid; */
     /* grid-template-columns: 1fr 1fr;
@@ -187,6 +188,13 @@ form {
     display: inline-grid;
 }
 .type button {
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center; 
+    height: 200px;
+    width: 300px;
+}
+.type img {
     margin-right: 10px;
     background-size: cover;
     background-position: center; 
