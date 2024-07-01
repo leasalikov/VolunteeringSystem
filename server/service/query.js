@@ -17,20 +17,14 @@ function getByQuery6(tableName, key, column) {
 function getByQuery9(tableName, key, column) {
   return `SELECT ${column} FROM system.${tableName} WHERE ${key.map((key) => { return key + ' = ?' + ' AND ' }).toString().replace(',', ' ')} isActive = 1 limit 1`;
 }
-function a(){
-return` SELECT idcategoryvolunteers  FROM system.categoryvolunteers  JOIN system.volunteers 
-      on system.volunteers.idvolunteers = system.categoryvolunteers.idvolunteers 
+function linking(idcategorycolumn, categorytable, table, idcolumn, usernamecolumn) {
+  return ` SELECT ${idcategorycolumn}  FROM system.${categorytable}  JOIN system.${table} 
+      on system.${table}.${idcolumn} = system.${categorytable}.${idcolumn} 
        JOIN system.category 
-   ON system.category.idcategory = system.categoryvolunteers.idcategory
-      where system.volunteers.usernamevolenteers=? and system.category.namecategory=? `
+   ON system.category.idcategory = system.${categorytable}.idcategory
+      where system.${table}.${usernamecolumn}=? and system.category.namecategory=? `
 }
-function b(){
-  return `  SELECT idcategoryneedies 
-FROM system.categoryneedies  
-     JOIN system.category 
- ON system.category.idcategory = system.categoryneedies.idcategory
-    where system.categoryneedies.idneedies=? and system.category.namecategory=? `
-}
+
 function getByQuery3(tablename, key) {
   // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return ` SELECT * FROM system.${tablename} WHERE ${key} = ?`
@@ -46,7 +40,7 @@ function getByQuery4(tablename, keys) {
   return `SELECT DISTINCT idneedies,idcategory,idcategoryneedies FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
 }
 function join() {
- return `  SELECT * 
+  return `  SELECT * 
 FROM system.users 
  JOIN system.needies 
     on system.needies.usernameneedies = system.users.username 
@@ -68,7 +62,7 @@ function updateQuery(tableName, keys) {
   return `UPDATE system.${tableName} SET ${keys.map((key, i) => { return key + '= ?' })} WHERE id = ? AND isActive = 1`;
 }
 
-function deleteQuery(tableName,column) {
+function deleteQuery(tableName, column) {
   return `UPDATE system.${tableName} SET isactive=0 WHERE  ${column} = ?`;
 }
 
@@ -91,6 +85,5 @@ export {
   , getByQuery7,
   getByQuery9,
   join,
-  a,
-  b
+  linking
 }
