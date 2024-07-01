@@ -2,7 +2,7 @@
 import { executeQuery } from './db.js';
 // import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
 // import { UserService } from './userService.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9, linking, b } from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9, linking } from './query.js'
 
 import { CategoryService } from './categoryService.js';
 import { NeedyService } from './needyService.js';
