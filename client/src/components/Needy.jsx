@@ -12,7 +12,7 @@ const ToNeedy = () => {
     return (
         <>
             <Header />
-            <div className="divLogin" >
+            <div className="divStyle" >
                 <h2>בקשתך התקבלה, בקרוב ניצור איתך קשר</h2>
             </div>
 

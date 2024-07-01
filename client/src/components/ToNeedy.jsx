@@ -24,18 +24,24 @@ const ToNeedy = () => {
             "usernameneedies": username,
             "namecategory": trueCategoriesArray
         }
-        //fetch post req
-        const response = fetchPostReq("needy", paramsToSend);
-        const data = await response;
-        console.log("data", data);
-        if (data.result == "userName duplicate") (alert('userName exist'))
-        else {
-            navigate(`/users/${currentUser.idUser}/needy`)
+        if (trueCategoriesArray.length == 0) {
+            alert("לא בוצעה בחירה")
         }
-    }
-    const foodImg = () => {
+        else {
+            //fetch post req
+            const response = fetchPostReq("needy", paramsToSend);
+            const data = await response;
+            console.log("data", data);
+            if (data.result == "userName duplicate") (alert('userName exist'))
+            else {
+                navigate(`/users/${currentUser.idUser}/needy`)
+            }
+        }
 
     }
+    // const foodImg = () => {
+
+    // }
     const hostImg = () => {
 
     }
@@ -45,13 +51,17 @@ const ToNeedy = () => {
     const babysitterImg = () => {
 
     }
+    // const ImageCheckbox = () => {
+    const [isChecked, setIsChecked] = useState(false);
 
+    const foodImg = () => {
+        setIsChecked(!isChecked);
+    };
     return (
         <>
             <Header />
             <div className="divStyle">
                 {<form onSubmit={getHelp}>
-                    {/* <img src="image-url.food2.webp" alt="ארוחות חמות" /> */}
                     <div className='type'>
                         <button onClick={foodImg} className='foodImg'></button>
                         <br />
@@ -74,7 +84,7 @@ const ToNeedy = () => {
                         <label for="babysitter">ביביסיטר</label>
                         <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
                     </div>
-                    <br/>
+                    <br />
                     <button><submit button onClick={getHelp}>בקשת עזרה</submit></button>
                 </form>}
             </div>
