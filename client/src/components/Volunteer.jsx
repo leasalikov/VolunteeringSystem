@@ -66,12 +66,19 @@ function Volunteer() {
         console.log("paramsToSent: ", paramsToSent)
         const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
         if (result) {
-            setShowEndMassage(true)
-            setShowComponent(false)
-            //post to linking
-            const response = await fetchPostReq("linking", paramsToSent);
-            const data = await response;
-            console.log(data)
+            try {
+                //post to linking
+                const response = await fetchPostReq("linking", paramsToSent);
+                const data = await response;
+                console.log("linkingdata  ", data)
+            }
+            catch (error) {
+                console.error(error);
+            }
+            // if (data) {
+                setShowEndMassage(true)
+                setShowComponent(false)
+            // }
         }
     }
 
