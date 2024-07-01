@@ -2,7 +2,7 @@
 import { executeQuery } from './db.js';
 // import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
 // import { UserService } from './userService.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9, a, b } from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9, linking, b } from './query.js'
 
 import { CategoryService } from './categoryService.js';
 import { NeedyService } from './needyService.js';
@@ -12,13 +12,13 @@ export class LinkingService {
     async addLinking(usernameneedies, namecategory, usernamevolenteers) {
         console.log("idcategoryneediesgffghfghj")
 
-        const queryidcategoryvolunteers = a("idcategoryvolunteers","categoryvolunteers","volunteers","idvolunteers","usernamevolenteers")
+        const queryidcategoryvolunteers = linking("idcategoryvolunteers","categoryvolunteers","volunteers","idvolunteers","usernamevolenteers")
         console.log(queryidcategoryvolunteers)
         const idcategoryvolunteers = await executeQuery(queryidcategoryvolunteers, [usernamevolenteers, namecategory]);
         console.log("idcategoryvolunteers",idcategoryvolunteers)
         console.log("idcategoryneediesgffghfghj")
        
-        const queryidcategoryneedies = a("idcategoryneedies","categoryneedies","needies","idneedies","usernameneedies")
+        const queryidcategoryneedies = linking("idcategoryneedies","categoryneedies","needies","idneedies","usernameneedies")
         console.log(queryidcategoryneedies)
         const idcategoryneedies = await executeQuery(queryidcategoryneedies, [usernameneedies, namecategory]);
       
