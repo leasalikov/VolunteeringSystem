@@ -3,18 +3,13 @@ import { React, useContext } from 'react';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
-
 const Header = () => {
-    // <style margin-top={0}/>
     const { currentUser, setCurrentUser } = useContext(UserContext);
     console.log("Header   ", currentUser)
-    // console.log("categoriesArray   ", categoriesArray)
-
     const navigate = useNavigate();
 
     const goToHome = () => {
-        delete
-            navigate(`/users/${currentUser.idUser}/home`)
+        navigate(`/users/${currentUser.idUser}/home`)
     }
     const goToVolunteer = () => {
         navigate(`/users/${currentUser.idUser}/tovolunteer`)

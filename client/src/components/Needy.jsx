@@ -12,8 +12,8 @@ const ToNeedy = () => {
     return (
         <>
             <Header />
-            <div className="background-animation" >
-                <p>בקשתך התקבלה, בקרוב ניצור איתך קשר</p>
+            <div className="divLogin" >
+                <h2>בקשתך התקבלה, בקרוב ניצור איתך קשר</h2>
             </div>
 
         </>
