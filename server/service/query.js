@@ -17,13 +17,20 @@ function getByQuery6(tableName, key, column) {
 function getByQuery9(tableName, key, column) {
   return `SELECT ${column} FROM system.${tableName} WHERE ${key.map((key) => { return key + ' = ?' + ' AND ' }).toString().replace(',', ' ')} isActive = 1 limit 1`;
 }
-function a(){
-return` SELECT idcategoryvolunteers  FROM system.categoryvolunteers  JOIN system.volunteers 
-      on system.volunteers.idvolunteers = system.categoryvolunteers.idvolunteers 
+function a(idcategorycolumn,categorytable,table,idcolumn,usernamecolumn){
+return` SELECT ${idcategorycolumn}  FROM system.${categorytable}  JOIN system.${table} 
+      on system.${table}.${idcolumn} = system.${categorytable}.${idcolumn} 
        JOIN system.category 
-   ON system.category.idcategory = system.categoryvolunteers.idcategory
-      where system.volunteers.usernamevolenteers=? and system.category.namecategory=? `
+   ON system.category.idcategory = system.${categorytable}.idcategory
+      where system.${table}.${usernamecolumn}=? and system.category.namecategory=? `
 }
+// SELECT idcategoryvolunteers  FROM system.categoryvolunteers  JOIN system.volunteers 
+//       on system.volunteers.idvolunteers = system.categoryvolunteers.idvolunteers 
+//        JOIN system.category 
+//    ON system.category.idcategory = system.categoryvolunteers.idcategory
+//       where system.volunteers.usernamevolenteers=? and system.category.namecategory=? 
+
+
 function b(){
   return `  SELECT idcategoryneedies 
 FROM system.categoryneedies  

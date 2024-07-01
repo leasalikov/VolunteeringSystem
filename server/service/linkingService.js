@@ -9,18 +9,18 @@ import { NeedyService } from './needyService.js';
 import { VolunteerService } from './volunteerService.js';
 export class LinkingService {
 
-    async addLinking(idneedies, namecategory, usernamevolenteers) {
+    async addLinking(usernameneedies, namecategory, usernamevolenteers) {
         console.log("idcategoryneediesgffghfghj")
 
-        const queryidcategoryvolunteers = a()
+        const queryidcategoryvolunteers = a("idcategoryvolunteers","categoryvolunteers","volunteers","idvolunteers","usernamevolenteers")
         console.log(queryidcategoryvolunteers)
         const idcategoryvolunteers = await executeQuery(queryidcategoryvolunteers, [usernamevolenteers, namecategory]);
         console.log("idcategoryvolunteers",idcategoryvolunteers)
         console.log("idcategoryneediesgffghfghj")
        
-        const queryidcategoryneedies = b()
-
-        const idcategoryneedies = await executeQuery(queryidcategoryneedies, [idneedies, namecategory]);
+        const queryidcategoryneedies = a("idcategoryneedies","categoryneedies","needies","idneedies","usernameneedies")
+        console.log(queryidcategoryneedies)
+        const idcategoryneedies = await executeQuery(queryidcategoryneedies, [usernameneedies, namecategory]);
       
        
         console.log("idcategoryneedies", idcategoryneedies)
