@@ -43,7 +43,7 @@ function Volunteer() {
                 const usernamevolunteers = currentUser.username;
                 const params = { idcategoryArray, usernamevolunteers }
                 console.log("params", params)
-                const response = await fetchGetReq("needyVolunteers", params);
+                const response = await fetchGetReq("needyVolunteers", idcategoryArray, usernamevolunteers);
                 const fetchedData = await response;
                 console.log("fetchedData    ", fetchedData);
                 setData(fetchedData);
