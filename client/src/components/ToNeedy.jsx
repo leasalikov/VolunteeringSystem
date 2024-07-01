@@ -57,8 +57,7 @@ const ToNeedy = () => {
                         <br />
                         <label for="food">ארוחות חמות</label>
                         <input type="checkbox" id="food" name="food" value={categoriesArray.food} onChange={(e) => setCategoriesArray({ food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
-                    </div>
-                    <div className='type'>
+
                         <button onClick={hostImg} className='hostImg'></button>
                         <br />
                         <label for="hosting">אירוח</label>
@@ -69,8 +68,7 @@ const ToNeedy = () => {
                         <br />
                         <label for="toys">משחקים לילדים</label>
                         <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
-                    </div>
-                    <div className='type'>
+
                         <button onClick={babysitterImg} className='babysitterImg'></button>
                         <br />
                         <label for="babysitter">ביביסיטר</label>

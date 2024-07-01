@@ -59,7 +59,7 @@ function Volunteer() {
 
     async function linking(item) {
         const paramsToSent = {
-            "idneedies": item.idUser, //needy id
+            "usernameneedies": item.username, //needy id
             "namecategory": item.namecategory, //id category - needy and volunteer 
             "usernamevolenteers": currentUser.username, //volunteer username
         };
@@ -116,7 +116,7 @@ function Volunteer() {
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
                                         <td>{item.namecategory}</td>
-                                        {/* <td>{item[0].idUser}</td> */}
+                                        <td>{item.idUser}</td>
                                         <td><button onClick={() => linking(item)}>V</button></td>
                                     </tr>
                                 ))

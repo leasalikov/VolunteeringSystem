@@ -21,9 +21,6 @@ async function fetchPostReq(route, body) {
 }
 
 async function fetchGetReq(route, idcategoryArray, usernamevolunteers) {
-    // console.log("fetchGetReq");
-    // console.log("idcategoryArray ", params);
-
     try {
         const response = await fetch(`http://localhost:8080/${route}/${idcategoryArray}/${usernamevolunteers}`, {
             method: 'GET',
