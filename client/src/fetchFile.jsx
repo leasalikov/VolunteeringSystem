@@ -29,9 +29,10 @@ async function fetchPostReq(route, body) {
 //         console.error(err);
 //     });
 
-async function fetchGetReq(route, params) {
-    console.log("fetchGetReq");
-    console.log("idcategoryArray ", params);
+async function fetchGetReq(route,params) {
+    // console.log("fetchGetReq");
+    // console.log("idcategoryArray ", params);
+    
     try {
         const response = await fetch(`http://localhost:8080/${route}/${params}`, {
             method: 'GET',
@@ -40,7 +41,7 @@ async function fetchGetReq(route, params) {
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
         const data = await response.json();
-        // const data = await json;
+        console.log("hgjgh",data)
         return data;
     }
     catch (err) {
