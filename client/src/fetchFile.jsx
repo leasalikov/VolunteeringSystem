@@ -9,9 +9,10 @@ async function fetchPostReq(route, body) {
             //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
-        console.log(body)
+        console.log("hgjghjjjjjjjjjjj ", body)
         const json = await response.json();
         const data = await json;
+        
         return data;
     }
     catch (err) {
@@ -41,7 +42,6 @@ async function fetchGetReq(route, idcategoryArray, usernamevolunteers) {
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
         const data = await response.json();
-        console.log("hgjgh", data)
         return data;
     }
     catch (err) {

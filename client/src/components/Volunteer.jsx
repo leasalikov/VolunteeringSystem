@@ -61,7 +61,7 @@ function Volunteer() {
         const paramsToSent = {
             "idneedies": item.idUser, //needy id
             "namecategory": item.namecategory, //id category - needy and volunteer 
-            "username": currentUser.username, //volunteer username
+            "usernamevolenteers": currentUser.username, //volunteer username
         };
         console.log("paramsToSent: ", paramsToSent)
         const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
@@ -75,10 +75,10 @@ function Volunteer() {
             catch (error) {
                 console.error(error);
             }
-            // if (data) {
+            if (data) {
                 setShowEndMassage(true)
                 setShowComponent(false)
-            // }
+            }
         }
     }
 
