@@ -11,7 +11,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLoggedInUser, setIsLoggedInUser] = useState(false);
   const [toRegister, setToRegister] = useState(false);
-  // const [user, setUser] = useState({});
 
   // const navigate = useNavigate();
 
@@ -65,7 +64,7 @@ const Login = () => {
   };
 
   return (
-    <div className='divStyle'>
+    <div className='divLogin'>
       <Navigate to={isLoggedInUser ? `/users/${currentUser.idUser}/home` : toRegister ? "/register" : "/login"} />
       <div className='signUpLogin-container'>
         <h2>Login</h2>

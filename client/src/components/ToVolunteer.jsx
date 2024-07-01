@@ -34,9 +34,21 @@ function ToVolunteer() {
             // }
             // else {
             console.log("data in ToVolunteer", data)
-            navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data } })
+            navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data } });
             // }
         }
+    }
+    const foodImg = () => {
+
+    }
+    const hostImg = () => {
+
+    }
+    const toysImg = () => {
+
+    }
+    const babysitterImg = () => {
+
     }
 
     return (
@@ -44,12 +56,17 @@ function ToVolunteer() {
             <Header />
             <div className="divStyle">
                 {<form onSubmit={volunteering}>
+                    {/* <img src="image-url.food2.webp" alt="ארוחות חמות" /> */}
+                    <button onClick={foodImg} className='foodImg'></button>
                     <label for="food">ארוחות חמות</label>
                     <input type="checkbox" id="food" name="food" value={categoriesArray.food} onChange={(e) => setCategoriesArray({ food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
+                    <button onClick={hostImg} className='hostImg'></button>
                     <label for="hosting">אירוח</label>
                     <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.hosting} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
+                    <button onClick={toysImg} className='toysImg'></button>
                     <label for="toys">משחקים לילדים</label>
                     <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
+                    <button onClick={babysitterImg} className='babysitterImg'></button>
                     <label for="babysitter">ביביסיטר</label>
                     <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({ food: categoriesArray.food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>

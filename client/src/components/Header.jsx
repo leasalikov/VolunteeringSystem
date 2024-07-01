@@ -22,12 +22,17 @@ const Header = () => {
     const goToNeedy = () => {
         navigate(`/users/${currentUser.idUser}/toneedy`)
     }
+    const logOut = () => {
+        navigate(`/login`)
+        setCurrentUser(null);
+    }
 
     return (
         <div className="Header">
             <button className="HeaderButton" onClick={goToHome}>קצת עלינו</button>
             <button className="HeaderButton" onClick={goToVolunteer}>להתנדבות</button>
             <button className="HeaderButton" onClick={goToNeedy}>לבקשת עזרה</button>
+            <button className="HeaderButton" onClick={logOut}>התנתקות</button>
         </div>
     )
 };
