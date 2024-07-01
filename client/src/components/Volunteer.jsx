@@ -8,18 +8,18 @@ import { useParams } from 'react-router-dom';
 // import { fetchPostReq } from '../fetchFile';
 import { fetchGetReq } from '../fetchFile';
 
-// import { PostUser } from "./UserFunctions";
-
 function Volunteer() {
 
     const [showEndMassage, setShowEndMassage] = useState(false)
     const [showComponent, setShowComponent] = useState(true)
+
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState();
 
     const location = useLocation();
 
-    console.log("location  ", location.state.data.idcategoryArray)
+    console.log("location.state.data.idcategoryArray  ", location.state.data.idcategoryArray)
+    console.log("location.state.data  ", location.state.data)
     console.log("currentUser  ", currentUser)
 
     // gets needies that suit to volunteer
@@ -35,23 +35,25 @@ function Volunteer() {
     // catch (error) {
     //     console.error(error);
     // }
-    let fetchedData
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const params = JSON.stringify(location.state.data.idcategoryArray);// Example params
                 console.log("params", params)
                 const response = await fetchGetReq("needyVolunteers", params);
-                const fetchedData = await response.json()
-                console.log("fetchedData    ", fetchedData);
-
+                const fetchedData = await response;
+                console.log("fetchedData    ", fetchedData[1]);
+                setData(fetchedData[1]);
             } catch (error) {
                 console.error(error);
             }
         };
-
+        console.log("data out  ", data)
         fetchData();
     }, []);
+
+    console.log("data out  ", data)
 
     // async function linking(item) {
     //     const paramsToSent = {
@@ -78,42 +80,41 @@ function Volunteer() {
 
     return (
         <>
-        <div>
-            {/* <Header /> */}
-            {/* {showEndMassage &&
-                <div>
-                    <h2>!תודה ותזכו למצוות<br />כעת ישלח אליך מייל עם פרטי המזמין ליצירת קשר</h2>
-                    <button onClick={addVolunting}>להוספת התנדבות</button>
-                </div>}
-            {showComponent && <div>
-                <h1>שלום {currentUser.username}!!</h1> */}
-                <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>phone</th>
-                            <th>category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {location.state.data.map((item, i) => (
-                            <tr key={i}>
-                                <td>{item[0].username}</td>
-                                <td>{item[0].email}</td>
-                                <td>{item[0].phone}</td>
-                                <td>{item.namecategory[0].namecategory}</td>
-                                {/* <td>{item[0].idUser}</td> */}
-                                <td><button onClick={() => linking(item)}>V</button></td>
+            <div>
+                <Header />
+                {showEndMassage &&
+                    <div>
+                        <h2>!תודה ותזכו למצוות<br />כעת ישלח אליך מייל עם פרטי המזמין ליצירת קשר</h2>
+                        <button onClick={addVolunting}>להוספת התנדבות</button>
+                    </div>}
+                {showComponent && <div>
+                    <h1>שלום {currentUser.username}!!</h1>
+                    <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>phone</th>
+                                <th>category</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {data && data.map((item, i) => (
+                                <tr key={i}>
+                                    <td>{item.username}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.namecategory.namecategory}</td>
+                                    {/* <td>{item[0].idUser}</td> */}
+                                    {/* <td><button onClick={() => linking(item)}>V</button></td> */}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>}
+            </div >
         </>
     )
 };
 export default Volunteer;
-
-
