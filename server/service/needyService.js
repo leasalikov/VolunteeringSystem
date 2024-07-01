@@ -197,7 +197,7 @@ export class NeedyService {
         return await executeQuery(query, [numOfLimit, startLimit]);
     }
 
-    async getNeedyByVolunteer(idcategoryArray) {
+    async getNeedyByVolunteer(idcategoryArray,usernamevolunteers) {
 
         console.log("idcategogfrjtyryArray", idcategoryArray)
         // idcategoryArray=idcategoryArray.idcategoryneedy
@@ -205,11 +205,8 @@ export class NeedyService {
         // const query2=join()
         // console.log("query",query2)
         for (let element = 0; element <= idcategoryArray.length - 1; element++) {
-            console.log("gffj")
             query = join()
-            console.log("query",query)
-            const neediesmuch = await executeQuery(query, [idcategoryArray[element]])
-            console.log("neediesmuch", neediesmuch)
+            const neediesmuch = await executeQuery(query, [idcategoryArray[element],usernamevolunteers])
             allNeedies.push(neediesmuch);
             //  return idneedies, idcategoryarray
         }

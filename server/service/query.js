@@ -54,7 +54,7 @@ FROM system.users
 ON system.categoryneedies.idneedies = system.needies.idneedies
 join system.category
 on system.category.idcategory=system.categoryneedies.idcategory
-where system.category.idcategory=? and categoryneedies.isactive=1`
+where system.category.idcategory=? and categoryneedies.isactive=1 and needies.usernameneedies!=?`
 }
 
 function getByQuery(tableName, keys) {
