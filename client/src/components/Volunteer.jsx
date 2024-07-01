@@ -5,7 +5,7 @@ import { UserContext } from '../App';
 import Header from './Header';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-// import { fetchPostReq } from '../fetchFile';
+import { fetchPostReq } from '../fetchFile';
 import { fetchGetReq } from '../fetchFile';
 
 function Volunteer() {
@@ -43,8 +43,8 @@ function Volunteer() {
                 console.log("params", params)
                 const response = await fetchGetReq("needyVolunteers", params);
                 const fetchedData = await response;
-                console.log("fetchedData    ", fetchedData[1]);
-                setData(fetchedData[1]);
+                console.log("fetchedData    ", fetchedData);
+                setData(fetchedData);
             } catch (error) {
                 console.error(error);
             }
@@ -55,23 +55,23 @@ function Volunteer() {
 
     console.log("data out  ", data)
 
-    // async function linking(item) {
-    //     const paramsToSent = {
-    //         "idneedies": item[0].idUser, //needy id
-    //         "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
-    //         "username": currentUser.username, //volunteer username
-    //     };
-    //     console.log("paramsToSent: ", paramsToSent)
-    //     const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
-    //     if (result) {
-    //         setShowEndMassage(true)
-    //         setShowComponent(false)
-    //         //post to linking
-    //         const response = await fetchPostReq("linking", paramsToSent);
-    //         const data = await response;
-    //         console.log(data)
-    //     }
-    // }
+    async function linking(item) {
+        const paramsToSent = {
+            "idneedies": item.idUser, //needy id
+            "namecategory": item.namecategory[0].namecategory, //id category - needy and volunteer 
+            "username": currentUser.username, //volunteer username
+        };
+        console.log("paramsToSent: ", paramsToSent)
+        const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
+        if (result) {
+            setShowEndMassage(true)
+            setShowComponent(false)
+            //post to linking
+            const response = await fetchPostReq("linking", paramsToSent);
+            const data = await response;
+            console.log(data)
+        }
+    }
 
     async function addVolunting() {
         setShowEndMassage(false);
@@ -100,15 +100,17 @@ function Volunteer() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data && data.map((item, i) => (
-                                <tr key={i}>
-                                    <td>{item.username}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.phone}</td>
-                                    <td>{item.namecategory.namecategory}</td>
-                                    {/* <td>{item[0].idUser}</td> */}
-                                    {/* <td><button onClick={() => linking(item)}>V</button></td> */}
-                                </tr>
+                            {data && data.map((item) => (
+                                item.map((item, i) => (
+                                    <tr key={i}>
+                                        <td>{item.username}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.phone}</td>
+                                        <td>{item.namecategory}</td>
+                                        {/* <td>{item[0].idUser}</td> */}
+                                        <td><button onClick={() => linking(item)}>V</button></td>
+                                    </tr>
+                                ))
                             ))}
                         </tbody>
                     </table>
