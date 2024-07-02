@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    console.log("Header   ", currentUser)
     const navigate = useNavigate();
 
     const goToHome = () => {

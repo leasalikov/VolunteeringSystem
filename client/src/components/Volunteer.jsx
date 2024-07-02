@@ -18,23 +18,9 @@ function Volunteer() {
 
     const location = useLocation();
 
-    console.log("location.state.data.idcategoryArray  ", location.state.data.idcategoryArray)
-    console.log("location.state.data  ", location.state.data)
-    console.log("currentUser  ", currentUser)
-
-    // gets needies that suit to volunteer
-    // const Array = JSON.stringify(location.state.data.idcategoryArray);
-    // console.log("location.state.data.idcategoryArry ", location.state.data.idcategoryArray)
-
-    // console.log("Array ", Array)
-    // try {
-    //     const response = await fetchGetReq("needyVolunteers", Array);
-    //     const data = await response;
-    //     console.log(data)
-    // }
-    // catch (error) {
-    //     console.error(error);
-    // }
+    // console.log("location.state.data.idcategoryArray  ", location.state.data.idcategoryArray)
+    // console.log("location.state.data  ", location.state.data)
+    // console.log("currentUser  ", currentUser)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,16 +37,16 @@ function Volunteer() {
                 console.error(error);
             }
         };
-        console.log("data out  ", data)
+        // console.log("data out  ", data)
         fetchData();
     }, []);
 
     console.log("data out  ", data)
 
-    async function linking(item) {
+    async function linking(linkUser) {
         const paramsToSent = {
-            "usernameneedies": item.username, //needy id
-            "namecategory": item.namecategory, //id category - needy and volunteer 
+            "usernameneedies": linkUser.username, //needy id
+            "namecategory": linkUser.namecategory, //id category - needy and volunteer 
             "usernamevolenteers": currentUser.username, //volunteer username
         };
         console.log("paramsToSent: ", paramsToSent)
@@ -69,8 +55,8 @@ function Volunteer() {
             try {
                 //post to linking
                 const response = await fetchPostReq("linking", paramsToSent);
-                const data = await response;
-                console.log("linkingdata  ", data)
+                const linkingData = await response;
+                console.log("linkingdata  ", linkingData)
             }
             catch (error) {
                 console.error(error);
@@ -79,6 +65,14 @@ function Volunteer() {
                 setShowEndMassage(true)
                 setShowComponent(false)
             }
+
+            const updatedData = Object.keys(data)
+                .map(key => data[key])
+                .map(item => item.filter(item => (item.idUser !== linkUser.idUser && item.namecategory === linkUser.namecategory)
+                    || (item.idUser === linkUser.idUser && item.namecategory !== linkUser.namecategory) || item.namecategory !== linkUser.namecategory));
+            // .filter(item => (item.idUser == linkUser.idUser) && (item.namecategory == linkUser.namecategory));
+            console.log("updatedDataaaaaaaaaaaaa ", updatedData)
+            setData(updatedData);
         }
     }
 
@@ -102,22 +96,22 @@ function Volunteer() {
                     <table className='tableStyle'>
                         <thead>
                             <tr>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>phone</th>
-                                <th>category</th>
+                                <th>בחר</th>
+                                <th>קטגוריה</th>
+                                <th>טלפון</th>
+                                <th>מייל</th>
+                                <th>שם</th>
                             </tr>
                         </thead>
                         <tbody>
                             {data && data.map((item) => (
                                 item.map((item, i) => (
                                     <tr key={i}>
-                                        <td>{item.username}</td>
-                                        <td>{item.email}</td>
-                                        <td>{item.phone}</td>
-                                        <td>{item.namecategory}</td>
-                                        <td>{item.idUser}</td>
                                         <td><button onClick={() => linking(item)}>V</button></td>
+                                        <td>{item.namecategory}</td>
+                                        <td>{item.phone}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.username}</td>
                                     </tr>
                                 ))
                             ))}
