@@ -17,7 +17,7 @@ const Register = () => {
     return /^\w+@([\w\-]+\.)+\w{2,3}$/.test(strEmail);
   }
 
-  const handleRegister = () => {
+  async function handleRegister () {
     // (async () => {
       if (verifyPassword != password || verifyPassword == "") {
         alert('Please validate your password.');
@@ -30,13 +30,13 @@ const Register = () => {
       }
       const newUser = { "name": name, "userName": username, "email": email, "phone": phone, "password": password }
       //req
-      const response = fetchPostReq("user", newUser);
-      // const jsonUser = await response;
+      const response =await fetchPostReq("user", newUser);
+      const jsonUser = await response;
       // if (response.resualt == "userName duplicate") alert('userName exist')
       //   else {
-          setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone });
+          setCurrentUser({ "idUser": jsonUser.result.insertId, "name": name, "username": username, "email": email, "phone": phone });
           localStorage.setItem("currentUser", JSON.stringify(currentUser));
-          navigate(`/users/${response.insertId}/home`, { state: { user: "user" } })
+          navigate(`/users/${jsonUser.result.insertId}/home`, { state: { user: "user" } })
         // }
       // fetch('http://localhost:8080/user', {
       //   method: 'POST',
