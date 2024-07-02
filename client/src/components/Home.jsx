@@ -13,13 +13,14 @@ function Home() {
     return (
         <>
             <Header value={categoriesArray} />
-            <div className="background-animation" >
+            {currentUser.isManager && <h2>שלום מנהל</h2>}
+           {!currentUser.isManager && <div className="background-animation" >
                 <img className="img1" />
                 <img className="img3" />
                 <h1>{currentUser.username}</h1>
                 <h2>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h2>
                 <h2>הנכם מוזמנים לקחת חלק </h2>
-            </div>
+            </div>}
         </>
     )
 }
