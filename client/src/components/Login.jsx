@@ -16,6 +16,8 @@ const Login = () => {
 
   const handleLogin = () => {
     (async () => {
+      setCurrentUser(null);
+      localStorage.removeItem('currentUser')
       if (userName == '' || password == '') {
         alert("Enter name and password");
         return;
