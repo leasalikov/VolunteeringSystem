@@ -15,23 +15,29 @@ import ToNeedy from './components/ToNeedy';
 
 // import About from './components/About';
 export const UserContext = createContext();
+
 function App() {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || null);
   return (
     <>
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <BrowserRouter>
           <Routes>-
-            <Route path="users/:userId">
+            {currentUser && (<Route path="users/:userId">
               <Route path="home" element={<Home />} />
               <Route path="volunteer" element={<Volunteer />} />
               <Route path="tovolunteer" element={<ToVolunteer />} />
               <Route path="needy" element={<Needy />} />
               <Route path="toneedy" element={<ToNeedy />} />
+            </Route>)
+            }
+            <Route path="/" >
+              <Route index element={<Login />} />
+              <Route path="*" element={<Login />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
             </Route>
-            <Route path="/" element={<Login />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

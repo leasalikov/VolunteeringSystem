@@ -12,25 +12,25 @@ export class LinkingService {
     async addLinking(usernameneedies, namecategory, usernamevolenteers) {
         console.log("idcategoryneediesgffghfghj")
 
-        const queryidcategoryvolunteers = linking("idcategoryvolunteers","categoryvolunteers","volunteers","idvolunteers","usernamevolenteers")
+        const queryidcategoryvolunteers = linking("idcategoryvolunteers", "categoryvolunteers", "volunteers", "idvolunteers", "usernamevolenteers")
         console.log(queryidcategoryvolunteers)
         const idcategoryvolunteers = await executeQuery(queryidcategoryvolunteers, [usernamevolenteers, namecategory]);
-        console.log("idcategoryvolunteers",idcategoryvolunteers)
+        console.log("idcategoryvolunteers", idcategoryvolunteers)
         console.log("idcategoryneediesgffghfghj")
-       
-        const queryidcategoryneedies = linking("idcategoryneedies","categoryneedies","needies","idneedies","usernameneedies")
+
+        const queryidcategoryneedies = linking("idcategoryneedies", "categoryneedies", "needies", "idneedies", "usernameneedies")
         console.log(queryidcategoryneedies)
         const idcategoryneedies = await executeQuery(queryidcategoryneedies, [usernameneedies, namecategory]);
-      
-       
+
+
         console.log("idcategoryneedies", idcategoryneedies)
         const volunteerService = new VolunteerService();
         const needyService = new NeedyService();
-// console.log("her",idcategoryvolunteers[0].idcategoryvolunteers)
-        const w= await volunteerService.delete(idcategoryvolunteers[0].idcategoryvolunteers)
+        // console.log("her",idcategoryvolunteers[0].idcategoryvolunteers)
+        const w = await volunteerService.delete(idcategoryvolunteers[0].idcategoryvolunteers)
         console.log("w", w)
-        const s= await needyService.delete(idcategoryneedies[0].idcategoryneedies)
-        console.log("idcategoryneedies",idcategoryneedies)
+        const s = await needyService.delete(idcategoryneedies[0].idcategoryneedies)
+        console.log("idcategoryneedies", idcategoryneedies)
         const query = addQuery("linking", ["idcategoryvolunteers", "idcategoryneedies"]);
         console.log(query)
         return await executeQuery(query, [idcategoryvolunteers[0].idcategoryvolunteers, idcategoryneedies[0].idcategoryneedies]);

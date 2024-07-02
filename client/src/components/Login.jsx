@@ -31,7 +31,7 @@ const Login = () => {
       //   alert("you tried too many times, you are blocked! try again later");
       else {
         setCurrentUser(response.user[0])
-        localStorage.setItem("currentUser", JSON.stringify(response.user));
+        localStorage.setItem("currentUser", JSON.stringify(response.user[0]));
         setIsLoggedInUser(true);
       }
       setUserName('');

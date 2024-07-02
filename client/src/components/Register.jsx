@@ -35,6 +35,7 @@ const Register = () => {
       // if (response.resualt == "userName duplicate") alert('userName exist')
       //   else {
           setCurrentUser({ "id": response.insertId, "name": name, "username": username, "email": email, "phone": phone });
+          localStorage.setItem("currentUser", JSON.stringify(response.user[0]));
           navigate(`/users/${response.insertId}/home`, { state: { user: "user" } })
         // }
       // fetch('http://localhost:8080/user', {

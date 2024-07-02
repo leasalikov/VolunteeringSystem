@@ -20,6 +20,7 @@ const Header = () => {
     const logOut = () => {
         navigate(`/login`)
         setCurrentUser(null);
+        localStorage.removeItem('currentUser')
     }
 
     return (
