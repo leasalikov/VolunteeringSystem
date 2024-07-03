@@ -3,45 +3,44 @@ import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { UserContext } from '../App';
 import Header from './Header';
-import { useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import { fetchGetReq } from '../fetchFile';
 
 function Volunteer() {
 
-    const [showEndMassage, setShowEndMassage] = useState(false)
-    const [showComponent, setShowComponent] = useState(true)
+    const [showEndMassage, setShowEndMassage] = useState(false);
+    const [showComponent, setShowComponent] = useState(true);
+    const [showEmptyArray, setShowEmptyArray] = useState();
 
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [data, setData] = useState();
-
     const location = useLocation();
-
-    // console.log("location.state.data.idcategoryArray  ", location.state.data.idcategoryArray)
-    // console.log("location.state.data  ", location.state.data)
-    // console.log("currentUser  ", currentUser)
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const idcategoryArray = JSON.stringify(location.state.data.idcategoryArray);// Example params
+                const idcategoryArray = JSON.stringify(location.state.data.idcategoryArray);
                 const usernamevolunteers = currentUser.username;
-                const params = { idcategoryArray, usernamevolunteers }
-                console.log("params", params)
+                // const params = { idcategoryArray, usernamevolunteers }
                 const response = await fetchGetReq("needyVolunteers", idcategoryArray, usernamevolunteers);
                 const fetchedData = await response;
-                console.log("fetchedData    ", fetchedData);
                 setData(fetchedData);
+                console.log("fetchedData ", fetchedData);
+                const allArraysEmpty = fetchedData.every(innerArray => innerArray.length === 0);
+                console.log("allArraysEmpty",allArraysEmpty)
+                if(allArraysEmpty){
+                    setShowEmptyArray(true);
+                    setShowComponent(false);
+                }
             } catch (error) {
                 console.error(error);
             }
         };
-        // console.log("data out  ", data)
         fetchData();
     }, []);
-
-    console.log("data out  ", data)
 
     async function linking(linkUser) {
         const paramsToSent = {
@@ -49,7 +48,6 @@ function Volunteer() {
             "namecategory": linkUser.namecategory, //id category - needy and volunteer 
             "usernamevolenteers": currentUser.username, //volunteer username
         };
-        console.log("paramsToSent: ", paramsToSent)
         const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
         if (result) {
             try {
@@ -62,25 +60,36 @@ function Volunteer() {
                 console.error(error);
             }
             if (data) {
-                setShowEndMassage(true)
-                setShowComponent(false)
+            setShowEndMassage(true)
+            setShowComponent(false)
             }
 
             const updatedData = Object.keys(data)
                 .map(key => data[key])
                 .map(item => item.filter(item => (item.idUser !== linkUser.idUser && item.namecategory === linkUser.namecategory)
                     || (item.idUser === linkUser.idUser && item.namecategory !== linkUser.namecategory) || item.namecategory !== linkUser.namecategory));
-            // .filter(item => (item.idUser == linkUser.idUser) && (item.namecategory == linkUser.namecategory));
             console.log("updatedDataaaaaaaaaaaaa ", updatedData)
             setData(updatedData);
         }
     }
 
-    async function addVolunting() {
+    function addVolunting() {
         setShowEndMassage(false);
         setShowComponent(true);
+        const allArraysEmpty = data.every(innerArray => innerArray.length === 0 );
+        console.log("allArraysEmpty  ", allArraysEmpty)
+        console.log("length  ", data[0].length, data[1].length, data[2].length)
+        if (allArraysEmpty) {
+            console.log('All arrays in the main array are empty.');
+            setShowEmptyArray(true);
+            setShowComponent(false);
+        } else {
+            console.log('Not all arrays in the main array are empty.');
+        }
     }
-
+    function toHome() {
+        navigate(`/users/${currentUser.idUser}/home`);
+    }
     return (
         <>
             <div>
@@ -90,6 +99,10 @@ function Volunteer() {
                         <h2>!תודה ותזכו למצוות<br />כעת ישלח אליך מייל עם פרטי המזמין ליצירת קשר</h2>
                         <button onClick={addVolunting}>להוספת התנדבות</button>
                     </div>}
+                {showEmptyArray && <div>
+                    <h2>כעת אין בקשות עזרה באתאם לקטגוריות שבחרת, תודה על הרצון הטוב! נסה מאוחר יותר</h2>
+                    <button onClick={toHome}>חזרה לתפריט הראשי</button>
+                </div>}
                 {showComponent && <div>
                     <h1>שלום {currentUser.username}!!</h1>
                     <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
