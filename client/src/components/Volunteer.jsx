@@ -69,7 +69,6 @@ function Volunteer() {
                 .map(key => data[key])
                 .map(item => item.filter(item => (item.namecategory === linkUser.namecategory)
                     && (item.idUser === linkUser.idUser && item.namecategory !== linkUser.namecategory) || (item.namecategory !== linkUser.namecategory)));
-            console.log("updatedDataaaaaaaaaaaaa ", updatedData)
             setData(updatedData);
         }
     }
@@ -124,8 +123,8 @@ function Volunteer() {
                                         <td><button onClick={() => linking(item)}>V</button></td>
                                         <td>{item.namecategory}</td>
                                         <td>{item.phone}</td>
-                                        {/* <td>{item.email}</td>
-                                        <td>{item.username}</td> */}
+                                        <td>{item.email}</td>
+                                        <td>{item.username}</td>
                                     </tr>
                                 ))
                             ))}

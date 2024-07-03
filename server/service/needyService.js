@@ -1,14 +1,15 @@
 
+import { CategoryService } from './categoryService.js';
 import { executeQuery } from './db.js';
 import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery6, getByQuery9 ,join} from './query.js'
 
 
 export class NeedyService {
 
-    async get(tableName) {
-        const query = getQuery(tableName);
-        return await executeQuery(query);
-    }
+    // async get(tableName) {
+    //     const query = getQuery(tableName);
+    //     return await executeQuery(query);
+    // }
 
     async getneedyBy(sortByObj) {
         var result;
@@ -25,31 +26,31 @@ export class NeedyService {
 
     
 
-    async getneedycategory(sortByObj, tablename, column) {
-        var result;
-        console.log("sortByObj: ", sortByObj);
-        // const keys = Object.keys(sortByObj);
-        const values = Object.values(sortByObj);
-        console.log("valeus", values)
-        const key = Object.keys(sortByObj);
-        const query = getByQuery9(tablename, key, column);        //check if user exist in the needys
-        console.log("query: ", query)
-        result = await executeQuery(query, values);
-        console.log("result getBy: ", result)
-        return result;
-    }
+    // async getneedycategory(sortByObj, tablename, column) {
+    //     var result;
+    //     console.log("sortByObj: ", sortByObj);
+    //     // const keys = Object.keys(sortByObj);
+    //     const values = Object.values(sortByObj);
+    //     console.log("valeus", values)
+    //     const key = Object.keys(sortByObj);
+    //     const query = getByQuery9(tablename, key, column);        //check if user exist in the needys
+    //     console.log("query: ", query)
+    //     result = await executeQuery(query, values);
+    //     console.log("result getBy: ", result)
+    //     return result;
+    // }
 
-    async getcategory(NeedyItem) {
-        let result, query;
-        const idcategoryArray = [];
-        const categoryArrayName = NeedyItem.namecategory;
-        for (let element = 0; element <= categoryArrayName.length - 1; element++) {
-            query = getByQuery("category", ["namecategory"]);
-            result = await executeQuery(query, [categoryArrayName[element]]);
-            idcategoryArray.push(result[0].idcategory)
-        };
-        return idcategoryArray;
-    }
+    // async getcategory(NeedyItem) {
+    //     let result, query;
+    //     const idcategoryArray = [];
+    //     const categoryArrayName = NeedyItem.namecategory;
+    //     for (let element = 0; element <= categoryArrayName.length - 1; element++) {
+    //         query = getByQuery("category", ["namecategory"]);
+    //         result = await executeQuery(query, [categoryArrayName[element]]);
+    //         idcategoryArray.push(result[0].idcategory)
+    //     };
+    //     return idcategoryArray;
+    // }
 
 
     async addneedycategory(idcategory, id) {
@@ -57,13 +58,6 @@ export class NeedyService {
         let objects, values, keys, query,  result = [];
         console.log("her")
         for (let element = 0; element <= idcategory.length - 1; element++) {
-
-            // query4 = getByQuery4("categoryneedies", "idcategory")
-            // const a = await executeQuery(query4, [idcategory[element]])
-            // console.log("a", a)
-            // idneedies.push(a[0].idneedies);
-            // console.log("a.idcategory " + a[0].idcategory)
-            // idcategoryarray.push(a[0].idcategory) return idneedies, idcategoryarray
             objects = { "idneedies": id, "idcategory": idcategory[element] }
             values = Object.values(objects)
             keys = Object.keys(objects)
@@ -76,8 +70,9 @@ export class NeedyService {
 
     async addneedy(needys, needyItem) {
 
-        //gets the categoryIdArray
-        const idcategoryArray = await this.getcategory(needyItem)
+        //gets the categoryIdArray  
+        const category=new CategoryService
+        const idcategoryArray = await category.getcategory(needyItem)
         delete needyItem.namecategory;
         
         // add the user to needy
@@ -100,49 +95,40 @@ export class NeedyService {
             id = result1[0].idneedies;
             console.log("id",id)
         }
-       
-     
         //add to needyCategory
-        const addneedycategory = await this.addneedycategory(idcategoryArray, id)
-    //    let idneedies = addneedycategory.idneedies
-    //     let idcategoryarray = addneedycategory.idcategoryarray
+       await this.addneedycategory(idcategoryArray, id)
 
         return { result1,idcategoryArray,needyItem }
     }
 
 
-    async update(tableName, needyItem, id) {
-        const keys = Object.keys(needyItem);
-        const values = Object.values(needyItem);
-        const query = updateQuery(tableName, keys);
-        values.push(id);
-        await executeQuery(query, values);
-    }
+    // async update(tableName, needyItem, id) {
+    //     const keys = Object.keys(needyItem);
+    //     const values = Object.values(needyItem);
+    //     const query = updateQuery(tableName, keys);
+    //     values.push(id);
+    //     await executeQuery(query, values);
+    // }
 
-    async delete( id) {
-        const query = deleteQuery("categoryneedies","idcategoryneedies");
-        await executeQuery(query, [id]);
-    }
+    // async delete( id) {
+    //     const query = deleteQuery("categoryneedies","idcategoryneedies");
+    //     await executeQuery(query, [id]);
+    // }
 
-    async limit(tableName, numOfLimit, startLimit) {
-        const query = limit(tableName);
-        return await executeQuery(query, [numOfLimit, startLimit]);
-    }
+    // async limit(tableName, numOfLimit, startLimit) {
+    //     const query = limit(tableName);
+    //     return await executeQuery(query, [numOfLimit, startLimit]);
+    // }
 
     async getNeedyByVolunteer(idcategoryArray,usernamevolunteers) {
 
         console.log("idcategogfrjtyryArray", idcategoryArray)
-        // idcategoryArray=idcategoryArray.idcategoryneedy
         let allNeedies = [], query
-        // const query2=join()
-        // console.log("query",query2)
         for (let element = 0; element <= idcategoryArray.length - 1; element++) {
             query = join("needies","usernameneedies","categoryneedies","idneedies",false,"1")
             const neediesmuch = await executeQuery(query, [idcategoryArray[element],usernamevolunteers])
             allNeedies.push(neediesmuch);
-            //  return idneedies, idcategoryarray
         }
-console.log("allNeedies",allNeedies)
 
         return allNeedies;
 

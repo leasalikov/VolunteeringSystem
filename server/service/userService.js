@@ -5,10 +5,10 @@ import { LoginService } from './loginService.js';
 
 export class UserService {
 
-    async get(tableName) {
-        const query = getQuery(tableName);
-        return await executeQuery(query);
-    }
+    // async get(tableName) {
+    //     const query = getQuery(tableName);
+    //     return await executeQuery(query);
+    // }
 
     async getBy(tableName, sortByObj) {
         console.log("sortByObj",sortByObj)
@@ -37,22 +37,22 @@ export class UserService {
         return{result,result2}
     }
 
-    async update(tableName, userItem, id) {
-        const keys = Object.keys(userItem);
-        const values = Object.values(userItem);
-        const query = updateQuery(tableName, keys);
-        values.push(id);
-        await executeQuery(query, values);
-    }
+    // async update(tableName, userItem, id) {
+    //     const keys = Object.keys(userItem);
+    //     const values = Object.values(userItem);
+    //     const query = updateQuery(tableName, keys);
+    //     values.push(id);
+    //     await executeQuery(query, values);
+    // }
 
-    async delete(tableName, id) {
-        const query = deleteQuery(tableName);
-        await executeQuery(query, [id]);
-    }
+    // async delete(tableName, id) {
+    //     const query = deleteQuery(tableName);
+    //     await executeQuery(query, [id]);
+    // }
 
-    async limit(tableName, numOfLimit, startLimit){
-        const query = limit(tableName);
-        return await executeQuery(query, [numOfLimit, startLimit]);
-    }
+    // async limit(tableName, numOfLimit, startLimit){
+    //     const query = limit(tableName);
+    //     return await executeQuery(query, [numOfLimit, startLimit]);
+    // }
 
 }

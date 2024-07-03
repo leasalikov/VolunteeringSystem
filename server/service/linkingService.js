@@ -28,7 +28,7 @@ export class LinkingService {
         const needyService = new NeedyService();
         // console.log("her",idcategoryvolunteers[0].idcategoryvolunteers)
         const w = await volunteerService.delete(idcategoryvolunteers[0].idcategoryvolunteers)
-        const s = await needyService.delete(idcategoryneedies[0].idcategoryneedies)
+        const s = await needyService.delete(idcategoryneedies[0].idcategoryneedies)////////////////////////////////////////////////////////////////////////
         console.log("idcategoryneedies", idcategoryneedies)
         const query = addQuery("linking", ["idcategoryvolunteers", "idcategoryneedies"]);
         console.log(query)
