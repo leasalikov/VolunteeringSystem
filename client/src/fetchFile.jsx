@@ -39,8 +39,6 @@ async function fetchGetReq(route) {
     try {
         const response = await fetch(`http://localhost:8080/${route}`, {
             method: 'GET',
-            // body: JSON.stringify(body),
-            //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
         const data = await response.json();

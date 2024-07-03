@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 // import { fetchGetReq } from '../fetchFile';
-import {fetchGetByReq} from '../fetchFile'
+import { fetchGetByReq } from '../fetchFile'
 
 function Volunteer() {
 
@@ -31,8 +31,8 @@ function Volunteer() {
                 setData(fetchedData);
                 console.log("fetchedData ", fetchedData);
                 const allArraysEmpty = fetchedData.every(innerArray => innerArray.length === 0);
-                console.log("allArraysEmpty",allArraysEmpty)
-                if(allArraysEmpty){
+                console.log("allArraysEmpty", allArraysEmpty)
+                if (allArraysEmpty) {
                     setShowEmptyArray(true);
                     setShowComponent(false);
                 }
@@ -61,14 +61,14 @@ function Volunteer() {
                 console.error(error);
             }
             if (data) {
-            setShowEndMassage(true)
-            setShowComponent(false)
+                setShowEndMassage(true)
+                setShowComponent(false)
             }
 
             const updatedData = Object.keys(data)
                 .map(key => data[key])
-                .map(item => item.filter(item => (item.idUser !== linkUser.idUser && item.namecategory === linkUser.namecategory)
-                    || (item.idUser === linkUser.idUser && item.namecategory !== linkUser.namecategory) || item.namecategory !== linkUser.namecategory));
+                .map(item => item.filter(item => (item.namecategory === linkUser.namecategory)
+                    && (item.idUser === linkUser.idUser && item.namecategory !== linkUser.namecategory) || (item.namecategory !== linkUser.namecategory)));
             console.log("updatedDataaaaaaaaaaaaa ", updatedData)
             setData(updatedData);
         }
@@ -77,7 +77,7 @@ function Volunteer() {
     function addVolunting() {
         setShowEndMassage(false);
         setShowComponent(true);
-        const allArraysEmpty = data.every(innerArray => innerArray.length === 0 );
+        const allArraysEmpty = data.every(innerArray => innerArray.length === 0);
         console.log("allArraysEmpty  ", allArraysEmpty)
         console.log("length  ", data[0].length, data[1].length, data[2].length)
         if (allArraysEmpty) {
@@ -124,8 +124,8 @@ function Volunteer() {
                                         <td><button onClick={() => linking(item)}>V</button></td>
                                         <td>{item.namecategory}</td>
                                         <td>{item.phone}</td>
-                                        <td>{item.email}</td>
-                                        <td>{item.username}</td>
+                                        {/* <td>{item.email}</td>
+                                        <td>{item.username}</td> */}
                                     </tr>
                                 ))
                             ))}
