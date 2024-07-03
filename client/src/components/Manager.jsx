@@ -87,8 +87,8 @@ const Manager = () => {
         <>
             <div >
                 <button className="HeaderButton" onClick={LinkVolunteering}>לפרטי ההתנדבויות המתואמים</button>
-                <button className="HeaderButton" onClick={allVolunteers}>מתנדבים</button>
-                <button className="HeaderButton" onClick={allNeedies}>מבקשי עזרה</button>
+                <button className="HeaderButton" onClick={allVolunteers}>מתנדבים שלא שובצו</button>
+                <button className="HeaderButton" onClick={allNeedies}>מבקשי עזרה שלא שובצו </button>
                 <button className="HeaderButton" onClick={logOut}>התנתקות</button>
             </div>
             {showLinkVolunteering &&
