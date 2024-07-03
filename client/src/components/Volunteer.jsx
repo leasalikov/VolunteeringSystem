@@ -6,7 +6,8 @@ import Header from './Header';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
-import { fetchGetReq } from '../fetchFile';
+// import { fetchGetReq } from '../fetchFile';
+import {fetchGetByReq} from '../fetchFile'
 
 function Volunteer() {
 
@@ -25,7 +26,7 @@ function Volunteer() {
                 const idcategoryArray = JSON.stringify(location.state.data.idcategoryArray);
                 const usernamevolunteers = currentUser.username;
                 // const params = { idcategoryArray, usernamevolunteers }
-                const response = await fetchGetReq("needyVolunteers", idcategoryArray, usernamevolunteers);
+                const response = await fetchGetByReq("needyVolunteers", idcategoryArray, usernamevolunteers);
                 const fetchedData = await response;
                 setData(fetchedData);
                 console.log("fetchedData ", fetchedData);
