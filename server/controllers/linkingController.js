@@ -8,11 +8,8 @@ export class LinkingController {
     async getlinking(req, res, next) {
         try {
             const linkingService = new LinkingService();
-      
             const resultItems = await linkingService.get();
-            if(resultItems.result==0)return res.status(401).json("wrong details");
-             console.log("contro"+resultItems.result)
-            return res.status(200).json(resultItems);
+            return res.status(200).json(resultItems.result);
         }
         catch (ex) {
             const err = {};
