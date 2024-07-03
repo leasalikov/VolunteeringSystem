@@ -24,16 +24,12 @@ const Manager = () => {
         setShowAllVolunteers(false);
         if (!showLinkVolunteering) {
             // get all linking
-            try {
                 const response = await fetchGetReq("linking");
                 const result = await response;
                 console.log("result    ", result);
-            }
-            catch{
-                console.log(error)
-            }
             setShowLinkVolunteering(!showLinkVolunteering)
             setData(result);
+            console.log("data  ", data)
         }
         else {
             setShowLinkVolunteering(!showLinkVolunteering)
@@ -82,60 +78,48 @@ const Manager = () => {
             {showLinkVolunteering &&
                 <table className='tableStyle'>
                     <thead>
-                        <tr>
-                            {/* <th>מייל מבקש עזרה</th> */}
-                            <th>שם מבקש עזרה</th>
-                            {/* <th>מייל מתנדב</th> */}
+                        <tr><th>שם מבקש עזרה</th>
                             <th>שם מתנדב</th>
-                            <th>קטגוריה</th>
-                        </tr>
+                            <th>קטגוריה</th> </tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
                                 <td>{item.username}</td>
                                 <td>{item.name}</td>
-                                <td>{item.namecategory}</td>
-                            </tr>
+                                <td>{item.namecategory}</td> </tr>
                         ))}
                     </tbody>
                 </table>}
             {showAllVolunteers &&
                 <table className='tableStyle'>
                     <thead>
-                        <tr>
-                            <th>שם מתנדב</th>
-                            <th>קטגוריה</th>
-                        </tr>
+                        <tr><th>שם מתנדב</th>
+                            <th>קטגוריה</th></tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
                                 <td>{item.name}</td>
-                                <td>{item.namecategory}</td>
-                            </tr>
+                                <td>{item.namecategory}</td></tr>
                         ))}
                     </tbody>
                 </table>}
             {showAllNeedies &&
                 <table className='tableStyle'>
                     <thead>
-                        <tr>
-                            <th>שם מבקש עזרה</th>
-                            <th>קטגוריה</th>
-                        </tr>
+                        <tr><th>שם מבקש עזרה</th>
+                            <th>קטגוריה</th></tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
-                                <td>{item.name}</td>
-                                <td>{item.namecategory}</td>
-                            </tr>
+                                 <td>{item.name}</td>
+                                <td>{item.namecategory}</td> </tr>
                         ))}
                     </tbody>
                 </table>}
         </>
-
     )
 };
 export default Manager;
