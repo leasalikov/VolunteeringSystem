@@ -95,5 +95,6 @@ export {
   getByQuery1,
   getUsersBy,
   linking,
-  getAllLinking
+  getAllLinking,
+  deleteQuery
 }

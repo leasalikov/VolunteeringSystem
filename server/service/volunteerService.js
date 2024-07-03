@@ -1,7 +1,7 @@
 
 import { CategoryService } from './categoryService.js';
 import { executeQuery } from './db.js';
-import { addQuery,  getByQuery1,getUsersBy } from './query.js'
+import { addQuery,deleteQuery,  getByQuery1,getUsersBy } from './query.js'
 
 
 export class VolunteerService {
