@@ -1,13 +1,13 @@
 
 import { CategoryService } from './categoryService.js';
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4, getByQuery7, getByQuery6, getByQuery9,join } from './query.js'
+import { addQuery,  getByQuery1,getUsersBy } from './query.js'
 
 
 export class VolunteerService {
 
     async get() {
-        const query = join("volunteers", "usernamevolenteers", "categoryvolunteers", "idvolunteers", true, "1")
+        const query = getUsersBy("volunteers", "usernamevolenteers", "categoryvolunteers", "idvolunteers", true, "1")
         return await executeQuery(query);
     }
 
@@ -17,7 +17,7 @@ export class VolunteerService {
         // const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
         const key = Object.keys(sortByObj);
-        const query = getByQuery6(tablename, key, column);        //check if user exist in the volunteers
+        const query = getByQuery1(tablename, key, column);        //check if user exist in the volunteers
         console.log("query: ", query)
         result = await executeQuery(query, values);
         console.log("result getBy: ", result)
@@ -38,17 +38,17 @@ export class VolunteerService {
     // }
 
 
-    // async getcategory(volunteerItem) {
-    //     let result, query;
-    //     const idcategoryArray = [];
-    //     const categoryArrayName = volunteerItem.namecategory;
-    //     for (let element = 0; element <= categoryArrayName.length - 1; element++) {
-    //         query = getByQuery("category", ["namecategory"]);
-    //         result = await executeQuery(query, [categoryArrayName[element]]);
-    //         idcategoryArray.push(result[0].idcategory)
-    //     };
-    //     return idcategoryArray;
-    // }
+    async getcategory(volunteerItem) {
+        let result, query;
+        const idcategoryArray = [];
+        const categoryArrayName = volunteerItem.namecategory;
+        for (let element = 0; element <= categoryArrayName.length - 1; element++) {
+            query = getByQuery("category", ["namecategory"]);
+            result = await executeQuery(query, [categoryArrayName[element]]);
+            idcategoryArray.push(result[0].idcategory)
+        };
+        return idcategoryArray;
+    }
 
     async addvolunteercategory(idcategory, id) {
         // add the user to categoryvolunteers
@@ -66,8 +66,9 @@ export class VolunteerService {
     async addVolunteer(volunteers, volunteerItem) {
 
         //gets the categoryIdArray
-        const category=new CategoryService
-        const idcategoryArray = await category.getcategory(volunteerItem)
+        // const category=new CategoryService
+        const idcategoryArray = await thus.getcategory(volunteerItem)
+      
         delete volunteerItem.namecategory;
         // add the user to volunteer
         const result = await this.getvolunteerBy(volunteerItem, "volunteers", "idvolunteers")//check if user exist
@@ -81,7 +82,7 @@ export class VolunteerService {
         }
         else {//else, gets the data of volunteer
             const values = Object.values(volunteerItem)
-            const query = getByQuery6("volunteers", "usernamevolenteers", "*");////
+            const query = getByQuery1("volunteers", "usernamevolenteers", "*");////
             console.log(query)
             result1 = await executeQuery(query, values);
             id = result1[0].idvolunteers;
@@ -103,10 +104,10 @@ export class VolunteerService {
     //     await executeQuery(query, values);
     // }
 
-    // async delete( id) {
-    //     const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
-    //     await executeQuery(query, [id]);
-    // }
+    async delete( id) {
+        const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
+        await executeQuery(query, [id]);
+    }
 
     // async limit(tableName, numOfLimit, startLimit) {
     //     const query = limit(tableName);

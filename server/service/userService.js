@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit } from './query.js'
+import {  getByQuery, addQuery } from './query.js'
 import { LoginService } from './loginService.js';
 
 export class UserService {
