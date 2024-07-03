@@ -36,19 +36,20 @@ const Manager = () => {
                 <table className='tableStyle'>
                     <thead>
                         <tr>
-                            <th>מייל מבקש עזרה</th>
+                            {/* <th>מייל מבקש עזרה</th> */}
                             <th>שם מבקש עזרה</th>
-                            <th>מייל מתנדב</th>
+                            {/* <th>מייל מתנדב</th> */}
                             <th>שם מתנדב</th>
+                            <th>קטגוריה</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {data && data.resultNeedy.map((item, i) => (
+                        {data && data.resultLinking.map((item, i) => (
                             <tr key={i}>
-                                <td>{item.email}</td>
                                 <td>{item.username}</td>
-                                {/* <td>{item.email}</td>
-                                <td>{item.username}</td> */}
+                                <td>{item.name}</td>
+                                <td>{item.namecategory}</td>
+                                {/* <td>{item.username}</td> */}
                             </tr>
                         ))}
                     </tbody>
