@@ -20,16 +20,18 @@ const Manager = () => {
     }
 
     async function LinkVolunteering() {
+        setShowAllNeedies(false);
+        setShowAllVolunteers(false);
         if (!showLinkVolunteering) {
             // get all linking
-            // try {
+            try {
                 const response = await fetchGetReq("linking");
-                const result = await response;            
+                const result = await response.resu;
                 console.log("result    ", result);
-            // }
-            // catch{
-            //     console.log(error)
-            // }
+            }
+            catch{
+                console.log(error)
+            }
             setShowLinkVolunteering(!showLinkVolunteering)
             setData(result);
         }
@@ -39,6 +41,8 @@ const Manager = () => {
     }
 
     async function allVolunteers() {
+        setShowAllNeedies(false);
+        setShowLinkVolunteering(false);
         if (!showAllVolunteers) {
             const response = await fetchGetReq("volunteer");
             const result = await response;
@@ -52,6 +56,8 @@ const Manager = () => {
         }
     }
     async function allNeedies() {
+        setShowAllVolunteers(false);
+        setShowLinkVolunteering(false);
         if (!showAllNeedies) {
             const response = await fetchGetReq("needy");
             const result = await response;
@@ -85,7 +91,7 @@ const Manager = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data && data.resultLinking.map((item, i) => (
+                        {data && data.map((item, i) => (
                             <tr key={i}>
                                 <td>{item.username}</td>
                                 <td>{item.name}</td>
@@ -99,12 +105,14 @@ const Manager = () => {
                     <thead>
                         <tr>
                             <th>שם מתנדב</th>
+                            <th>קטגוריה</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
                                 <td>{item.name}</td>
+                                <td>{item.namecategory}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -114,12 +122,14 @@ const Manager = () => {
                     <thead>
                         <tr>
                             <th>שם מבקש עזרה</th>
+                            <th>קטגוריה</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
                                 <td>{item.name}</td>
+                                <td>{item.namecategory}</td>
                             </tr>
                         ))}
                     </tbody>
