@@ -1,7 +1,8 @@
 
 function getQuery(tableName) {
-  return `SELECT * FROM system.${tableName} WHERE isActive = 1`;
+  return `SELECT * FROM system.${tableName} `;
 }
+
 function getByQuery2() {
   // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return `SELECT * FROM system.volunteers WHERE usernamevolenteers = ?`
@@ -49,7 +50,7 @@ ON system.${categorytable}.${idtable} = system.${table}.${idtable}
 join system.category
 on system.category.idcategory=system.${categorytable}.idcategory
 WHERE ${categorytable}.isactive = ${num} 
-    ${isManager ? '' : 'AND system.category.idcategory = ? AND needies.usernameneedies != ?'}`;
+    ${isManager ? '' : `AND system.category.idcategory = ? AND ${table}.${usernametable} != ?`}`;
 }
 function getAllLinking(){
   return `SELECT  uv.name,un.username,cn.namecategory

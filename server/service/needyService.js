@@ -7,7 +7,7 @@ import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQ
 export class NeedyService {
 
     async get() {
-        const query = getQuery("needies");
+        const query =  join("needies", "usernameneedies", "categoryneedies", "idneedies", true, "1");
         return await executeQuery(query);
     }
 

@@ -7,7 +7,7 @@ import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, 
 export class VolunteerService {
 
     async get() {
-        const query = getQuery("volunteers");
+        const query = join("volunteers", "usernamevolenteers", "categoryvolunteers", "idvolunteers", true, "1")
         return await executeQuery(query);
     }
 
