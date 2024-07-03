@@ -6,10 +6,10 @@ import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQ
 
 export class NeedyService {
 
-    // async get(tableName) {
-    //     const query = getQuery(tableName);
-    //     return await executeQuery(query);
-    // }
+    async get() {
+        const query = getQuery("needies");
+        return await executeQuery(query);
+    }
 
     async getneedyBy(sortByObj) {
         var result;

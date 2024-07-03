@@ -6,24 +6,21 @@ const tableName = "volunteers";
 
 export class VolunteerController {
 
-    // async getVolunteer(req, res, next) {
-    //     try {
-    //         const service = new VolunteerService();
-    //         const resultItems = await service.get(tableName);
-    //         resultItems.forEach((resultItem, i) => delete resultItem.isActive);
-    //         // const result = await volunteerService.addVolunteer(tableName, req.body);
-    //         // if (result == undefined)
-    //         //     return res.status(401).json({ resualt: "volunteerName duplicate" });
-    //         console.log("req: get all volunteers, res: successfull")
-    //         return res.status(200).json(resultItems);                
-    //     }
-    //     catch (ex) {
-    //         const err = {};
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err);
-    //     }
-    // }
+    async getVolunteer(req, res, next) {
+        try {
+            const service = new VolunteerService();
+            const resultItems = await service.get();
+            resultItems.forEach((resultItem, i) => delete resultItem.isActive);
+            console.log("req: get all volunteers, res: successfull")
+            return res.status(200).json(resultItems);                
+        }
+        catch (ex) {
+            const err = {};
+            err.statusCode = 500;
+            err.message = ex;
+            next(err);
+        }
+    }
 
     // async getVolunteerById(req, res, next) {
     //     try {

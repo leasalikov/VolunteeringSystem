@@ -6,21 +6,19 @@ const tableName = "needies";
 
 export class NeedyController {
 
-    // async getNeedy(req, res, next) {
-    //     try {
-    //         const service = new NeedyService();
-    //         const resultItems = await service.get(tableName);
-    //         resultItems.forEach((resultItem, i) => delete resultItem.isActive);
-    //         console.log("req: get all needies, res: successfull")
-    //         return res.status(200).json(resultItems);
-    //     }
-    //     catch (ex) {
-    //         const err = {};
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err);
-    //     }
-    // }
+    async getNeedy(req, res, next) {
+        try {
+            const service = new NeedyService();
+            const resultItems = await service.get();
+            return res.status(200).json(resultItems);
+        }
+        catch (ex) {
+            const err = {};
+            err.statusCode = 500;
+            err.message = ex;
+            next(err);
+        }
+    }
 
     async getNeedyByVolunteer(req, res, next) {
         try {
