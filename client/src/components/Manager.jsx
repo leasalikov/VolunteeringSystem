@@ -26,7 +26,7 @@ const Manager = () => {
             // get all linking
             try {
                 const response = await fetchGetReq("linking");
-                const result = await response.resu;
+                const result = await response;
                 console.log("result    ", result);
             }
             catch{
