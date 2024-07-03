@@ -110,12 +110,15 @@ const Manager = () => {
             {showAllVolunteers &&
                 <table className='tableStyle'>
                     <thead>
-                        <tr><th>שם מתנדב</th>
-                            <th>קטגוריה</th></tr>
+                        <tr><th>מייל מתנדב</th>
+                            <th>שם מתנדב</th>
+                            <th>קטגוריה</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
+                                <td>{item.email}</td>
                                 <td>{item.name}</td>
                                 <td>{item.namecategory}</td></tr>
                         ))}
@@ -124,12 +127,15 @@ const Manager = () => {
             {showAllNeedies &&
                 <table className='tableStyle'>
                     <thead>
-                        <tr><th>שם מבקש עזרה</th>
+                        <tr>
+                            <th>מייל מבקש עזרה</th>
+                            <th>שם מבקש עזרה</th>
                             <th>קטגוריה</th></tr>
                     </thead>
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
+                                <td>{item.email}</td>
                                 <td>{item.name}</td>
                                 <td>{item.namecategory}</td> </tr>
                         ))}
