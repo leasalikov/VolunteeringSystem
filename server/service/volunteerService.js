@@ -6,10 +6,10 @@ import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, 
 
 export class VolunteerService {
 
-    // async get(tableName) {
-    //     const query = getQuery(tableName);
-    //     return await executeQuery(query);
-    // }
+    async get() {
+        const query = getQuery("volunteers");
+        return await executeQuery(query);
+    }
 
     async getvolunteerBy(sortByObj, tablename, column) {
         var result;

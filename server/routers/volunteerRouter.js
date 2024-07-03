@@ -5,7 +5,7 @@ const volunteerRouter = express.Router();
 const volunteerController = new VolunteerController();
 
 // volunteerRouter.get("/:id", volunteerController.getVolunteerById);
-// volunteerRouter.get("/", volunteerController.getVolunteer);
+volunteerRouter.get("/", volunteerController.getVolunteer);
 
 volunteerRouter.post("/", volunteerController.addVolunteer);
 // volunteerRouter.post("/:id", volunteerController.addVolunteer);
