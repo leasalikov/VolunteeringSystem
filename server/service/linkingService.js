@@ -43,7 +43,8 @@ export class LinkingService {
         // const queryVolunteer = join("volunteers","usernamevolenteers","categoryvolunteers","idvolunteers",true,"0");
         // console.log("her",queryVolunteer)
         const queryalllinking=getAllLinking()
-        const result= await executeQuery(queryalllinking);
+        const result1= await executeQuery(queryalllinking);
+        const result=result1.result[0]
         return {result}
     }
 
