@@ -2,7 +2,7 @@
 import { executeQuery } from './db.js';
 // import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
 // import { UserService } from './userService.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getByQuery9, linking,join } from './query.js'
+import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5, getAllLinking, linking,join } from './query.js'
 
 import { CategoryService } from './categoryService.js';
 import { NeedyService } from './needyService.js';
@@ -37,13 +37,14 @@ export class LinkingService {
     }
 
     async get() {
-        const queryNeedy = join("needies","usernameneedies","categoryneedies","idneedies",true,"0");
-        console.log("her",queryNeedy)
-        const resultNeedy= await executeQuery(queryNeedy);
-        const queryVolunteer = join("volunteers","usernamevolenteers","categoryvolunteers","idvolunteers",true,"0");
-        console.log("her",queryVolunteer)
-        const resultvolunteer= await executeQuery(queryVolunteer);
-        return {resultNeedy,resultvolunteer}
+        // const queryNeedy = join("needies","usernameneedies","categoryneedies","idneedies",true,"0");
+        // console.log("her",queryNeedy)
+        // const resultNeedy= await executeQuery(queryNeedy);
+        // const queryVolunteer = join("volunteers","usernamevolenteers","categoryvolunteers","idvolunteers",true,"0");
+        // console.log("her",queryVolunteer)
+        const queryalllinking=getAllLinking()
+        const resultvolunteer= await executeQuery(queryalllinking);
+        return {resultvolunteer}
     }
 
 
