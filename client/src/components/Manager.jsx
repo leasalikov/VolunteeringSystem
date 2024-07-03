@@ -13,34 +13,56 @@ const Manager = () => {
     const [data, setData] = useState();
 
     const navigate = useNavigate();
-
-    async function LinkVolunteering() {
-        // get all linking
-        const response = await fetchGetReq("linking");
-        const result = await response;
-        console.log("result    ", result);
-        setShowLinkVolunteering(!showLinkVolunteering)
-        setData(result);
-    }
-
     const logOut = () => {
         navigate(`/login`)
         setCurrentUser(null);
         localStorage.removeItem('currentUser')
     }
+
+    async function LinkVolunteering() {
+        if (!showLinkVolunteering) {
+            // get all linking
+            // try {
+                const response = await fetchGetReq("linking");
+                const result = await response;            
+                console.log("result    ", result);
+            // }
+            // catch{
+            //     console.log(error)
+            // }
+            setShowLinkVolunteering(!showLinkVolunteering)
+            setData(result);
+        }
+        else {
+            setShowLinkVolunteering(!showLinkVolunteering)
+        }
+    }
+
     async function allVolunteers() {
-        const response = await fetchGetReq("volunteer");
-        const result = await response;
-        console.log("result    ", result);
-        setShowAllVolunteers(!showAllVolunteers)
-        setData(result);
+        if (!showAllVolunteers) {
+            const response = await fetchGetReq("volunteer");
+            const result = await response;
+            console.log("result    ", result);
+            setShowAllVolunteers(!showAllVolunteers)
+            setData(result);
+            console.log("data  ", data)
+        }
+        else {
+            setShowAllVolunteers(!showAllVolunteers)
+        }
     }
     async function allNeedies() {
-        const response = await fetchGetReq("needy");
-        const result = await response;
-        console.log("result    ", result);
-        setShowAllNeedies(!showAllNeedies)
-        setData(result);
+        if (!showAllNeedies) {
+            const response = await fetchGetReq("needy");
+            const result = await response;
+            console.log("result    ", result);
+            setShowAllNeedies(!showAllNeedies)
+            setData(result);
+            console.log("data  ", data)
+        }
+        else {
+            setShowAllNeedies(!showAllNeedies)
+        }
     }
 
     return (
@@ -68,48 +90,36 @@ const Manager = () => {
                                 <td>{item.username}</td>
                                 <td>{item.name}</td>
                                 <td>{item.namecategory}</td>
-                                {/* <td>{item.username}</td> */}
                             </tr>
                         ))}
                     </tbody>
                 </table>}
-                {showAllVolunteers &&
+            {showAllVolunteers &&
                 <table className='tableStyle'>
                     <thead>
                         <tr>
                             <th>שם מתנדב</th>
-                            {/* <th>קטגוריה</th> */}
                         </tr>
                     </thead>
                     <tbody>
-                        {data && data.resultLinking.map((item, i) => (
+                        {data && data.map((item, i) => (
                             <tr key={i}>
-                                {/* <td>{item.username}</td> */}
                                 <td>{item.name}</td>
-                                {/* <td>{item.namecategory}</td> */}
-                                {/* <td>{item.username}</td> */}
                             </tr>
                         ))}
                     </tbody>
                 </table>}
-                {showLinkVolunteering &&
+            {showAllNeedies &&
                 <table className='tableStyle'>
                     <thead>
                         <tr>
-                            {/* <th>מייל מבקש עזרה</th> */}
                             <th>שם מבקש עזרה</th>
-                            {/* <th>מייל מתנדב</th> */}
-                            {/* <th>שם מתנדב</th> */}
-                            {/* <th>קטגוריה</th> */}
                         </tr>
                     </thead>
                     <tbody>
-                        {data && data.resultLinking.map((item, i) => (
+                        {data && data.map((item, i) => (
                             <tr key={i}>
-                                {/* <td>{item.username}</td> */}
                                 <td>{item.name}</td>
-                                {/* <td>{item.namecategory}</td> */}
-                                {/* <td>{item.username}</td> */}
                             </tr>
                         ))}
                     </tbody>
