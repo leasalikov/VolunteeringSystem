@@ -48,4 +48,6 @@ async function fetchGetReq(route) {
         console.log(err)
     }
 }
+
+
 export { fetchPostReq, fetchGetReq, fetchGetByReq };

@@ -1,18 +1,17 @@
-import express from "express";
-import { EmailController } from "../controllers/emailController.js";
+const express = require('express');
+const { sendEmail } = require('../services/EmailService');
+const router = express.Router();
 
-const emailRouter = express.Router();
-const emailController = new EmailController();
 
-emailRouter.get("/:id", emailController.getEmailById);
-emailRouter.get("/", emailController.getEmail);
+router.post('/', async (req, res) => {
+    try {
+        const data1 = req.body;
+        const data = await sendEmail(data1);
+        res.send(data);
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+})
 
-emailRouter.post("/", emailController.addEmail);
-// emailRouter.post("/:id", emailController.addEmail);
-emailRouter.delete("/:id", emailController.deleteEmail);
-emailRouter.put("/:id", emailController.updateEmail);
-
-export {
-    emailRouter
-}
-
+module.exports = router;
