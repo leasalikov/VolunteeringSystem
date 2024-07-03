@@ -40,17 +40,17 @@ export class NeedyService {
     //     return result;
     // }
 
-    // async getcategory(NeedyItem) {
-    //     let result, query;
-    //     const idcategoryArray = [];
-    //     const categoryArrayName = NeedyItem.namecategory;
-    //     for (let element = 0; element <= categoryArrayName.length - 1; element++) {
-    //         query = getByQuery("category", ["namecategory"]);
-    //         result = await executeQuery(query, [categoryArrayName[element]]);
-    //         idcategoryArray.push(result[0].idcategory)
-    //     };
-    //     return idcategoryArray;
-    // }
+    async getcategory(NeedyItem) {
+        let result, query;
+        const idcategoryArray = [];
+        const categoryArrayName = NeedyItem.namecategory;
+        for (let element = 0; element <= categoryArrayName.length - 1; element++) {
+            query = getByQuery("category", ["namecategory"]);
+            result = await executeQuery(query, [categoryArrayName[element]]);
+            idcategoryArray.push(result[0].idcategory)
+        };
+        return idcategoryArray;
+    }
 
 
     async addneedycategory(idcategory, id) {
@@ -71,8 +71,8 @@ export class NeedyService {
     async addneedy(needys, needyItem) {
 
         //gets the categoryIdArray  
-        const category=new CategoryService
-        const idcategoryArray = await category.getcategory(needyItem)
+        // const category=new CategoryService
+        const idcategoryArray = await this.getcategory(needyItem)
         delete needyItem.namecategory;
         
         // add the user to needy
@@ -110,10 +110,10 @@ export class NeedyService {
     //     await executeQuery(query, values);
     // }
 
-    // async delete( id) {
-    //     const query = deleteQuery("categoryneedies","idcategoryneedies");
-    //     await executeQuery(query, [id]);
-    // }
+    async delete( id) {
+        const query = deleteQuery("categoryneedies","idcategoryneedies");
+        await executeQuery(query, [id]);
+    }
 
     // async limit(tableName, numOfLimit, startLimit) {
     //     const query = limit(tableName);

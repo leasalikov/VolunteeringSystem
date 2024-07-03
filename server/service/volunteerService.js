@@ -38,17 +38,17 @@ export class VolunteerService {
     // }
 
 
-    // async getcategory(volunteerItem) {
-    //     let result, query;
-    //     const idcategoryArray = [];
-    //     const categoryArrayName = volunteerItem.namecategory;
-    //     for (let element = 0; element <= categoryArrayName.length - 1; element++) {
-    //         query = getByQuery("category", ["namecategory"]);
-    //         result = await executeQuery(query, [categoryArrayName[element]]);
-    //         idcategoryArray.push(result[0].idcategory)
-    //     };
-    //     return idcategoryArray;
-    // }
+    async getcategory(volunteerItem) {
+        let result, query;
+        const idcategoryArray = [];
+        const categoryArrayName = volunteerItem.namecategory;
+        for (let element = 0; element <= categoryArrayName.length - 1; element++) {
+            query = getByQuery("category", ["namecategory"]);
+            result = await executeQuery(query, [categoryArrayName[element]]);
+            idcategoryArray.push(result[0].idcategory)
+        };
+        return idcategoryArray;
+    }
 
     async addvolunteercategory(idcategory, id) {
         // add the user to categoryvolunteers
@@ -66,8 +66,9 @@ export class VolunteerService {
     async addVolunteer(volunteers, volunteerItem) {
 
         //gets the categoryIdArray
-        const category=new CategoryService
-        const idcategoryArray = await category.getcategory(volunteerItem)
+        // const category=new CategoryService
+        const idcategoryArray = await thus.getcategory(volunteerItem)
+      
         delete volunteerItem.namecategory;
         // add the user to volunteer
         const result = await this.getvolunteerBy(volunteerItem, "volunteers", "idvolunteers")//check if user exist
@@ -103,10 +104,10 @@ export class VolunteerService {
     //     await executeQuery(query, values);
     // }
 
-    // async delete( id) {
-    //     const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
-    //     await executeQuery(query, [id]);
-    // }
+    async delete( id) {
+        const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
+        await executeQuery(query, [id]);
+    }
 
     // async limit(tableName, numOfLimit, startLimit) {
     //     const query = limit(tableName);
