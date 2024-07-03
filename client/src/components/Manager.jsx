@@ -16,7 +16,7 @@ const Manager = () => {
         const response = await fetchGetReq("linking");
         const result = await response;
         console.log("result    ", result);
-        setShowLinkVolunteering(true)
+        setShowLinkVolunteering(!showLinkVolunteering)
         setData(result);
     }
 
