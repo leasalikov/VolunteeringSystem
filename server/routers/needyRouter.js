@@ -8,8 +8,8 @@ needyRouter.get("/:array/:name", needyController.getNeedyByVolunteer);
 // needyRouter.get("/name", needyController.get);
 needyRouter.post("/", needyController.addNeedy);
 // needyRouter.post("/:id", needyController.addVolunteer);
-needyRouter.delete("/:id", needyController.deleteNeedy);
-needyRouter.put("/:id", needyController.updateNeedy);
+// needyRouter.delete("/:id", needyController.deleteNeedy);
+// needyRouter.put("/:id", needyController.updateNeedy);
 
 export {
     needyRouter
