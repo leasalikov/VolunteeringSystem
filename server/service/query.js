@@ -51,6 +51,28 @@ on system.category.idcategory=system.${categorytable}.idcategory
 WHERE ${categorytable}.isactive = ${num} 
     ${isManager ? '' : 'AND system.category.idcategory = ? AND needies.usernameneedies != ?'}`;
 }
+function getAllLinking(){
+  return `SELECT  uv.name,un.username,cn.namecategory
+FROM system.users as un
+ JOIN system.needies
+    on system.needies.usernameneedies = un.username
+ JOIN system.categoryneedies
+ON system.categoryneedies.idneedies = system.needies.idneedies
+join system.category as cn
+on cn.idcategory=system.categoryneedies.idcategory
+join system.linking as ln
+on ln.idcategoryneedies=system.categoryneedies.idcategoryneedies
+join system.categoryvolunteers
+on ln.idcategoryvolunteers=system.categoryvolunteers.idcategoryvolunteers and system.categoryvolunteers.idcategory = cn.idcategory
+join volunteers
+on volunteers.idvolunteers=categoryvolunteers.idvolunteers
+join users as uv
+on uv.username= system.volunteers.usernamevolenteers 
+join  linking as lv
+on lv.idcategoryvolunteers=system.categoryvolunteers.idcategoryvolunteers
+where ln.id=lv.id`
+}
+
 
 function getByQuery(tableName, keys) {
   return `SELECT * FROM system.${tableName} WHERE isActive = 1 ${keys.map((key) => { return ' AND ' + key + ' = ?' }).toString().replace(',', ' ')}`;
@@ -86,5 +108,6 @@ export {
   , getByQuery7,
   getByQuery9,
   join,
-  linking
+  linking,
+  getAllLinking
 }
