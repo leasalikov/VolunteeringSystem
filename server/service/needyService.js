@@ -1,13 +1,13 @@
 
 import { CategoryService } from './categoryService.js';
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery6, getByQuery9 ,join} from './query.js'
+import {  addQuery,  getByQuery1 ,getUsersBy} from './query.js'
 
 
 export class NeedyService {
 
     async get() {
-        const query =  join("needies", "usernameneedies", "categoryneedies", "idneedies", true, "1");
+        const query =  getUsersBy("needies", "usernameneedies", "categoryneedies", "idneedies", true, "1");
         return await executeQuery(query);
     }
 
@@ -17,7 +17,7 @@ export class NeedyService {
         console.log("tableName")
         // const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
-        const query = getByQuery6("needies","usernameneedies","idneedies");   //check if user exist in the needies
+        const query = getByQuery1("needies","usernameneedies","idneedies");   //check if user exist in the needies
         console.log("query: ", query)
         result = await executeQuery(query, values);
         console.log("result getBy: ", result)
@@ -89,7 +89,7 @@ export class NeedyService {
         }
         else {//else, gets the data of needy
             const values = Object.values(needyItem)
-            const query = getByQuery6("needies", "usernameneedies", "*");////
+            const query = getByQuery1("needies", "usernameneedies", "*");////
             console.log("query111",query)
             result1 = await executeQuery(query, values);
             id = result1[0].idneedies;
@@ -125,7 +125,7 @@ export class NeedyService {
         console.log("idcategogfrjtyryArray", idcategoryArray)
         let allNeedies = [], query
         for (let element = 0; element <= idcategoryArray.length - 1; element++) {
-            query = join("needies","usernameneedies","categoryneedies","idneedies",false,"1")
+            query = getUsersBy("needies","usernameneedies","categoryneedies","idneedies",false,"1")
             const neediesmuch = await executeQuery(query, [idcategoryArray[element],usernamevolunteers])
             allNeedies.push(neediesmuch);
         }

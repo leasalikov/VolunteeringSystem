@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit, getByQuery3, getByQuery5,getByQuery6} from './query.js'
+import {  getByQuery} from './query.js'
 
 
 export class CategoryService {
@@ -17,7 +17,7 @@ export class CategoryService {
     //     // const keys = Object.keys(sortByObj);
     //     const values = Object.values(sortByObj);
     //     const key = Object.keys(sortByObj);
-    //     const query = getByQuery6("category",key,column);   //check if user exist in the needies
+    //     const query = getByQuery1("category",key,column);   //check if user exist in the needies
     //     console.log("query: ", query)
     //     result = await executeQuery(query, values);   
     //     console.log("result getBy: ", result)

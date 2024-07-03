@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4, getByQuery7, getByQuery6, getByQuery9 } from './query.js'
+// import {  } from './query.js'
 
 
 export class EmailService {
