@@ -9,6 +9,7 @@ const Manager = () => {
     const [showLinkVolunteering, setShowLinkVolunteering] = useState(false);
     const [showAllVolunteers, setShowAllVolunteers] = useState(false);
     const [showAllNeedies, setShowAllNeedies] = useState(false);
+    const [showEmptyArray, setShowEmptyArray] = useState();
 
     const [data, setData] = useState();
 
@@ -20,16 +21,21 @@ const Manager = () => {
     }
 
     async function LinkVolunteering() {
+        setShowEmptyArray(false);
         setShowAllNeedies(false);
         setShowAllVolunteers(false);
         if (!showLinkVolunteering) {
             // get all linking
-                const response = await fetchGetReq("linking");
-                const result = await response;
-                console.log("result    ", result);
+            const response = await fetchGetReq("linking");
+            const result = await response;
+            console.log("result    ", result);
             setShowLinkVolunteering(!showLinkVolunteering)
             setData(result);
             console.log("data  ", data)
+            if (result.length === 0) {
+                setShowEmptyArray(true);
+                setShowLinkVolunteering(false)
+            }
         }
         else {
             setShowLinkVolunteering(!showLinkVolunteering)
@@ -37,6 +43,7 @@ const Manager = () => {
     }
 
     async function allVolunteers() {
+        setShowEmptyArray(false);
         setShowAllNeedies(false);
         setShowLinkVolunteering(false);
         if (!showAllVolunteers) {
@@ -46,12 +53,17 @@ const Manager = () => {
             setShowAllVolunteers(!showAllVolunteers)
             setData(result);
             console.log("data  ", data)
+            if (result.length === 0) {
+                setShowEmptyArray(true);
+                setShowAllVolunteers(false)
+            }
         }
         else {
             setShowAllVolunteers(!showAllVolunteers)
         }
     }
     async function allNeedies() {
+        setShowEmptyArray(false);
         setShowAllVolunteers(false);
         setShowLinkVolunteering(false);
         if (!showAllNeedies) {
@@ -61,6 +73,10 @@ const Manager = () => {
             setShowAllNeedies(!showAllNeedies)
             setData(result);
             console.log("data  ", data)
+            if (result.length === 0) {
+                setShowEmptyArray(true);
+                setShowAllNeedies(false)
+            }
         }
         else {
             setShowAllNeedies(!showAllNeedies)
@@ -114,11 +130,15 @@ const Manager = () => {
                     <tbody>
                         {data && data.map((item, i) => (
                             <tr key={i}>
-                                 <td>{item.name}</td>
+                                <td>{item.name}</td>
                                 <td>{item.namecategory}</td> </tr>
                         ))}
                     </tbody>
                 </table>}
+            {showEmptyArray &&
+                <>
+                    <h2>המאגר ריק</h2>
+                </>}
         </>
     )
 };
