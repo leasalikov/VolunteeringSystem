@@ -7,8 +7,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 // import { fetchGetReq } from '../fetchFile';
-import { fetchGetByReq } from '../fetchFile'
-import { PostEmail } from '../EmailFunction';
+import { fetchGetByReq } from '../fetchFile';
+// import { PostEmail } from '../EmailFunction';
 
 function Volunteer() {
 
@@ -62,11 +62,10 @@ function Volunteer() {
                 setShowEndMassage(true)
                 setShowComponent(false)
             }
-            //req post Email{
-            const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
-            const emailData = await response;
-            console.log("emailData ", emailData);
-            //}
+            //req post Email
+            // const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
+            // const emailData = await response;
+            // console.log("emailData ", emailData);
 
             const updatedData = Object.keys(data)
                 .map(key => data[key])
@@ -99,11 +98,11 @@ function Volunteer() {
                 <Header />
                 {showEndMassage &&
                     <div>
-                        <h2>!תודה ותזכו למצוות<br />כעת ישלח אליך מייל עם פרטי המזמין ליצירת קשר</h2>
+                        <h2>!תודה ותזכו למצוות<br />כעת נשלח לך מייל עם פרטי המזמין ליצירת קשר</h2>
                         <button onClick={addVolunting}>להוספת התנדבות</button>
                     </div>}
                 {showEmptyArray && <div>
-                    <h2>כעת אין בקשות עזרה באתאם לקטגוריות שבחרת, תודה על הרצון הטוב! נסה מאוחר יותר</h2>
+                    <h2>כעת אין בקשות עזרה בהתאם לקטגוריות שבחרתם, תודה על הרצון הטוב! נסו מאוחר יותר</h2>
                     <button onClick={toHome}>חזרה לתפריט הראשי</button>
                 </div>}
                 {showComponent && <div>
