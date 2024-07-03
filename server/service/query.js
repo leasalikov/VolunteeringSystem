@@ -22,7 +22,7 @@ function linking(idcategorycolumn, categorytable, table, idcolumn, usernamecolum
       on system.${table}.${idcolumn} = system.${categorytable}.${idcolumn} 
        JOIN system.category 
    ON system.category.idcategory = system.${categorytable}.idcategory
-      where system.${table}.${usernamecolumn}=? and system.category.namecategory=? `
+   where system.${table}.${usernamecolumn}=? and system.category.namecategory=? `
 }
 
 function getByQuery3(tablename, key) {
@@ -39,16 +39,17 @@ function getByQuery4(tablename, keys) {
   // return `SELECT * FROM system.${tableName} WHERE ${keys.map((key) => { return  key + ' = ?' +' AND '  }).toString().replace(',', ' ')}`;     
   return `SELECT DISTINCT idneedies,idcategory,idcategoryneedies FROM system.${tablename} WHERE ${keys} = ? and isActive = 1`
 }
-function join() {
+function join(table, usernametable, categorytable, idtable, isManager, num) {
   return `  SELECT * 
 FROM system.users 
- JOIN system.needies 
-    on system.needies.usernameneedies = system.users.username 
- JOIN system.categoryneedies 
-ON system.categoryneedies.idneedies = system.needies.idneedies
+ JOIN system.${table} 
+    on system.${table}.${usernametable} = system.users.username 
+ JOIN system.${categorytable} 
+ON system.${categorytable}.${idtable} = system.${table}.${idtable}
 join system.category
-on system.category.idcategory=system.categoryneedies.idcategory
-where system.category.idcategory=? and categoryneedies.isactive=1 and needies.usernameneedies!=?`
+on system.category.idcategory=system.${categorytable}.idcategory
+WHERE ${categorytable}.isactive = ${num} 
+    ${isManager ? '' : 'AND system.category.idcategory = ? AND needies.usernameneedies != ?'}`;
 }
 
 function getByQuery(tableName, keys) {

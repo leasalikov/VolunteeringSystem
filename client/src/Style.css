@@ -12,7 +12,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
 
+    }
+    .type {
+        flex: 0 0 50%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        display: inline-grid;
+    }
+  }
 @keyframes backgroundAnimation {
     0% {
         background-image: url('Photos/img1.png');

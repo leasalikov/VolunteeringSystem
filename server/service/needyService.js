@@ -111,74 +111,6 @@ export class NeedyService {
     }
 
 
-    // async addNeedy(needies, needyItem) {
-    //     const idcategory = [];
-    //     let result3;
-    //     let query3;
-    //     //gets the NeedyIdArray
-    //     const categoryArray = needyItem.namecategory;
-    //     console.log("ca===========  ", categoryArray)
-    //     // if(categoryArray.length == 0){
-    //     //     alert("לא בוצעה בחירה, נא לבחור פריט מהרשימה")
-    //     // }
-    //     for (let element = 0; element <= categoryArray.length - 1; element++) {
-    //         query3 = getByQuery("category", ["namecategory"]);
-    //         result3 = await executeQuery(query3, [categoryArray[element]]);
-    //         idcategory.push(result3[0].idcategory)
-    //         console.log("idcategory ", idcategory[element])
-    //     };
-    //     // console.log("needyItem ", needyItem);
-    //     delete needyItem.namecategory;
-    //     console.log("needyItem ", needyItem)
-
-    //     // add the user to needy
-    //     const result = await this.getBy(needyItem)
-    //     console.log("resultfeht", result)
-    //     var result1;
-    //     // console.log(result[0]["COUNT(*)"])
-    //     var id;
-    //     if (result.length == 0) {
-    //         console.log("count = 0")
-    //         const values = Object.values(needyItem)
-    //         const keys = Object.keys(needyItem);
-    //         const query = addQuery(needies, keys);
-    //         result1 = await executeQuery(query, values);
-    //         id = result1.insertId;
-    //     }
-    //     else {
-    //         const values = Object.values(needyItem)
-    //         const query = getByQuery5();
-    //         result1 = await executeQuery(query, values);
-    //         console.log("result1: ", result1)
-    //         id = result1[0].idneedies;
-    //         // console.log()
-    //     }
-
-    //     console.log("idcat " + idcategory);
-    //     console.log("resultid:", id)
-    //     // add the user to categoryneedies
-    //     let objects;
-    //     let values2;
-    //     let keys2;
-    //     let query2;
-    //     let result2 = [];
-    //     console.log("adddddddddddddddddd")
-    //     for (let element = 0; element <= categoryArray.length - 1; element++) {
-    //         objects = { "idneedies": id, "idcategory": idcategory[element] }
-    //         values2 = Object.values(objects)
-    //         console.log("v2" + values2)
-    //         keys2 = Object.keys(objects)
-    //         console.log("v2 ", values2)////
-    //         console.log("k2 ", keys2)
-    //         query2 = addQuery("categoryneedies", keys2);
-    //         console.log("query2 ", query2)
-    //         result2.push(await executeQuery(query2, values2));
-    //         console.log("result2" + result2[element])
-    //     }
-    //     delete needyItem.categoryArray;
-    //     return { result1, result2 }
-    // }
-
     async update(tableName, needyItem, id) {
         const keys = Object.keys(needyItem);
         const values = Object.values(needyItem);
@@ -205,7 +137,7 @@ export class NeedyService {
         // const query2=join()
         // console.log("query",query2)
         for (let element = 0; element <= idcategoryArray.length - 1; element++) {
-            query = join()
+            query = join("needies","usernameneedies","categoryneedies","idneedies",false,"1")
             const neediesmuch = await executeQuery(query, [idcategoryArray[element],usernamevolunteers])
             allNeedies.push(neediesmuch);
             //  return idneedies, idcategoryarray
