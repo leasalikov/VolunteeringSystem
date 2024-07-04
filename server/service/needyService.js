@@ -110,7 +110,7 @@ export class NeedyService {
     //     await executeQuery(query, values);
     // }
 
-    async delete( id) {
+    async deleteNeedy( id) {
         const query = deleteQuery("categoryneedies","idcategoryneedies");
         await executeQuery(query, [id]);
     }

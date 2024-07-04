@@ -9,7 +9,7 @@ volunteerRouter.get("/", volunteerController.getVolunteer);
 
 volunteerRouter.post("/", volunteerController.addVolunteer);
 // volunteerRouter.post("/:id", volunteerController.addVolunteer);
-// volunteerRouter.delete("/:id", volunteerController.deleteVolunteer);
+volunteerRouter.delete("/:id", volunteerController.deleteVolunteer);
 // volunteerRouter.put("/:id", volunteerController.updateVolunteer);
 
 export {

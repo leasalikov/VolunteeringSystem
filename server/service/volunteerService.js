@@ -107,7 +107,7 @@ export class VolunteerService {
     //     await executeQuery(query, values);
     // }
 
-    async delete( id) {
+    async deleteVolunteer( id) {
         const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
         await executeQuery(query, [id]);
     }
