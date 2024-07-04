@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { UserContext } from '../App';
 import Header from './Header';
+import Buttom from './Buttom';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
-// import { fetchGetReq } from '../fetchFile';
+import { fetchDeleteReq } from '../fetchFile';
 import { fetchGetByReq } from '../fetchFile';
 // import { PostEmail } from '../EmailFunction';
 
@@ -54,6 +56,25 @@ function Volunteer() {
                 const response = await fetchPostReq("linking", paramsToSent);
                 const linkingData = await response;
                 console.log("linkingdata  ", linkingData)
+                //result, idcategoryV, idcategoryN
+            }
+            catch (error) {
+                console.error(error);
+            }
+            try {
+                //delete in volunteer
+                const response = await fetchDeleteReq("volunteer", linkingData.idcategoryvolunteers);
+                const data1 = await response;
+                console.log("data1  ", data1)
+            }
+            catch (error) {
+                console.error(error);
+            }
+            try {
+                //delete in needy
+                const response = await fetchDeleteReq("needy", linkingData.idcategoryneedies);
+                const data1 = await response;
+                console.log("data1  ", data1)
             }
             catch (error) {
                 console.error(error);
@@ -96,6 +117,7 @@ function Volunteer() {
         <>
             <div>
                 <Header />
+                <Buttom />
                 {showEndMassage &&
                     <div>
                         <h2>!תודה ותזכו למצוות<br />כעת נשלח לך מייל עם פרטי המזמין ליצירת קשר</h2>
@@ -119,7 +141,7 @@ function Volunteer() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data && data.map((item) => (
+                            {data && data.result.map((item) => (
                                 item.map((item, i) => (
                                     <tr key={i}>
                                         <td><button onClick={() => linking(item)}>V</button></td>

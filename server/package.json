@@ -16,7 +16,7 @@
     "mysql2": "^3.9.9",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.2",
-    "primereact": "^10.6.6",
+    "primereact": "^10.7.0",
     "require": "^2.4.20",
     "server": "^1.0.39"
   },

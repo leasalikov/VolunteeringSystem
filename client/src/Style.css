@@ -25,11 +25,11 @@
   }
 @keyframes backgroundAnimation {
     0% {
-        background-image: url('Photos/img1.png');
+        background-image: url('Photos/sky.jpg');
     }
 
     100% {
-        background-image: url('Photos/img3.jpg');
+        background-image: url('Photos/sky.jpg');
     }
 
     /* 100% {
@@ -47,9 +47,9 @@ body {
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgb(225, 248, 226);
-    background-image: url('Photos/img3.jpg');
-    /* animation: backgroundAnimation 5s infinite; */
+    background-color: rgb(211, 244, 250);
+    background-image: url('Photos/sky.jpg');
+    animation: backgroundAnimation 5s infinite;
     margin: 0;
     place-items: center;
     min-width: 320px;
@@ -75,7 +75,7 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: rgb(107, 144, 107);
+    background-color: rgb(3, 175, 206);
     cursor: pointer;
     transition: border-color 0.25s;
 }
@@ -85,7 +85,7 @@ label {
 }
 
 input {
-    background-color: rgb(107, 144, 107);
+    background-color: rgb(3, 175, 206);
     border-radius: 1pc;
     /* height: 2pc; */
     border-radius: 14px;
@@ -101,7 +101,7 @@ input {
 
 button:hover {
     border-color: aliceblue;
-    background-color: rgb(107, 144, 107);
+    background-color: rgb(3, 175, 206);
 }
 
 button:focus,
@@ -116,14 +116,23 @@ button:focus-visible {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(107, 144, 107);
+    background-color: rgb(3, 175, 206);
+}
+.Buttom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(3, 175, 206);
 }
 
 .HeaderButton {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: rgb(107, 144, 107);
+    background-color: rgb(3, 175, 206);
     cursor: pointer;
     transition: background-color 0.25s;
     border-radius: 0%;
@@ -133,7 +142,7 @@ button:focus-visible {
 
 .HeaderButton:hover {
     border-color: aliceblue;
-    background-color: rgb(225, 248, 226);
+    background-color: rgb(211, 244, 250);
 }
 .divStyle {
     display: flex;
@@ -143,7 +152,7 @@ button:focus-visible {
     min-width: 320px;
     min-height: 100vh;
     border-radius: 5px;
-    background-color: rgb(225, 248, 226);
+    background-color: rgb(211, 244, 250);
     padding: 20px;
     /* font-size: 20px; */
     /* line-height: 2.5; */
@@ -160,7 +169,7 @@ button:focus-visible {
     /* min-width: 320px;
     min-height: 100vh; */
     border-radius: 5px;
-    background-color: rgb(225, 248, 226);
+    background-color: rgb(211, 244, 250);
     padding: 20px;
     /* line-height: 1; */
     /* display: grid; */
@@ -197,8 +206,8 @@ form {
     padding: '20px';
     border: '1px solid #ccc';
     border-radius: '5px';
-    /* background-color: rgb(107, 144, 107); */
-    border-color: rgb(107, 144, 107);
+    /* background-color: rgb(3, 175, 206); */
+    border-color: rgb(3, 175, 206);
     padding: '20px';
 }
 .type {
@@ -246,4 +255,13 @@ form {
 }
 .babysitterImg{
     background-image: url('Photos/babyS.jpg');
+}
+.logo{
+    background-image: url('./Photos/logo2.jpg');
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center; 
+    height: auto;
+    width: 60px;
+    border-radius: 4px;
 }

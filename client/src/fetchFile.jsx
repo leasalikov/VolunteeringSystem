@@ -35,6 +35,7 @@ async function fetchGetByReq(route, idcategoryArray, usernamevolunteers) {
         console.log(err)
     }
 }
+
 async function fetchGetReq(route) {
     try {
         const response = await fetch(`http://localhost:8080/${route}`, {
@@ -48,13 +49,14 @@ async function fetchGetReq(route) {
         console.log(err)
     }
 }
-async function fetchDeleteReq(route, body) {
+
+async function fetchDeleteReq(route, params) {
     console.log("fetchDeleteReq");
-    console.log(body)
+    console.log(params)
     try {
-        const response = await fetch(`http://localhost:8080/${route}`, {
+        const response = await fetch(`http://localhost:8080/${route}/${params}`, {
             method: 'DELETE',
-            body: JSON.stringify(body),
+            // body: JSON.stringify(body),
             //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })

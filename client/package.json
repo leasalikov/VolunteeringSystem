@@ -15,6 +15,7 @@
     "@mui/material": "^5.15.20",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "navigate": "^0.3.6",
+    "primereact": "^10.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",

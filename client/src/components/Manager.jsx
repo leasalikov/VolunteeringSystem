@@ -3,6 +3,8 @@ import { React, useContext, useState } from 'react';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { fetchGetReq } from '../fetchFile';
+import Buttom from './Buttom';
+
 
 const Manager = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -85,6 +87,7 @@ const Manager = () => {
 
     return (
         <>
+            <Buttom />
             <div >
                 <button className="HeaderButton" onClick={LinkVolunteering}>לפרטי ההתנדבויות המתואמים</button>
                 <button className="HeaderButton" onClick={allVolunteers}>מתנדבים שלא שובצו</button>

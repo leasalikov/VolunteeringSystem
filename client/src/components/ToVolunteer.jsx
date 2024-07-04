@@ -4,6 +4,7 @@ import { React, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import Header from './Header';
+import Buttom from './Buttom';
 
 function ToVolunteer() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -83,6 +84,7 @@ function ToVolunteer() {
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>
                 </form>}
             </div>
+            <Buttom />
         </>
     )
 }

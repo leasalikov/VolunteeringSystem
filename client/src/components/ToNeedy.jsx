@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from '../App';
 import { fetchPostReq } from '../fetchFile';
+import Buttom from './Buttom';
 
 import Header from './Header';
 const ToNeedy = () => {
@@ -60,6 +61,7 @@ const ToNeedy = () => {
     return (
         <>
             <Header />
+            <Buttom />
             <div className="divStyle">
                 {<form onSubmit={getHelp}>
                     <div className='type'>
