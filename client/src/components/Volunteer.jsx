@@ -32,6 +32,7 @@ function Volunteer() {
                 const fetchedData = await response;
                 setData(fetchedData);
                 const allArraysEmpty = fetchedData.every(innerArray => innerArray.length === 0);
+                console.log(allArraysEmpty)
                 if (allArraysEmpty) {
                     setShowEmptyArray(true);
                     setShowComponent(false);
