@@ -57,7 +57,6 @@ function ToVolunteer() {
             <Header />
             <div className="divStyle">
                 {<form onSubmit={volunteering}>
-                    {/* <img src="image-url.food2.webp" alt="ארוחות חמות" /> */}
                     <div className='type'>
                         <button onClick={foodImg} className='foodImg'></button>
                         <br />

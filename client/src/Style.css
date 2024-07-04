@@ -118,15 +118,24 @@ button:focus-visible {
     justify-content: center;
     background-color: rgb(3, 175, 206);
 }
+@keyframes moveRightToLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 .Buttom {
     position: fixed;
-    /* top: 0; */
     bottom: 0;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     background-color: rgb(3, 175, 206);
+    animation: moveRightToLeft 10s linear infinite; /* Adjust duration for desired speed */
 }
 
 .HeaderButton {

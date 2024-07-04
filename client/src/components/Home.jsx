@@ -24,7 +24,7 @@ function Home() {
                 <div className="background-animation" >
                     <img className="img1" />
                     <img className="img3" />
-                    <h1>{currentUser.username}</h1>
+                    <h1> שלום  {currentUser.username}</h1>
                     <h2>ברוכים הבאים למערכת ההתנדבות הארצית לנפגעי המלחמה</h2>
                     <h2>הנכם מוזמנים לקחת חלק </h2>
                 </div></>}
