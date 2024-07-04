@@ -11,6 +11,8 @@ const Manager = () => {
     const [showLinkVolunteering, setShowLinkVolunteering] = useState(false);
     const [showAllVolunteers, setShowAllVolunteers] = useState(false);
     const [showAllNeedies, setShowAllNeedies] = useState(false);
+    const [showAddCategory, setShowAddCategory] = useState(false);
+
     const [showEmptyArray, setShowEmptyArray] = useState();
 
     const [data, setData] = useState();
@@ -84,11 +86,33 @@ const Manager = () => {
             setShowAllNeedies(!showAllNeedies)
         }
     }
+    async function addCategory() {
+        setShowEmptyArray(false);
+        setShowAllVolunteers(false);
+        setShowLinkVolunteering(false);
+        setShowAllNeedies(false);
+        if (!showAllNeedies) {
+            const response = await fetchGetReq("needy");
+            const result = await response;
+            console.log("result    ", result);
+            setShowAllNeedies(!showAllNeedies)
+            setData(result);
+            console.log("data  ", data)
+            if (result.length === 0) {
+                setShowEmptyArray(true);
+                setShowAllNeedies(false)
+            }
+        }
+        else {
+            setShowAllNeedies(!showAllNeedies)
+        }
+    }
 
     return (
         <>
             <Buttom />
             <div >
+                <button className="HeaderButton" onClick={addCategory}>להוספת קטגוריה</button>
                 <button className="HeaderButton" onClick={LinkVolunteering}>לפרטי ההתנדבויות המתואמים</button>
                 <button className="HeaderButton" onClick={allVolunteers}>מתנדבים שלא שובצו</button>
                 <button className="HeaderButton" onClick={allNeedies}>מבקשי עזרה שלא שובצו </button>
