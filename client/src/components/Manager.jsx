@@ -25,6 +25,7 @@ const Manager = () => {
     }
 
     async function LinkVolunteering() {
+        setShowAddCategory(false)
         setShowEmptyArray(false);
         setShowAllNeedies(false);
         setShowAllVolunteers(false);
@@ -48,6 +49,8 @@ const Manager = () => {
 
     async function allVolunteers() {
         setShowEmptyArray(false);
+        setShowAddCategory(false)
+
         setShowAllNeedies(false);
         setShowLinkVolunteering(false);
         if (!showAllVolunteers) {
@@ -68,6 +71,7 @@ const Manager = () => {
     }
     async function allNeedies() {
         setShowEmptyArray(false);
+        setShowAddCategory(false)
         setShowAllVolunteers(false);
         setShowLinkVolunteering(false);
         if (!showAllNeedies) {
@@ -91,17 +95,17 @@ const Manager = () => {
         setShowAllVolunteers(false);
         setShowLinkVolunteering(false);
         setShowAllNeedies(false);
-        if (!showAllNeedies) {
-            const response = await fetchGetReq("needy");
-            const result = await response;
-            console.log("result    ", result);
-            setShowAllNeedies(!showAllNeedies)
-            setData(result);
-            console.log("data  ", data)
-            if (result.length === 0) {
-                setShowEmptyArray(true);
-                setShowAllNeedies(false)
-            }
+        if (!showAddCategory) {
+            // const response = await fetchGetReq("needy");
+            // const result = await response;
+            // console.log("result    ", result);
+            // setShowAllNeedies(!showAllNeedies)
+            // setData(result);
+            // console.log("data  ", data)
+            // if (result.length === 0) {
+            //     setShowEmptyArray(true);
+            //     setShowAllNeedies(false)
+            // }
         }
         else {
             setShowAllNeedies(!showAllNeedies)
@@ -171,6 +175,10 @@ const Manager = () => {
             {showEmptyArray &&
                 <>
                     <h2>המאגר ריק</h2>
+                </>}
+            {showAddCategory &&
+                <>
+                    <h2></h2>
                 </>}
         </>
     )

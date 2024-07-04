@@ -85,3 +85,88 @@
 //     UNIQUE KEY `usernamevolenteers_UNIQUE` (`usernamevolenteers`)
 //   ) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // return (
+    // <>
+    //     <Header />
+    //     <div className="divStyle">
+    //         <form onSubmit={volunteering}>
+    //             {buttonsArray.map(item => (
+    //                 <div className='type' key={item.key}>
+    //                     <button onClick={() => handleCheckboxChange(item.key, !categoriesArray[item.key])} className={item.className}></button>
+    //                     <br />
+    //                     <label htmlFor={item.id}>{item.label}</label>
+    //                     <input
+    //                         type="checkbox"
+    //                         id={item.id}
+    //                         name={item.id}
+    //                         value={categoriesArray[item.key]}
+    //                         onChange={() => handleCheckboxChange(item.key, !categoriesArray[item.key])}
+    //                     /><br />
+    //                 </div>
+    //             ))}
+    //             <br />
+    //             <button type="submit">התנדבות</button>
+    //         </form>
+    //     </div>
+    //     <Buttom />
+    // </>
+    // );
+
+
+
+
+    // const [categoriesArray, setCategoriesArray] = useState({
+    //     אוכל: false,
+    //     אירוח: false,
+    //     משחקים: false,
+    //     בייביסיטר: false
+    // });
+
+    // const buttonsArray = [
+    //     { id: 'food', label: 'ארוחות חמות', key: 'אוכל', className: 'foodImg' },
+    //     { id: 'hosting', label: 'אירוח', key: 'אירוח', className: 'hostImg' },
+    //     { id: 'toys', label: 'משחקים לילדים', key: 'משחקים', className: 'toysImg' },
+    //     { id: 'babysitter', label: 'בייביסיטר', key: 'בייביסיטר', className: 'babysitterImg' }
+    // ];
+
+    // const handleCheckboxChange = (key, value) => {
+    //     setCategoriesArray(prevState => ({
+    //         ...prevState,
+    //         [key]: value
+    //     }));
+    // };
+
