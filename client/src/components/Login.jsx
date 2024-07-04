@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, useNavigate } from 'react-router-dom';
 // import '../styles/RegisterAndLogin.css';
 import { UserContext } from '../App';
 import { useContext } from "react";
@@ -26,38 +26,21 @@ const Login = () => {
       //req
       const response = await fetchPostReq("login", paramsToSend);
       // const jsonUser =  response;
-      console.log(response)
+      console.log("response",response)
       if (response == "wrong details")
         alert('please try again or register.');
       // else if (jsonUser.result == "blocked")
       //   alert("you tried too many times, you are blocked! try again later");
       else {
         setCurrentUser(response.user[0])
+        console.log("her")
         localStorage.setItem("currentUser", JSON.stringify(response.user[0]));
+        
+        
         setIsLoggedInUser(true);
       }
       setUserName('');
       setPassword('');
-      // fetch(`http://localhost:8080/login`, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ "username": userName, "password": password })
-      // })
-      //   .then(response => response.json())
-      //   .then(jsonUser => {
-      //     if (jsonUser == "wrong details")
-      //       alert('please try again or register.');
-      //     else if (jsonUser.result == "blocked")
-      //       alert("you tried too many times, you are blocked! try again later");
-      //     else {
-      //       setCurrentUser(jsonUser.user[0])
-      //       localStorage.setItem("currentUser", JSON.stringify(jsonUser.user));
-      //       setIsLoggedInUser(true);
-      //     }
-      //     setUserName('');
-      //     setPassword('');
-      //   })
-      //   .catch(error => console.error('Error:', error));
     })();
   };
 

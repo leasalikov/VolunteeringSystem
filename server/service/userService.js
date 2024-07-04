@@ -1,14 +1,14 @@
 
 import { executeQuery } from './db.js';
-import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, limit } from './query.js'
+import {  getByQuery, addQuery } from './query.js'
 import { LoginService } from './loginService.js';
 
 export class UserService {
 
-    async get(tableName) {
-        const query = getQuery(tableName);
-        return await executeQuery(query);
-    }
+    // async get(tableName) {
+    //     const query = getQuery(tableName);
+    //     return await executeQuery(query);
+    // }
 
     async getBy(tableName, sortByObj) {
         console.log("sortByObj",sortByObj)
@@ -16,9 +16,9 @@ export class UserService {
         const values = Object.values(sortByObj);
         const query = getByQuery(tableName, keys);
         console.log(query)
-        const a= await executeQuery(query, values);
-        console.log("a",a)
-        return a;
+        const user= await executeQuery(query, values);
+        // console.log("a",a)
+        return user;
     }
 
     async add(users, userItem) {
@@ -33,26 +33,28 @@ export class UserService {
         const id = result.insertId;
         console.log(id)
         const loginService = new LoginService();
-        const result2= await loginService.register([id, password]);
-        return{result,result2}
+        const result3= await loginService.register([id, password]);
+        const result2=result3.result
+        const token = result3.token
+        return{result,result2,token}
     }
 
-    async update(tableName, userItem, id) {
-        const keys = Object.keys(userItem);
-        const values = Object.values(userItem);
-        const query = updateQuery(tableName, keys);
-        values.push(id);
-        await executeQuery(query, values);
-    }
+    // async update(tableName, userItem, id) {
+    //     const keys = Object.keys(userItem);
+    //     const values = Object.values(userItem);
+    //     const query = updateQuery(tableName, keys);
+    //     values.push(id);
+    //     await executeQuery(query, values);
+    // }
 
-    async delete(tableName, id) {
-        const query = deleteQuery(tableName);
-        await executeQuery(query, [id]);
-    }
+    // async delete(tableName, id) {
+    //     const query = deleteQuery(tableName);
+    //     await executeQuery(query, [id]);
+    // }
 
-    async limit(tableName, numOfLimit, startLimit){
-        const query = limit(tableName);
-        return await executeQuery(query, [numOfLimit, startLimit]);
-    }
+    // async limit(tableName, numOfLimit, startLimit){
+    //     const query = limit(tableName);
+    //     return await executeQuery(query, [numOfLimit, startLimit]);
+    // }
 
 }

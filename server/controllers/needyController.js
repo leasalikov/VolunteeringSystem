@@ -9,9 +9,7 @@ export class NeedyController {
     async getNeedy(req, res, next) {
         try {
             const service = new NeedyService();
-            const resultItems = await service.get(tableName);
-            resultItems.forEach((resultItem, i) => delete resultItem.isActive);
-            console.log("req: get all needies, res: successfull")
+            const resultItems = await service.get();
             return res.status(200).json(resultItems);
         }
         catch (ex) {
@@ -62,8 +60,8 @@ export class NeedyController {
 
     async deleteNeedy(req, res, next) {
         try {
-            const needyService = new needyService();
-            const resultItem = await needyService.deleteNeedy(tableName, req.params.id);
+            const needyService = new NeedyService();
+            const resultItem = await needyService.deleteNeedy( req.params.id);
             console.log("req: delete Needy with id= " + resultItem.insertId + ", res: successfull")
             res.status(200).json(resultItem);
         }
@@ -75,18 +73,18 @@ export class NeedyController {
         }
     }
 
-    async updateNeedy(req, res, next) {
-        try {
-            const service = new Service();
-            await service.update(tableName, req.body, req.params.id);
-            console.log("req: update Needy with id= " + req.params.id + ", res: successfull")
-            res.status(200).json({ status: 200, data: req.params.id });
-        }
-        catch (ex) {
-            const err = {}
-            err.statusCode = 500;
-            err.message = ex;
-            next(err)
-        }
-    }
+    // async updateNeedy(req, res, next) {
+    //     try {
+    //         const service = new Service();
+    //         await service.update(tableName, req.body, req.params.id);
+    //         console.log("req: update Needy with id= " + req.params.id + ", res: successfull")
+    //         res.status(200).json({ status: 200, data: req.params.id });
+    //     }
+    //     catch (ex) {
+    //         const err = {}
+    //         err.statusCode = 500;
+    //         err.message = ex;
+    //         next(err)
+    //     }
+    // }
 }

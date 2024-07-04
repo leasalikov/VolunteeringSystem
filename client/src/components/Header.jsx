@@ -23,12 +23,20 @@ const Header = () => {
     }
 
     return (
+        <>
         <div className="Header">
+        {/* <div className='logo'></div> */}
             <button className="HeaderButton" onClick={goToHome}>קצת עלינו</button>
+            {/* <div className='logo'></div> */}
             <button className="HeaderButton" onClick={goToVolunteer}>להתנדבות</button>
+            {/* <div className='logo'></div> */}
             <button className="HeaderButton" onClick={goToNeedy}>לבקשת עזרה</button>
-            <button className="HeaderButton" onClick={logOut}>התנתקות</button>
+            {/* <div className='logo'></div> */}
+            <button className="HeaderButton" onClick={logOut}>התנתקות</button>        
+            {/* <div className='logo'></div> */}
         </div>
+
+        </>
     )
 };
 export default Header;
