@@ -58,20 +58,20 @@ export class NeedyController {
         }
     }
 
-    // async deleteNeedy(req, res, next) {
-    //     try {
-    //         const needyService = new needyService();
-    //         const resultItem = await needyService.deleteNeedy(tableName, req.params.id);
-    //         console.log("req: delete Needy with id= " + resultItem.insertId + ", res: successfull")
-    //         res.status(200).json(resultItem);
-    //     }
-    //     catch (ex) {
-    //         const err = {};
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err);
-    //     }
-    // }
+    async deleteNeedy(req, res, next) {
+        try {
+            const needyService = new NeedyService();
+            const resultItem = await needyService.deleteNeedy( req.params.id);
+            console.log("req: delete Needy with id= " + resultItem.insertId + ", res: successfull")
+            res.status(200).json(resultItem);
+        }
+        catch (ex) {
+            const err = {};
+            err.statusCode = 500;
+            err.message = ex;
+            next(err);
+        }
+    }
 
     // async updateNeedy(req, res, next) {
     //     try {
