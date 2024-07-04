@@ -135,7 +135,7 @@ button:focus-visible {
     display: flex;
     justify-content: center;
     background-color: rgb(3, 175, 206);
-    animation: moveRightToLeft 10s linear infinite; /* Adjust duration for desired speed */
+    animation: moveRightToLeft 15s linear infinite; /* Adjust duration for desired speed */
 }
 
 .HeaderButton {
