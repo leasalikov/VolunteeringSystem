@@ -11,6 +11,8 @@ const Manager = () => {
     const [showLinkVolunteering, setShowLinkVolunteering] = useState(false);
     const [showAllVolunteers, setShowAllVolunteers] = useState(false);
     const [showAllNeedies, setShowAllNeedies] = useState(false);
+    const [showAddCategory, setShowAddCategory] = useState(false);
+
     const [showEmptyArray, setShowEmptyArray] = useState();
 
     const [data, setData] = useState();
@@ -23,6 +25,7 @@ const Manager = () => {
     }
 
     async function LinkVolunteering() {
+        setShowAddCategory(false)
         setShowEmptyArray(false);
         setShowAllNeedies(false);
         setShowAllVolunteers(false);
@@ -46,6 +49,8 @@ const Manager = () => {
 
     async function allVolunteers() {
         setShowEmptyArray(false);
+        setShowAddCategory(false)
+
         setShowAllNeedies(false);
         setShowLinkVolunteering(false);
         if (!showAllVolunteers) {
@@ -66,6 +71,7 @@ const Manager = () => {
     }
     async function allNeedies() {
         setShowEmptyArray(false);
+        setShowAddCategory(false)
         setShowAllVolunteers(false);
         setShowLinkVolunteering(false);
         if (!showAllNeedies) {
@@ -84,11 +90,33 @@ const Manager = () => {
             setShowAllNeedies(!showAllNeedies)
         }
     }
+    async function addCategory() {
+        setShowEmptyArray(false);
+        setShowAllVolunteers(false);
+        setShowLinkVolunteering(false);
+        setShowAllNeedies(false);
+        if (!showAddCategory) {
+            // const response = await fetchGetReq("needy");
+            // const result = await response;
+            // console.log("result    ", result);
+            // setShowAllNeedies(!showAllNeedies)
+            // setData(result);
+            // console.log("data  ", data)
+            // if (result.length === 0) {
+            //     setShowEmptyArray(true);
+            //     setShowAllNeedies(false)
+            // }
+        }
+        else {
+            setShowAllNeedies(!showAllNeedies)
+        }
+    }
 
     return (
         <>
             <Buttom />
             <div >
+                <button className="HeaderButton" onClick={addCategory}>להוספת קטגוריה</button>
                 <button className="HeaderButton" onClick={LinkVolunteering}>לפרטי ההתנדבויות המתואמים</button>
                 <button className="HeaderButton" onClick={allVolunteers}>מתנדבים שלא שובצו</button>
                 <button className="HeaderButton" onClick={allNeedies}>מבקשי עזרה שלא שובצו </button>
@@ -147,6 +175,10 @@ const Manager = () => {
             {showEmptyArray &&
                 <>
                     <h2>המאגר ריק</h2>
+                </>}
+            {showAddCategory &&
+                <>
+                    <h2></h2>
                 </>}
         </>
     )
