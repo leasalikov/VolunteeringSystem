@@ -23,20 +23,20 @@ export class CategoryService {
     //     console.log("result getBy: ", result)
     //     return result;
     // }
-    // async getcategory(NeedyItem) {
-    //     console.log("her",NeedyItem)
-    //     let result, query;
-    //     const idcategoryArray = [];
-    //     const categoryArrayName = NeedyItem.namecategory;
-    //     for (let element = 0; element <= categoryArrayName.length - 1; element++) {
-    //         query = getByQuery("category", ["namecategory"]);
-    //         result = await executeQuery(query, [categoryArrayName[element]]);
-    //         console.log("her",NeedyItem)
-    //         idcategoryArray.push(result[0].idcategory)
-    //     };
+    async getcategory(NeedyItem) {
+        console.log("her",NeedyItem)
+        let result, query;
+        const idcategoryArray = [];
+        const categoryArrayName = NeedyItem.namecategory;
+        for (let element = 0; element <= categoryArrayName.length - 1; element++) {
+            query = getByQuery("category", ["namecategory"]);
+            result = await executeQuery(query, [categoryArrayName[element]]);
+            console.log("her",NeedyItem)
+            idcategoryArray.push(result[0].idcategory)
+        };
         
-    //     return idcategoryArray;
-    // }
+        return idcategoryArray;
+    }
 
     // async update(tableName, CategoryItem, id) {
     //     const keys = Object.keys(CategoryItem);

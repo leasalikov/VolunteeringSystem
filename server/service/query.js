@@ -27,6 +27,8 @@ function getUsersBy(table, usernametable, categorytable, idtable, isManager, num
             WHERE ${categorytable}.isactive = ${num} 
             ${isManager ? '' : `AND system.category.idcategory = ? AND ${table}.${usernametable} != ?`}`;
 }
+
+
 function getAllLinking() {
   return `SELECT  uv.name,un.username,cn.namecategory
           FROM system.users as un
@@ -95,6 +97,5 @@ export {
   getByQuery1,
   getUsersBy,
   linking,
-  getAllLinking,
-  deleteQuery
+  getAllLinking
 }
