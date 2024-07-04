@@ -20,7 +20,7 @@ async function fetchPostReq(route, body) {
     }
 }
 
-async function fetchGetByReq(route, idcategoryArray, usernamevolunteers) {
+async function GetByReq(route, idcategoryArray, usernamevolunteers) {
     try {
         if(route!="login"&&route!="register"){
 
@@ -72,4 +72,5 @@ async function fetchDeleteReq(route, params) {
     }
 }
 
-export { fetchPostReq, fetchGetReq, fetchGetByReq, fetchDeleteReq };
+// export { fetchPostReq, fetchGetReq, fetchGetByReq, fetchDeleteReq };
+export { fetchPostReq, fetchGetReq, fetchDeleteReq };

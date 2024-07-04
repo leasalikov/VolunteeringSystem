@@ -9,7 +9,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import { fetchDeleteReq } from '../fetchFile';
-import { fetchGetByReq } from '../fetchFile';
+// import { fetchGetByReq } from '../fetchFile';
+import { PostEmail } from '../EmailFunction';
 // import { PostEmail } from '../EmailFunction';
 
 function Volunteer() {
@@ -85,10 +86,10 @@ function Volunteer() {
                 setShowEndMassage(true)
                 setShowComponent(false)
             }
-            //req post Email
-            // const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
-            // const emailData = await response;
-            // console.log("emailData ", emailData);
+            // req post Email
+            const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
+            const emailData = await response;
+            console.log("emailData ", emailData);
 
             const updatedData = Object.keys(data)
                 .map(key => data[key])
