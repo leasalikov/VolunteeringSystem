@@ -17,7 +17,6 @@ function Volunteer() {
     const [showEndMassage, setShowEndMassage] = useState(false);
     const [showComponent, setShowComponent] = useState(true);
     const [showEmptyArray, setShowEmptyArray] = useState();
-
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [data, setData] = useState();
     const location = useLocation();
@@ -49,12 +48,13 @@ function Volunteer() {
             "namecategory": linkUser.namecategory, //id category - needy and volunteer 
             "usernamevolenteers": currentUser.username, //volunteer username
         };
+        let linkingData;
         const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
         if (result) {
             try {
                 //post to linking
                 const response = await fetchPostReq("linking", paramsToSent);
-                const linkingData = await response;
+                linkingData = await response;
                 console.log("linkingdata  ", linkingData)
                 //result, idcategoryV, idcategoryN
             }
@@ -63,7 +63,8 @@ function Volunteer() {
             }
             try {
                 //delete in volunteer
-                const response = await fetchDeleteReq("volunteer", linkingData.idcategoryvolunteers);
+                const idcategoryvolunteers = linkingData.idcategoryvolunteers;
+                const response = await fetchDeleteReq("volunteer", idcategoryvolunteers);
                 const data1 = await response;
                 console.log("data1  ", data1)
             }
@@ -72,9 +73,10 @@ function Volunteer() {
             }
             try {
                 //delete in needy
+                const idcategoryneedies = linkingData.idcategoryneedies;
                 const response = await fetchDeleteReq("needy", linkingData.idcategoryneedies);
-                const data1 = await response;
-                console.log("data1  ", data1)
+                const data2 = await response;
+                console.log("data2  ", data2)
             }
             catch (error) {
                 console.error(error);
@@ -141,7 +143,7 @@ function Volunteer() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data && data.result.map((item) => (
+                            {data && data.map((item) => (
                                 item.map((item, i) => (
                                     <tr key={i}>
                                         <td><button onClick={() => linking(item)}>V</button></td>
