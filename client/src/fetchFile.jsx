@@ -48,6 +48,23 @@ async function fetchGetReq(route) {
         console.log(err)
     }
 }
+async function fetchDeleteReq(route, body) {
+    console.log("fetchDeleteReq");
+    console.log(body)
+    try {
+        const response = await fetch(`http://localhost:8080/${route}`, {
+            method: 'DELETE',
+            body: JSON.stringify(body),
+            //      body: JSON.stringify({ "username": userName, "categoriesArray": categoriesArray })
+            headers: { "Content-type": "application/json; charset=UTF-8", },
+        })
+        const json = await response.json();
+        const data = await json;
+        return data;
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
 
-
-export { fetchPostReq, fetchGetReq, fetchGetByReq };
+export { fetchPostReq, fetchGetReq, fetchGetByReq, fetchDeleteReq };
