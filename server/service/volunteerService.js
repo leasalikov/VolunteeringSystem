@@ -108,8 +108,10 @@ export class VolunteerService {
     // }
 
     async deleteVolunteer( id) {
+      
         const query = deleteQuery("categoryvolunteers","idcategoryvolunteers");
-        await executeQuery(query, [id]);
+        console.log("her",query)
+      return  await executeQuery(query, [id]);
     }
 
     // async limit(tableName, numOfLimit, startLimit) {

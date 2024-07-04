@@ -63,8 +63,8 @@ function Volunteer() {
             }
             try {
                 //delete in volunteer
-                const idcategoryvolunteers = linkingData.idcategoryvolunteers;
-                const response = await fetchDeleteReq("volunteer", idcategoryvolunteers);
+                const idcategoryvolunteer = linkingData.idcategoryvolunteer;
+                const response = await fetchDeleteReq("volunteer", idcategoryvolunteer);
                 const data1 = await response;
                 console.log("data1  ", data1)
             }
@@ -73,8 +73,8 @@ function Volunteer() {
             }
             try {
                 //delete in needy
-                const idcategoryneedies = linkingData.idcategoryneedies;
-                const response = await fetchDeleteReq("needy", idcategoryneedies);
+                const idcategoryneedy = linkingData.idcategoryneedy;
+                const response = await fetchDeleteReq("needy", idcategoryneedy);
                 const data2 = await response;
                 console.log("data2  ", data2)
             }

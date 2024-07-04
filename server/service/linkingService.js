@@ -27,15 +27,15 @@ export class LinkingService {
         const volunteerService = new VolunteerService();
         const needyService = new NeedyService();
         // console.log("her",idcategoryvolunteers[0].idcategoryvolunteers)
-        // const w = await volunteerService.delete(idcategoryvolunteers[0].idcategoryvolunteers)
-        // const s = await needyService.delete(idcategoryneedies[0].idcategoryneedies)////////////////////////////////////////////////////////////////////////
+        // const w = await volunteerService.deleteVolunteer(idcategoryvolunteers[0].idcategoryvolunteers)
+        // const s = await needyService.deleteNeedy(idcategoryneedies[0].idcategoryneedies)////////////////////////////////////////////////////////////////////////
         console.log("idcategoryneedies", idcategoryneedies)
         const query = addQuery("linking", ["idcategoryvolunteers", "idcategoryneedies"]);
         console.log(query)
         const result = await executeQuery(query, [idcategoryvolunteers[0].idcategoryvolunteers, idcategoryneedies[0].idcategoryneedies]);
-        idcategoryneedies = idcategoryneedies[0].idcategoryneedies
-        idcategoryvolunteers = idcategoryvolunteers[0].idcategoryvolunteers
-        return { result, idcategoryneedies, idcategoryvolunteers }
+        const idcategoryneedy = idcategoryneedies[0].idcategoryneedies
+       const idcategoryvolunteer = idcategoryvolunteers[0].idcategoryvolunteers
+        return { result, idcategoryneedy, idcategoryvolunteer }
     }
 
     async get() {

@@ -47,7 +47,7 @@ function linking(idcategorycolumn, categorytable, table, idcolumn, usernamecolum
             FROM system.${categorytable} 
             JOIN system.${table} on system.${table}.${idcolumn} = system.${categorytable}.${idcolumn} 
             JOIN system.category ON system.category.idcategory = system.${categorytable}.idcategory
-            where system.${table}.${usernamecolumn}=? and system.category.namecategory=? `
+            where system.${table}.${usernamecolumn}=? and system.category.namecategory=? and ${categorytable}.isactive=1`
 }
 
 // function getByQuery5(table,usernametable) {

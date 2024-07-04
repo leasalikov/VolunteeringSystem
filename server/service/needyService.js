@@ -111,8 +111,12 @@ export class NeedyService {
     // }
 
     async deleteNeedy( id) {
+       
         const query = deleteQuery("categoryneedies","idcategoryneedies");
-        await executeQuery(query, [id]);
+      
+       const result= await executeQuery(query, [id]);
+       console.log("hre",result)
+       return result
     }
 
     // async limit(tableName, numOfLimit, startLimit) {

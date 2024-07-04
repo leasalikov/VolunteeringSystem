@@ -30,8 +30,9 @@ export class CategoryService {
         const categoryArrayName = NeedyItem.namecategory;
         for (let element = 0; element <= categoryArrayName.length - 1; element++) {
             query = getByQuery("category", ["namecategory"]);
+            console.log("her",query)
             result = await executeQuery(query, [categoryArrayName[element]]);
-            console.log("her",NeedyItem)
+       
             idcategoryArray.push(result[0].idcategory)
         };
         
