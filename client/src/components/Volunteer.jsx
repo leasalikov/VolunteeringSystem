@@ -74,7 +74,7 @@ function Volunteer() {
             try {
                 //delete in needy
                 const idcategoryneedies = linkingData.idcategoryneedies;
-                const response = await fetchDeleteReq("needy", linkingData.idcategoryneedies);
+                const response = await fetchDeleteReq("needy", idcategoryneedies);
                 const data2 = await response;
                 console.log("data2  ", data2)
             }

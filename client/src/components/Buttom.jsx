@@ -10,7 +10,7 @@ const Buttom = () => {
     return (
 
         <div className="Buttom">
-            <div className='logo'></div>
+            {/* <div className='logo'></div> */}
             <p>אתר מתנדבים מלחמת חרבות ברזל</p>
             <p>ליצירת קשר: בטלפון: 033003300 במייל: mitnadvim@gmail.com </p>
             <p>פיקוד העורף: 106 </p>
