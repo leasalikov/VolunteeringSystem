@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Needy from './components/Needy';
 import ToVolunteer from './components/ToVolunteer'
 import ToNeedy from './components/ToNeedy';
+import GoogleMap from './components/GoogleMap';
 // import DesignPatterns fr
 
 // import About from './components/About';
@@ -29,11 +30,13 @@ function App() {
               <Route path="tovolunteer" element={<ToVolunteer />} />
               <Route path="needy" element={<Needy />} />
               <Route path="toneedy" element={<ToNeedy />} />
+              <Route path="googleMap" element={<GoogleMap />} />
             </Route>)
             }
             <Route path="/" >
               <Route index element={<Login />} />
               <Route path="*" element={<Login />} />
+              
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
             </Route>

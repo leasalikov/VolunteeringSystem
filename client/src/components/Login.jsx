@@ -5,6 +5,7 @@ import { BrowserRouter, Navigate, useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 import { useContext } from "react";
 import { fetchPostReq } from '../fetchFile'
+import {PostEmail} from '../EmailFunction'
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [userName, setUserName] = useState('');
@@ -26,7 +27,7 @@ const Login = () => {
       //req
       const response = await fetchPostReq("login", paramsToSend);
       // const jsonUser =  response;
-      console.log("response",response)
+      console.log("response", response)
       if (response == "wrong details")
         alert('please try again or register.');
       // else if (jsonUser.result == "blocked")
@@ -35,9 +36,11 @@ const Login = () => {
         setCurrentUser(response.user[0])
         console.log("her")
         localStorage.setItem("currentUser", JSON.stringify(response.user[0]));
-        
-        
         setIsLoggedInUser(true);
+        console.log(currentUser)
+        const responseEmail = PostEmail(response.user[0].idUser, response.user[0].name, response.user[0].username, response.user[0].email)
+        const emailData = await responseEmail;
+        console.log("emailData ", emailData);
       }
       setUserName('');
       setPassword('');

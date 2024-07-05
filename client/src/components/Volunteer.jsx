@@ -87,9 +87,9 @@ function Volunteer() {
                 setShowComponent(false)
             }
             // req post Email
-            const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
-            const emailData = await response;
-            console.log("emailData ", emailData);
+            // const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
+            // const emailData = await response;
+            // console.log("emailData ", emailData);
 
             const updatedData = Object.keys(data)
                 .map(key => data[key])
