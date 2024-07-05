@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import { fetchDeleteReq } from '../fetchFile';
-// import { fetchGetByReq } from '../fetchFile';
+import { fetchGetByReq } from '../fetchFile';
 import { PostEmail } from '../EmailFunction';
 // import { PostEmail } from '../EmailFunction';
 
@@ -32,7 +32,7 @@ function Volunteer() {
                 const fetchedData = await response;
                 setData(fetchedData);
                 const allArraysEmpty = fetchedData.every(innerArray => innerArray.length === 0);
-                console.log(allArraysEmpty)
+                console.log("allArraysEmpty ", allArraysEmpty)
                 if (allArraysEmpty) {
                     setShowEmptyArray(true);
                     setShowComponent(false);

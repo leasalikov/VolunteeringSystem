@@ -13,20 +13,20 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 function ToVolunteer() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [categoriesArray, setCategoriesArray] = useState([{ אוכל: false }, { אירוח: false }, { משחקים: false }, { בייביסיטר: false }]);
+    const [categoriesArray, setCategoriesArray] = useState([{  food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
     const navigate = useNavigate();
     // const [categoriesArray, setCategoriesArray] = useState({
-    //     אוכל: false,
-    //     אירוח: false,
-    //     משחקים: false,
-    //     בייביסיטר: false
+    //      food: false,
+    //     hosting: false,
+    //     toys: false,
+    //     babysitter: false
     // });
 
     // const buttonsArray = [
-    //     { id: 'food', label: 'ארוחות חמות', key: 'אוכל', className: 'foodImg' },
-    //     { id: 'hosting', label: 'אירוח', key: 'אירוח', className: 'hostImg' },
-    //     { id: 'toys', label: 'משחקים לילדים', key: 'משחקים', className: 'toysImg' },
-    //     { id: 'babysitter', label: 'בייביסיטר', key: 'בייביסיטר', className: 'babysitterImg' }
+    //     { id: 'food', label: 'ארוחות חמות', key: ' food', className: 'foodImg' },
+    //     { id: 'hosting', label: 'hosting', key: 'hosting', className: 'hostImg' },
+    //     { id: 'toys', label: 'toys לילדים', key: 'toys', className: 'toysImg' },
+    //     { id: 'babysitter', label: 'babysitter', key: 'babysitter', className: 'babysitterImg' }
     // ];
 
     // const handleCheckboxChange = (key, value) => {
@@ -81,23 +81,23 @@ function ToVolunteer() {
                     <div className='type'>
                         <button onClick={foodImg} className='foodImg'></button>
                         <br />
-                        <label for="אוכל">ארוחות חמות</label>
-                        <input type="checkbox" id="food" name="food" value={categoriesArray.אוכל} onChange={(e) => setCategoriesArray({ אוכל: e.target.checked, אירוח: categoriesArray.אירוח, משחקים: categoriesArray.משחקים, בייביסיטר: categoriesArray.בייביסיטר })} /><br />
+                        <label for=" food">ארוחות חמות</label>
+                        <input type="checkbox" id="food" name="food" value={categoriesArray. food} onChange={(e) => setCategoriesArray({  food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
                         <button onClick={hostImg} className='hostImg'></button>
                         <br />
-                        <label for="אירוח">אירוח</label>
-                        <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.אירוח} onChange={(e) => setCategoriesArray({ אוכל: categoriesArray.אוכל, אירוח: e.target.checked, משחקים: categoriesArray.משחקים, בייביסיטר: categoriesArray.בייביסיטר })} /><br />
+                        <label for="hosting">אירוח</label>
+                        <input type="checkbox" id="hosting" name="hosting" value={categoriesArray.hosting} onChange={(e) => setCategoriesArray({  food: categoriesArray. food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter })} /><br />
                     </div>
                     <div className='type'>
                         <button onClick={toysImg} className='toysImg'></button>
                         <br />
-                        <label for="משחקים">משחקים לילדים</label>
-                        <input type="checkbox" id="toys" name="toys" value={categoriesArray.משחקים} onChange={(e) => setCategoriesArray({ אוכל: categoriesArray.אוכל, אירוח: categoriesArray.אירוח, משחקים: e.target.checked, בייביסיטר: categoriesArray.בייביסיטר })} /><br />
+                        <label for="toys">משחקים לילדים</label>
+                        <input type="checkbox" id="toys" name="toys" value={categoriesArray.toys} onChange={(e) => setCategoriesArray({  food: categoriesArray. food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter })} /><br />
 
                         <button onClick={babysitterImg} className='babysitterImg'></button>
                         <br />
-                        <label for="בייביסיטר">ביביסיטר</label>
-                        <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.בייביסיטר} onChange={(e) => setCategoriesArray({ אוכל: categoriesArray.אוכל, אירוח: categoriesArray.אירוח, משחקים: categoriesArray.משחקים, בייביסיטר: e.target.checked })} /><br />
+                        <label for="babysitter">בייביסיטר</label>
+                        <input type="checkbox" id="babysitter" name="babysitter" value={categoriesArray.babysitter} onChange={(e) => setCategoriesArray({  food: categoriesArray. food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked })} /><br />
                     </div>
                     <br/>
                     <button><submit button onClick={volunteering}>התנדבות</submit></button>
@@ -110,10 +110,10 @@ function ToVolunteer() {
 export default ToVolunteer;
 
     // const [categoriesArray, setCategoriesArray] = useState([
-    //     { id: 'food', label: 'ארוחות חמות', value: false, handler: (e) => setCategoriesArray({ אוכל: e.target.checked, אירוח: categoriesArray.אירוח, משחקים: categoriesArray.משחקים, בייביסיטר: categoriesArray.בייביסיטר }), className: 'foodImg' },
-    //     { id: 'hosting', label: 'אירוח', value: false, handler: (e) => setCategoriesArray({ אוכל: categoriesArray.אוכל, אירוח: e.target.checked, משחקים: categoriesArray.משחקים, בייביסיטר: categoriesArray.בייביסיטר }), className: 'hostImg' },
-    //     { id: 'toys', label: 'משחקים לילדים', value: false, handler: (e) => setCategoriesArray({ אוכל: categoriesArray.אוכל, אירוח: categoriesArray.אירוח, משחקים: e.target.checked, בייביסיטר: categoriesArray.בייביסיטר }), className: 'toysImg' },
-    //     { id: 'babysitter', label: 'בייביסיטר', value: false, handler: (e) => setCategoriesArray({ אוכל: categoriesArray.אוכל, אירוח: categoriesArray.אירוח, משחקים: categoriesArray.משחקים, בייביסיטר: e.target.checked }), className: 'babysitterImg' }
+    //     { id: 'food', label: 'ארוחות חמות', value: false, handler: (e) => setCategoriesArray({  food: e.target.checked, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter }), className: 'foodImg' },
+    //     { id: 'hosting', label: 'hosting', value: false, handler: (e) => setCategoriesArray({  food: categoriesArray. food, hosting: e.target.checked, toys: categoriesArray.toys, babysitter: categoriesArray.babysitter }), className: 'hostImg' },
+    //     { id: 'toys', label: 'toys לילדים', value: false, handler: (e) => setCategoriesArray({  food: categoriesArray. food, hosting: categoriesArray.hosting, toys: e.target.checked, babysitter: categoriesArray.babysitter }), className: 'toysImg' },
+    //     { id: 'babysitter', label: 'babysitter', value: false, handler: (e) => setCategoriesArray({  food: categoriesArray. food, hosting: categoriesArray.hosting, toys: categoriesArray.toys, babysitter: e.target.checked }), className: 'babysitterImg' }
     // ]);
 
 
