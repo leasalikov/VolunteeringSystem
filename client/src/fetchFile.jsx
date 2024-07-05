@@ -12,8 +12,10 @@ async function fetchPostReq(route, body) {
         console.log("hgjghjjjjjjjjjjj ", body)
         const json = await response.json();
         const data = await json;
-
         return data;
+        // const data = await response;
+        // console.log(data)
+        // return data;
     }
     catch (err) {
         console.log(err)
@@ -64,8 +66,9 @@ async function fetchDeleteReq(route, params) {
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
         const json = await response.json();
-        const data = await json;
-        return data;
+        // const data = await json;
+        // return data;
+        return json;
     }
     catch (err) {
         console.log(err)

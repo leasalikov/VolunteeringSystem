@@ -152,6 +152,7 @@ const Register = () => {
     const newUser = { "name": name, "userName": username, "email": email, "phone": phone, "password": password };
     const response = await fetchPostReq("user", newUser);
     const jsonUser = await response;
+    console.log("jsonUser ", jsonUser);
     setCurrentUser({ "idUser": jsonUser.result.insertId, "name": name, "username": username, "email": email, "phone": phone });
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     console.log("response", response);

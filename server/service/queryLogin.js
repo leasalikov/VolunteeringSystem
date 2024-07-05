@@ -1,16 +1,16 @@
 
 function loginQuery() {
-    const query = `SELECT COUNT(*) FROM sys.passwords WHERE idUser=? and password=?`;
+    const query = `SELECT COUNT(*) FROM system.passwords WHERE idUser=? and password=?`;
     return query
 }
 
 function registerQuery() {
-    const query = `INSERT INTO sys.passwords ( idUser, password ) VALUES  ( ?, ? )`;
+    const query = `INSERT INTO system.passwords ( idUser, password ) VALUES  ( ?, ? )`;
     return query
 }
 
 function updatePassword() {
-    return `UPDATE sys.userpassword SET password=? WHERE userId = ?`;
+    return `UPDATE system.userpassword SET password=? WHERE userId = ?`;
 }
 
 export {

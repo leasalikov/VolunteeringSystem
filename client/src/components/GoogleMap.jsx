@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import axios from 'axios';
+// import axios from 'axios';
 import L from 'leaflet';
 
 // פתרון לבעיית האייקונים החסרים של Leaflet

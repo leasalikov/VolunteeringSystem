@@ -48,10 +48,6 @@ app.use('/needyVolunteers',needyRouter)
 
 
 
-
-
-
-
 // // Define a route for accessing a protected resource
 // app.get('/protected', verifyToken, (req, res) => {
 //     // Get the session id from the cookie
