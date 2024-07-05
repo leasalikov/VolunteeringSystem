@@ -3,16 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from '../App';
 import Buttom from './Buttom';
+import Logo from './Logo';
 
 // import { fetchPostReq } from '../fetchFile';
 import Header from './Header';
 const ToNeedy = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [categoriesArray, setCategoriesArray] = useState([{  food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
+    const [categoriesArray, setCategoriesArray] = useState([{ food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
     const navigate = useNavigate();
 
     return (
         <>
+            <Logo />
             <Header />
             <Buttom />
             <div className="divStyle" >

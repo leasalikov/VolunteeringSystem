@@ -11,6 +11,7 @@ import { fetchPostReq } from '../fetchFile';
 import { fetchDeleteReq } from '../fetchFile';
 import { fetchGetByReq } from '../fetchFile';
 import { PostEmail } from '../EmailFunction';
+import Logo from './Logo';
 // import { PostEmail } from '../EmailFunction';
 
 function Volunteer() {
@@ -119,47 +120,46 @@ function Volunteer() {
     }
     return (
         <>
-            <div>
-                <Header />
-                <Buttom />
-                {showEndMassage &&
-                    <div>
-                        <h2>!תודה ותזכו למצוות<br />כעת נשלח לך מייל עם פרטי המזמין ליצירת קשר</h2>
-                        <button onClick={addVolunting}>להוספת התנדבות</button>
-                    </div>}
-                {showEmptyArray && <div>
-                    <h2>כעת אין בקשות עזרה בהתאם לקטגוריות שבחרתם, תודה על הרצון הטוב! נסו מאוחר יותר</h2>
-                    <button onClick={toHome}>חזרה לתפריט הראשי</button>
+            <Logo />
+            <Header />
+            <Buttom />
+            {showEndMassage &&
+                <div>
+                    <h2>!תודה ותזכו למצוות<br />כעת נשלח לך מייל עם פרטי המזמין ליצירת קשר</h2>
+                    <button onClick={addVolunting}>להוספת התנדבות</button>
                 </div>}
-                {showComponent && <div>
-                    <h1>שלום {currentUser.username}!!</h1>
-                    <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                    <table className='tableStyle'>
-                        <thead>
-                            <tr>
-                                <th>בחר</th>
-                                <th>קטגוריה</th>
-                                <th>טלפון</th>
-                                <th>מייל</th>
-                                <th>שם</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data && data.map((item) => (
-                                item.map((item, i) => (
-                                    <tr key={i}>
-                                        <td><button onClick={() => linking(item)}>V</button></td>
-                                        <td>{item.namecategory}</td>
-                                        <td>{item.phone}</td>
-                                        <td>{item.email}</td>
-                                        <td>{item.username}</td>
-                                    </tr>
-                                ))
-                            ))}
-                        </tbody>
-                    </table>
-                </div>}
-            </div >
+            {showEmptyArray && <div>
+                <h2>כעת אין בקשות עזרה בהתאם לקטגוריות שבחרתם, תודה על הרצון הטוב! נסו מאוחר יותר</h2>
+                <button onClick={toHome}>חזרה לתפריט הראשי</button>
+            </div>}
+            {showComponent && <div>
+                <h1>שלום {currentUser.username}!!</h1>
+                <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
+                <table className='tableStyle'>
+                    <thead>
+                        <tr>
+                            <th>בחר</th>
+                            <th>קטגוריה</th>
+                            <th>טלפון</th>
+                            <th>מייל</th>
+                            <th>שם</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data && data.map((item) => (
+                            item.map((item, i) => (
+                                <tr key={i}>
+                                    <td><button onClick={() => linking(item)}>V</button></td>
+                                    <td>{item.namecategory}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.username}</td>
+                                </tr>
+                            ))
+                        ))}
+                    </tbody>
+                </table>
+            </div>}
         </>
     )
 };

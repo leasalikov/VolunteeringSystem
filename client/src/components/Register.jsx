@@ -121,6 +121,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
+import Logo from './Logo';
 import 'primereact/resources/themes/saga-blue/theme.css';  // Theme
 import 'primereact/resources/primereact.min.css';          // Core CSS
 import 'primeicons/primeicons.css';                        // Icons
@@ -162,6 +163,7 @@ const Register = () => {
 
   return (
     <div className='p-d-flex p-jc-center p-ai-center' style={{ height: '100vh' }}>
+      <Logo/>
       <Card title="רישום" style={{ width: '25rem' }}>
         <div className="p-fluid">
           <div className="p-field">

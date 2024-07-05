@@ -6,14 +6,24 @@ import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Manager from './Manager';
 import Buttom from './Buttom';
+import Logo from './Logo';
 
 function Home() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [categoriesArray, setCategoriesArray] = useState([{  food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
+    const [categoriesArray, setCategoriesArray] = useState([{ food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
+    // const [manager, setManager] = useState(false);
     const navigate = useNavigate();
+    // useEffect(() => {
+    //     if (currentUser.isManager) {
+    //         setManager(true);
+    //     } else {
+    //         setManager(false);
+    //     }
+    // }, [currentUser]);
 
     return (
         <>
+        <Logo/>
             <Buttom value={categoriesArray} />
             {currentUser.isManager && <>
                 <h2>שלום מנהל</h2>

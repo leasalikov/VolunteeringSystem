@@ -4,7 +4,7 @@ import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { fetchGetReq } from '../fetchFile';
 import Buttom from './Buttom';
-
+import Logo from './Logo';
 
 const Manager = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -114,6 +114,7 @@ const Manager = () => {
 
     return (
         <>
+            <Logo />
             <Buttom />
             <div >
                 <button className="HeaderButton" onClick={addCategory}>להוספת קטגוריה</button>
