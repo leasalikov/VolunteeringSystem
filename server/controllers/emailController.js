@@ -10,15 +10,15 @@ export class EmailController {
             if (resualt == undefined)
                 return res.status(401).json({ resualt: "emailName duplicate" });
 
-//             res.status(200).json(resualt);
-//         }
-//         catch (ex) {
-//             const err = {};
-//             err.statusCode = 500;
-//             err.message = ex;
-//             next(err);
-//         }
+            res.status(200).json(resualt);
+        }
+        catch (ex) {
+            const err = {};
+            err.statusCode = 500;
+            err.message = ex;
+            next(err);
+        }
         
-//     }
+    }
 
-// }
+}

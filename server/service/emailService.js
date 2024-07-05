@@ -17,7 +17,7 @@ export class EmailService {
       from: 'toiby896@gmail.com',
       to: 'chb8551@gmail.com',
       subject: 'Order Confirmation',
-      text: 'text1 '
+      text: 'text2 '
       // subject: `order pass ${parseInt(req.body.Password)}`,
       //     html: `<div font-weight: 900; font-size: larger; font-family: inherit;">JSON.stringify(req.body.Email),
       //     <h1>hello </h1>

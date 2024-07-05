@@ -87,6 +87,7 @@ import { Card } from 'primereact/card';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import { PostEmail } from '../EmailFunction';
 
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
