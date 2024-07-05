@@ -22,21 +22,22 @@ export class UserService {
     }
 
     async add(users, userItem) {
-
         const password = userItem.password; 
         delete userItem.password;
         const keys = Object.keys(userItem);
         const values = Object.values(userItem);
-        const query = addQuery(users, keys);
-        const result= await executeQuery(query, values);
         
+        const query = addQuery(users, keys);
+       
+        const result= await executeQuery(query, values);
+        console.log("her",result)
         const id = result.insertId;
         console.log(id)
         const loginService = new LoginService();
         const result3= await loginService.register([id, password]);
         const result2=result3.result
-        const token = result3.token
-        return{result,result2,token}
+        // const token = result3.token
+        return{result,result2}
     }
 
     // async update(tableName, userItem, id) {

@@ -1,44 +1,37 @@
 
-// // import { executeQuery } from './db.js';
-// // import { getQuery, getByQuery, deleteQuery, addQuery, updateQuery, getByQuery2, getByQuery3, getByQuery4, getByQuery7, getByQuery6, getByQuery9 } from './query.js'
-// // let nodemailer = require('nodemailer');
-// import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer'
+
+export class EmailService {
+  async sendEmail(req, res, next) {
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'toiby896@gmail.com',
+            pass: 'ahzk sddg tryr uxai'
+        }
+    });
 
 
-
-// export class EmailService {
-//     async sendEmail(req, res, next) {
-//         try {
-//             console.log()
-//             var transporter = nodemailer.createTransport({
-//                 service: 'outlook',
-//                 auth: {
-//                     user: 'ScooterService@outlook.co.il',
-//                     pass: 'ServiceScooter'
-//                 }
-//             });
-//             var mailOptions = {
-//                 from: 'ScooterService@outlook.co.il',
-//                 to: JSON.stringify(data1.Email),
-//                 subject: `order pass ${parseInt(data1.Password)}`,
-//                 html: `<div font-weight: 900; font-size: larger; font-family: inherit;">
-//                 <h1>hello </h1>
-//                 <br/>
-//                 <p>you ordered succesfully!!!!</p>
-//             </div>`
-//             };
-
-//             transporter.sendMail(mailOptions, function (error, info) {
-//                 if (error) {
-//                     throw new Error("Can't send a mail!")
-//                 } else {
-//                     console.log('Email sent: ' + info.response);
-//                 }
-//             });
-//         }
-//         catch (err) {
-//             console.log("err sendEmail1" + err);
-//         }
-//     }
-// }
+    var mailOptions = {
+      from: 'toiby896@gmail.com',
+      to: 'chb8551@gmail.com',
+      subject: 'Order Confirmation',
+      text: 'text1 '
+      // subject: `order pass ${parseInt(req.body.Password)}`,
+      //     html: `<div font-weight: 900; font-size: larger; font-family: inherit;">JSON.stringify(req.body.Email),
+      //     <h1>hello </h1>
+      //     <br/>
+      //     <p>Your order was successful!</p>
+      // </div>`
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  }
+}
 
