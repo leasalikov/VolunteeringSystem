@@ -11,7 +11,7 @@ const Buttom = () => {
     useEffect(() => {
         const moveRightTimer = setTimeout(() => {
             setIsMoved(true);
-        }, 2000); // Add a delay of 2 seconds before moving to the right
+        }, 2000);
 
         return () => clearTimeout(moveRightTimer);
     }, []);
@@ -19,7 +19,7 @@ const Buttom = () => {
 
         <div className={`Buttom ${isMoved ? 'moveRight' : ''}`}>
             {/* <div className='logo'></div> */}      
-            <p> העורף: 106 __</p>
+            <p>פיקוד העורף - 104__</p>
             <p>__mitnadvim@gmail.com מייל:__</p>
             <p>__בטלפון:  033003300__</p>
             <p>__ליצירת קשר:__</p>            
