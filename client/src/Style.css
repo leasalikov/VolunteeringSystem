@@ -2,18 +2,11 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* @media only screen and (max-width: 600px) {
-    body {
-        background-color: lightblue;
+@media (max-width: 700px) {
+    .Buttom {
+        display: none; 
     }
-    .type {
-        flex: 0 0 50%;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-        display: inline-grid;
-    }
-} */
-
+}
 @keyframes backgroundAnimation {
     0% {
         background-image: url('Photos/sky.jpg');
@@ -21,17 +14,31 @@
 
     100% {
         background-image: url('Photos/sky.jpg');
+        /* filter: opacity(0.5); */
     }
 }
+.backgroundAnimation{
+    opacity: 0.5;
+}
 
-@keyframes moveRightToLeft {
+@keyframes moveLeftToRight {
     0% {
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
 
     100% {
-        transform: translateX(-100%);
+        transform: translateX(100%);
     }
+}
+.Buttom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(3, 175, 206);
+    animation: moveLeftToRight 15s linear infinite;
 }
 
 h1 {
@@ -53,10 +60,11 @@ body {
     min-width: 320px;
     min-height: 100vh;
     width: 100%;
+    height: 100%;
 }
 
 button {
-    border-radius: 6px;
+    border-radius: 1px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
@@ -102,17 +110,8 @@ input {
     display: flex;
     justify-content: center;
     background-color: rgb(3, 175, 206);
-}
-
-.Buttom {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(3, 175, 206);
-    animation: moveRightToLeft 15s linear infinite;
+    z-index: 1000; /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* add a slight shadow for depth */
 }
 
 .HeaderButton {
@@ -231,3 +230,15 @@ form {
     background-color: rgb(162, 223, 234) !important;
     /* border-color: rgb(3, 175, 206) !important; */
 }
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(3, 175, 206);
+    z-index: 1000; /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* add a slight shadow for depth */
+}
+

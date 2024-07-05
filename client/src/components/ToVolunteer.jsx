@@ -5,7 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import Header from './Header';
 import Buttom from './Buttom';
-
+import { Checkbox } from 'primereact/checkbox';
+import { Button } from 'primereact/button';
+import { Card } from 'primereact/card';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 function ToVolunteer() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [categoriesArray, setCategoriesArray] = useState([{ אוכל: false }, { אירוח: false }, { משחקים: false }, { בייביסיטר: false }]);
@@ -78,7 +83,6 @@ function ToVolunteer() {
                         <br />
                         <label for="אוכל">ארוחות חמות</label>
                         <input type="checkbox" id="food" name="food" value={categoriesArray.אוכל} onChange={(e) => setCategoriesArray({ אוכל: e.target.checked, אירוח: categoriesArray.אירוח, משחקים: categoriesArray.משחקים, בייביסיטר: categoriesArray.בייביסיטר })} /><br />
-
                         <button onClick={hostImg} className='hostImg'></button>
                         <br />
                         <label for="אירוח">אירוח</label>
