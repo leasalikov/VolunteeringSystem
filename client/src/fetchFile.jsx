@@ -22,9 +22,9 @@ async function fetchPostReq(route, body) {
 
 async function fetchGetByReq(route, idcategoryArray, usernamevolunteers) {
     try {
-        // if (route != "login" && route != "register") {
+        if(route!="login"&&route!="register"){
 
-        // }
+            }
         const response = await fetch(`http://localhost:8080/${route}/${idcategoryArray}/${usernamevolunteers}`, {
             method: 'GET',
             // body: JSON.stringify(body),

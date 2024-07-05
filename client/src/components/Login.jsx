@@ -112,6 +112,10 @@ const Login = () => {
         setCurrentUser(response.user[0]);
         localStorage.setItem("currentUser", JSON.stringify(response.user[0]));
         setIsLoggedInUser(true);
+        console.log(currentUser)
+        const responseEmail = PostEmail(response.user[0].idUser, response.user[0].name, response.user[0].username, response.user[0].email)
+        const emailData = await responseEmail;
+        console.log("emailData ", emailData);
       }
       setUserName('');
       setPassword('');
