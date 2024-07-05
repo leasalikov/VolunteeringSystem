@@ -1,28 +1,12 @@
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    /* line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
 }
-@media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
+
+@media (max-width: 700px) {
+    .Buttom {
+        display: none; 
     }
-    .type {
-        flex: 0 0 50%;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-        display: inline-grid;
-    }
-  }
+}
 @keyframes backgroundAnimation {
     0% {
         background-image: url('Photos/sky.jpg');
@@ -30,17 +14,38 @@
 
     100% {
         background-image: url('Photos/sky.jpg');
+        /* filter: opacity(0.5); */
+    }
+}
+.backgroundAnimation{
+    opacity: 0.5;
+}
+
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(-100%);
     }
 
-    /* 100% {
-        background-image: url('Photos/image3.jpeg');
-    } */
+    100% {
+        transform: translateX(100%);
+    }
+}
+.Buttom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(3, 175, 206);
+    animation: moveLeftToRight 15s linear infinite;
 }
 
 h1 {
     font-size: 2.7em;
     line-height: 1.1;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -50,26 +55,16 @@ body {
     background-color: rgb(211, 244, 250);
     background-image: url('Photos/sky.jpg');
     animation: backgroundAnimation 5s infinite;
-    margin: 0;
+    display: grid;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-}
-.backgroundAnimation{
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
 }
+
 button {
-    border-radius: 6px;
+    border-radius: 1px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
@@ -78,25 +73,6 @@ button {
     background-color: rgb(3, 175, 206);
     cursor: pointer;
     transition: border-color 0.25s;
-}
-
-label {
-    font-size: large;
-}
-
-input {
-    background-color: rgb(3, 175, 206);
-    border-radius: 1pc;
-    /* height: 2pc; */
-    border-radius: 14px;
-    border: 2px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    margin-bottom: 5%;
 }
 
 button:hover {
@@ -109,6 +85,23 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
+label {
+    font-size: large;
+}
+
+input {
+    background-color: rgb(3, 175, 206);
+    border-radius: 14px;
+    border: 2px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin-bottom: 5%;
+}
+
 .Header {
     position: fixed;
     top: 0;
@@ -117,25 +110,8 @@ button:focus-visible {
     display: flex;
     justify-content: center;
     background-color: rgb(3, 175, 206);
-}
-@keyframes moveRightToLeft {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.Buttom {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(3, 175, 206);
-    animation: moveRightToLeft 15s linear infinite; /* Adjust duration for desired speed */
+    z-index: 1000; /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* add a slight shadow for depth */
 }
 
 .HeaderButton {
@@ -145,16 +121,16 @@ button:focus-visible {
     background-color: rgb(3, 175, 206);
     cursor: pointer;
     transition: background-color 0.25s;
-    border-radius: 0%;
-    /* margin: 5px;  */
     height: 50px;
 }
 
 .HeaderButton:hover {
-    border-color: aliceblue;
     background-color: rgb(211, 244, 250);
 }
-.divStyle {
+
+.divStyle,
+.tableStyle,
+.divLogin {
     display: flex;
     place-items: center;
     justify-content: center;
@@ -164,47 +140,26 @@ button:focus-visible {
     border-radius: 5px;
     background-color: rgb(211, 244, 250);
     padding: 20px;
-    /* font-size: 20px; */
-    /* line-height: 2.5; */
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;  */
     gap: 10px;
 }
-.tableStyle{
-    /* display: flex; */
-    place-items: center;
-    justify-content: center;
-    align-items: center;
-    /* min-width: 320px;
-    min-height: 100vh; */
-    border-radius: 5px;
-    background-color: rgb(211, 244, 250);
-    padding: 20px;
-    /* line-height: 1; */
-    /* display: grid; */
+
+.tableStyle {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr; 
-    gap: 10px;
+    grid-template-rows: 1fr 1fr;
 }
-.divLogin{
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    align-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    border-radius: 5px;
-    /* background-color: #f2f2f2; */
+
+.divLogin {
     animation: backgroundAnimation 5s infinite;
-    padding: 20px;
     line-height: 2.5;
 }
+
 table {
     border-collapse: collapse;
     width: 100%;
 }
-th, td {
+
+th,
+td {
     border: 1px solid black;
     padding: 8px;
 }
@@ -212,66 +167,78 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
 form {
-    padding: '20px';
-    border: '1px solid #ccc';
-    border-radius: '5px';
-    /* background-color: rgb(3, 175, 206); */
-    border-color: rgb(3, 175, 206);
-    padding: '20px';
+    padding: 20px;
+    border: 1px solid #03AFCE;
+    border-radius: 5px;
 }
+
 .type {
     flex: 0 0 50%;
     box-sizing: border-box;
     margin-bottom: 20px;
     display: inline-grid;
 }
-.type button {
-    margin-right: 10px;
-    background-size: cover;
-    background-position: center; 
-    height: 250px;
-    width: 350px;
-}
-.type img {
-    margin-right: 10px;
-    background-size: cover;
-    background-position: center; 
-    height: 250px;
-    width: 350px;
-}
+
+.type button,
+.type img,
 .type button:hover {
     margin-right: 10px;
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     height: 250px;
     width: 350px;
-    /* opacity: 0.8; */
 }
-.img1{
+
+.img1,
+.img3 {
     opacity: 0.7;
 }
-.img3{
-    opacity: 0.7;
-}
-.foodImg{
+
+.foodImg {
     background-image: url('Photos/food2.webp');
 }
-.hostImg{
+
+.hostImg {
     background-image: url('Photos/hosting.png');
 }
-.toysImg{
+
+.toysImg {
     background-image: url('Photos/toys.jpg');
 }
-.babysitterImg{
+
+.babysitterImg {
     background-image: url('Photos/babyS.jpg');
 }
-.logo{
+
+.logo {
     background-image: url('./Photos/logo2.jpg');
     margin-right: 10px;
     background-size: cover;
-    background-position: center; 
-    height: auto;
+    background-position: center;
     width: 60px;
     border-radius: 4px;
 }
+
+.custom-button:hover {
+    background-color: rgb(3, 175, 206) !important;
+    /* border-color: rgb(211, 244, 250) !important; */
+}
+
+.custom-button {
+    background-color: rgb(162, 223, 234) !important;
+    /* border-color: rgb(3, 175, 206) !important; */
+}
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(3, 175, 206);
+    z-index: 1000; /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* add a slight shadow for depth */
+}
+

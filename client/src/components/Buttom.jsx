@@ -11,17 +11,19 @@ const Buttom = () => {
     useEffect(() => {
         const moveRightTimer = setTimeout(() => {
             setIsMoved(true);
-        }, 2000); // Add a delay of 2 seconds before moving to the right
+        }, 2000);
 
         return () => clearTimeout(moveRightTimer);
     }, []);
     return (
 
         <div className={`Buttom ${isMoved ? 'moveRight' : ''}`}>
-            {/* <div className='logo'></div> */}
-            <p>אתר מתנדבים מלחמת חרבות ברזל</p>
-            <p>ליצירת קשר: בטלפון: 033003300 במייל: mitnadvim@gmail.com </p>
-            <p>פיקוד העורף: 106 </p>
+            {/* <div className='logo'></div> */}      
+            <p>פיקוד העורף - 104__</p>
+            <p>__mitnadvim@gmail.com מייל:__</p>
+            <p>__בטלפון:  033003300__</p>
+            <p>__ליצירת קשר:__</p>            
+            <p>__אתר מתנדבים מלחמת חרבות </p>
         </div>
     )
 };

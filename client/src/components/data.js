@@ -75,7 +75,7 @@
 //     UNIQUE KEY `username_UNIQUE` (`username`),
 //     UNIQUE KEY `idUser_UNIQUE` (`idUser`)
 //   ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
-  
+
   
 //   CREATE TABLE `volunteers` (
 //     `idvolunteers` int(11) NOT NULL AUTO_INCREMENT,
@@ -169,4 +169,3 @@
     //         [key]: value
     //     }));
     // };
-
