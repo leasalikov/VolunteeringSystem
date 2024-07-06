@@ -12,9 +12,7 @@ const Manager = () => {
     const [showAllVolunteers, setShowAllVolunteers] = useState(false);
     const [showAllNeedies, setShowAllNeedies] = useState(false);
     const [showAddCategory, setShowAddCategory] = useState(false);
-
     const [showEmptyArray, setShowEmptyArray] = useState();
-
     const [data, setData] = useState();
 
     const navigate = useNavigate();
@@ -33,10 +31,8 @@ const Manager = () => {
             // get all linking
             const response = await fetchGetReq("linking");
             const result = await response;
-            console.log("result    ", result);
             setShowLinkVolunteering(!showLinkVolunteering)
             setData(result);
-            console.log("data  ", data)
             if (result.length === 0) {
                 setShowEmptyArray(true);
                 setShowLinkVolunteering(false)
@@ -50,16 +46,13 @@ const Manager = () => {
     async function allVolunteers() {
         setShowEmptyArray(false);
         setShowAddCategory(false)
-
         setShowAllNeedies(false);
         setShowLinkVolunteering(false);
         if (!showAllVolunteers) {
             const response = await fetchGetReq("volunteer");
             const result = await response;
-            console.log("result    ", result);
             setShowAllVolunteers(!showAllVolunteers)
             setData(result);
-            console.log("data  ", data)
             if (result.length === 0) {
                 setShowEmptyArray(true);
                 setShowAllVolunteers(false)
@@ -77,10 +70,8 @@ const Manager = () => {
         if (!showAllNeedies) {
             const response = await fetchGetReq("needy");
             const result = await response;
-            console.log("result    ", result);
             setShowAllNeedies(!showAllNeedies)
             setData(result);
-            console.log("data  ", data)
             if (result.length === 0) {
                 setShowEmptyArray(true);
                 setShowAllNeedies(false)
@@ -90,12 +81,12 @@ const Manager = () => {
             setShowAllNeedies(!showAllNeedies)
         }
     }
-    async function addCategory() {
-        setShowEmptyArray(false);
-        setShowAllVolunteers(false);
-        setShowLinkVolunteering(false);
-        setShowAllNeedies(false);
-        if (!showAddCategory) {
+    // async function addCategory() {
+    //     setShowEmptyArray(false);
+    //     setShowAllVolunteers(false);
+    //     setShowLinkVolunteering(false);
+    //     setShowAllNeedies(false);
+    //     if (!showAddCategory) {
             // const response = await fetchGetReq("needy");
             // const result = await response;
             // console.log("result    ", result);
@@ -106,18 +97,18 @@ const Manager = () => {
             //     setShowEmptyArray(true);
             //     setShowAllNeedies(false)
             // }
-        }
-        else {
-            setShowAllNeedies(!showAllNeedies)
-        }
-    }
+        // }
+    //     else {
+    //         setShowAllNeedies(!showAllNeedies)
+    //     }
+    // }
 
     return (
         <>
             <Logo />
             <Buttom />
             <div >
-                <button className="HeaderButton" onClick={addCategory}>להוספת קטגוריה</button>
+                {/* <button className="HeaderButton" onClick={addCategory}>להוספת קטגוריה</button> */}
                 <button className="HeaderButton" onClick={LinkVolunteering}>לפרטי ההתנדבויות המתואמים</button>
                 <button className="HeaderButton" onClick={allVolunteers}>מתנדבים שלא שובצו</button>
                 <button className="HeaderButton" onClick={allNeedies}>מבקשי עזרה שלא שובצו </button>

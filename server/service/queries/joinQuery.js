@@ -35,4 +35,4 @@ export {
     getUsersBy,
     linking,
     getAllLinking
-  }
+}

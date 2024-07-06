@@ -6,7 +6,7 @@
 }
 
 .logo {
-    width: 200px;
-    height: 200px;
-    height: auto;
+    width: 100px !important;
+    height: 100px !important;
+    display: block;
 }
