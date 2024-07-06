@@ -1,0 +1,12 @@
+.logo-container {
+    position: fixed;
+    top: 6%;
+    right: 10px;
+    z-index: 1000; /* ensures it stays on top */
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    height: auto;
+}
