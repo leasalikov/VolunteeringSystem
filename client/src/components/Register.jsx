@@ -155,10 +155,8 @@ const Register = () => {
     console.log("jsonUser ", jsonUser);
     setCurrentUser({ "idUser": jsonUser.resault.insertId, "name": name, "username": username, "email": email, "phone": phone });
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
-    console.log("response", response);
-    let token = response.token;
-    console.log("token", token);
-    document.cookie = `token=${token}`;
+    // let token = response.token;
+    // document.cookie = `token=${token}`;
     navigate(`/users/${jsonUser.result.insertId}/home`, { state: { user: "user" } });
   }
 

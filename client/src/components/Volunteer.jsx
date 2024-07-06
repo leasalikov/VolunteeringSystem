@@ -33,7 +33,6 @@ function Volunteer() {
                 const fetchedData = await response;
                 setData(fetchedData);
                 const allArraysEmpty = fetchedData.every(innerArray => innerArray.length === 0);
-                console.log("allArraysEmpty ", allArraysEmpty)
                 if (allArraysEmpty) {
                     setShowEmptyArray(true);
                     setShowComponent(false);
@@ -58,7 +57,6 @@ function Volunteer() {
                 //post to linking
                 const response = await fetchPostReq("linking", paramsToSent);
                 linkingData = await response;
-                console.log("linkingdata  ", linkingData)
                 //result, idcategoryV, idcategoryN
             }
             catch (error) {
@@ -69,7 +67,6 @@ function Volunteer() {
                 const idcategoryvolunteer = linkingData.idcategoryvolunteer;
                 const response = await fetchDeleteReq("volunteer", idcategoryvolunteer);
                 const data1 = await response;
-                console.log("data1  ", data1)
             }
             catch (error) {
                 console.error(error);
@@ -79,7 +76,6 @@ function Volunteer() {
                 const idcategoryneedy = linkingData.idcategoryneedy;
                 const response = await fetchDeleteReq("needy", idcategoryneedy);
                 const data2 = await response;
-                console.log("data2  ", data2)
             }
             catch (error) {
                 console.error(error);
@@ -105,14 +101,9 @@ function Volunteer() {
         setShowEndMassage(false);
         setShowComponent(true);
         const allArraysEmpty = data.every(innerArray => innerArray.length === 0);
-        console.log("allArraysEmpty  ", allArraysEmpty)
-        console.log("length  ", data[0].length, data[1].length, data[2].length)
         if (allArraysEmpty) {
-            console.log('All arrays in the main array are empty.');
             setShowEmptyArray(true);
             setShowComponent(false);
-        } else {
-            console.log('Not all arrays in the main array are empty.');
         }
     }
     function toHome() {

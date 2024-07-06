@@ -61,9 +61,9 @@ const ToNeedy = () => {
         }
 
     }
-    // const foodImg = () => {
+    const foodImg = () => {
 
-    // }
+    }
     const hostImg = () => {
 
     }
@@ -73,11 +73,7 @@ const ToNeedy = () => {
     const babysitterImg = () => {
 
     }
-    const [isChecked, setIsChecked] = useState(false);
 
-    const foodImg = () => {
-        setIsChecked(!isChecked);
-    };
     return (
         <>
             <Logo />

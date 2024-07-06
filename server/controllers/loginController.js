@@ -31,7 +31,6 @@ export class LoginController {
         }
     }
 
-
     async updatePassword(req, res, next) {
         try {
             const loginService = new LoginService();

@@ -1,8 +1,6 @@
 
 import { LinkingService } from '../service/linkingService.js'
 
-// const loginTry = [];
-
 export class LinkingController {
 
     async getlinking(req, res, next) {
@@ -25,7 +23,6 @@ export class LinkingController {
             const linkingService = new LinkingService();
             console.log("her---req.body",req.body)
             const addLinking = await linkingService.addLinking(req.body.usernameneedies, req.body.namecategory, req.body.usernamevolenteers);
-            console.log("addLinking",addLinking)
             return res.status(200).json(addLinking);
         }
         catch (ex) {

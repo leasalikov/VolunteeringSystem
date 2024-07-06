@@ -4,24 +4,28 @@ import { useContext } from "react";
 import { UserContext } from '../App';
 import Buttom from './Buttom';
 import Logo from './Logo';
-
-// import { fetchPostReq } from '../fetchFile';
 import Header from './Header';
+import { Card } from 'primereact/card';
+
 const ToNeedy = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [categoriesArray, setCategoriesArray] = useState([{ food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
     const navigate = useNavigate();
 
     return (
-        <>
-            <Logo />
-            <Header />
-            <Buttom />
-            <div className="divStyle" >
-                <h2>בקשתך התקבלה, בקרוב ניצור איתך קשר</h2>
+        <div className="p-grid p-justify-center">
+            <div className="p-col-12 p-md-8 p-lg-6">
+                <Card className="p-card">
+                    <Logo />
+                    <Header />
+                    <Buttom />
+                    <div className="p-card-body">
+                        <h2>בקשתך התקבלה, בקרוב ניצור איתך קשר</h2>
+                    </div>
+                </Card>
             </div>
-
-        </>
-    )
+        </div>
+    );
 };
+
 export default ToNeedy;

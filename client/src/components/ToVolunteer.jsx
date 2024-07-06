@@ -51,14 +51,12 @@ function ToVolunteer() {
             "usernamevolenteers": username,
             "namecategory": trueCategoriesArray
         }
-        console.log("trueCategoriesArray ", trueCategoriesArray)
         //post req 
         //add the user to volunteer and to categoryVolunteer
         if (trueCategoriesArray.length == 0) (alert("לא בוצעה בחירה"));
         else {
             const response = fetchPostReq("volunteer", paramsToSend);
             const data = await response;
-            console.log("data in ToVolunteer", data)
             navigate(`/users/${currentUser.idUser}/volunteer`, { state: { data: data } });
         }
     }
