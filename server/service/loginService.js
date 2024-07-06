@@ -1,7 +1,7 @@
 
-import { executeQuery } from './db.js';
+import { executeQuery } from './queries/db.js';
 import jwt from 'jsonwebtoken';
-import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
+import { loginQuery, registerQuery, updatePassword } from './queries/queryLogin.js'
 import { UserService } from './userService.js';
 import 'dotenv/config'
 // import { Service } from '../service/service.js';

@@ -1,6 +1,6 @@
 
-import { executeQuery } from './db.js';
-import {  getByQuery} from './query.js'
+import { executeQuery } from './queries/db.js';
+import {  getByQuery} from './queries/query.js'
 
 
 export class CategoryService {

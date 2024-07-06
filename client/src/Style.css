@@ -127,7 +127,6 @@ input {
 }
 
 .divStyle,
-.tableStyle,
 .divLogin {
     display: flex;
     place-items: center;
@@ -140,7 +139,9 @@ input {
     padding: 20px;
     gap: 10px;
 }
-
+.tableStyle{
+    background-color: rgb(246, 249, 251);
+}
 .tableStyle {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;

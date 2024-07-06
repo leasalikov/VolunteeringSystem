@@ -1,7 +1,8 @@
 
 import { CategoryService } from './categoryService.js';
-import { executeQuery } from './db.js';
-import {  addQuery, deleteQuery, getByQuery1 ,getUsersBy} from './query.js'
+import { executeQuery } from './queries/db.js';
+import { addQuery, deleteQuery, getByQuery1 } from './queries/query.js'
+import { getUsersBy} from './queries/joinQuery.js'
 
 
 export class NeedyService {

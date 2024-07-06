@@ -1,8 +1,9 @@
 
-import { executeQuery } from './db.js';
+import { executeQuery } from './queries/db.js';
 // import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
 // import { UserService } from './userService.js';
-import { addQuery, getAllLinking, linking } from './query.js'
+import { addQuery } from './queries/query.js'
+import { getAllLinking, linking } from './queries/joinQuery.js'
 
 import { CategoryService } from './categoryService.js';
 import { NeedyService } from './needyService.js';
@@ -34,7 +35,7 @@ export class LinkingService {
         console.log(query)
         const result = await executeQuery(query, [idcategoryvolunteers[0].idcategoryvolunteers, idcategoryneedies[0].idcategoryneedies]);
         const idcategoryneedy = idcategoryneedies[0].idcategoryneedies
-       const idcategoryvolunteer = idcategoryvolunteers[0].idcategoryvolunteers
+        const idcategoryvolunteer = idcategoryvolunteers[0].idcategoryvolunteers
         return { result, idcategoryneedy, idcategoryvolunteer }
     }
 
@@ -46,7 +47,7 @@ export class LinkingService {
         return { result }
     }
 
-   
+
 
 
     // async updatePassword(id, oldPassword, newPassword) {
