@@ -3,13 +3,18 @@
 }
 
 @media (max-width: 900px) {
-    .Buttom {
+
+    p {
         display: none;
     }
 
+    h1 {
+        font-size: 1.8em;
+        line-height: 1.1;
+    }
+
     .Header {
-        padding: 10px;
-        background-color: aqua;
+        font-size: 0.8em;
     }
 
     .logo {
@@ -23,38 +28,27 @@
     }
 
     input {
-        font-size: 0.9em; 
+        font-size: 0.9em;
         padding: 0.5em 1em;
     }
-    .Header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: rgb(81, 180, 251);
-    }
-    .HeaderButton {
-        font-size: 1em;
-        font-weight: 500;
-        font-family: inherit;
-        background-color: rgb(81, 180, 251); 
-        cursor: pointer;
-        transition: background-color 0.25s;
-        height: 30px;
+    .type button,
+    .type img,
+    .type button:hover {
+        height: 100px !important;
     }
 }
 
 @keyframes backgroundAnimation {
     0% {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)) ,url('Photos/sky.jpg') ;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url('Photos/sky.jpg');
     }
+
     100% {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)) ,url('Photos/sky.jpg');
+        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url('Photos/sky.jpg');
     }
 }
-.backgroundAnimation{
+
+.backgroundAnimation {
     opacity: 0.5;
 }
 
@@ -67,6 +61,7 @@
         transform: translateX(100%);
     }
 }
+
 .Buttom {
     position: fixed;
     bottom: 0;
@@ -147,15 +142,17 @@ input {
     display: flex;
     justify-content: center;
     background-color: rgb(81, 180, 251);
-    z-index: 1000; /* ensure the header stays on top */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* add a slight shadow for depth */
+    z-index: 1000;
+    /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* add a slight shadow for depth */
 }
 
 .HeaderButton {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: rgb(81, 180, 251); 
+    background-color: rgb(81, 180, 251);
     cursor: pointer;
     transition: background-color 0.25s;
     height: 50px;
@@ -178,13 +175,16 @@ input {
     padding: 20px;
     gap: 10px;
 }
-.tableStyle{
+
+.tableStyle {
     background-color: rgb(246, 249, 251);
 }
+
 .tableStyle {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
+
 .divLogin {
     animation: backgroundAnimation 5s infinite;
     line-height: 2.5;
@@ -267,6 +267,7 @@ form {
     background-color: rgb(162, 223, 234) !important;
     /* border-color: rgb(81, 180, 251) !important; */
 }
+
 .Header {
     position: fixed;
     top: 0;
@@ -275,7 +276,8 @@ form {
     display: flex;
     justify-content: center;
     background-color: rgb(81, 180, 251);
-    z-index: 1000; /* ensure the header stays on top */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* add a slight shadow for depth */
+    z-index: 1000;
+    /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* add a slight shadow for depth */
 }
-

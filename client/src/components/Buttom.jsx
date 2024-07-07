@@ -17,7 +17,7 @@ const Buttom = () => {
     }, []);
     return (
 
-        <div className={`Buttom ${isMoved ? 'moveRight' : ''}`}>
+        <div className="Buttom">
             <p>פיקוד העורף - 104__</p>
             <p>__mitnadvim@gmail.com מייל:__</p>
             <p>__בטלפון:  033003300__</p>
