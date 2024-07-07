@@ -1,8 +1,8 @@
 
 import { CategoryService } from './categoryService.js';
-import { executeQuery } from './db.js';
-import { addQuery,deleteQuery,  getByQuery1,getUsersBy,getByQuery } from './query.js'
-
+import { executeQuery } from './queries/db.js';
+import { addQuery,deleteQuery,  getByQuery1 ,getByQuery } from './queries/query.js'
+import {getUsersBy} from './queries/joinQuery.js'
 
 export class VolunteerService {
 
@@ -13,14 +13,10 @@ export class VolunteerService {
 
     async getvolunteerBy(sortByObj, tablename, column) {
         var result;
-        console.log("sortByObj: ", sortByObj);
-        // const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
         const key = Object.keys(sortByObj);
-        const query = getByQuery1(tablename, key, column);        //check if user exist in the volunteers
-        console.log("query: ", query)
+        const query = getByQuery1(tablename, key, column);//check if user exist in the volunteers
         result = await executeQuery(query, values);
-        console.log("result getBy: ", result)
         return result;
     }
     // async getvolunteercategory(sortByObj, tablename, column) {
@@ -96,9 +92,7 @@ export class VolunteerService {
         return { result1,idcategoryArray,volunteerItem }
     }
     ////find all the needies that suit the volunteer
-
-
-
+    
     // async update(tableName, volunteerItem, id) {
     //     const keys = Object.keys(volunteerItem);
     //     const values = Object.values(volunteerItem);

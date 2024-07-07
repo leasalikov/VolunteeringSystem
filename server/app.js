@@ -6,6 +6,7 @@ import { volunteerRouter } from './routers/volunteerRouter.js';
 import { needyRouter } from './routers/needyRouter.js';
 import { linkingRouter } from './routers/linkingRouter.js';
 import { authMiddleWare } from './middlewere/authMiddleWare.js';
+// import { emailRouter } from './routers/emailRouter.js';
 // import { EmailRouter} from './routers/EmailRouter.js'
 
 // import { logErrors } from './middleware/logError.js';
@@ -42,12 +43,8 @@ app.use('/user', userRouter);
 app.use('/volunteer', volunteerRouter);
 app.use('/needy', needyRouter);
 app.use('/linking',linkingRouter);
-// app.use('/api/Email',EmailRouter)
+// app.use('/Email',emailRouter)
 app.use('/needyVolunteers',needyRouter)
-
-
-
-
 
 
 

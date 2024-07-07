@@ -43,8 +43,6 @@ export class NeedyController {
     async addNeedy(req, res, next) {
         try {
             const needyService = new NeedyService();
-            // const body = Object.values(req.body)
-            console.log("booodddyyy   ", req.body)
             const result = await needyService.addneedy(tableName, req.body);
             if (result == undefined)
                 return res.status(401).json({ resualt: "needyName duplicate" });

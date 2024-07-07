@@ -1,8 +1,7 @@
 
-import { executeQuery } from './db.js';
-// import { loginQuery, registerQuery, updatePassword } from './queryLogin.js'
-// import { UserService } from './userService.js';
-import { addQuery, getAllLinking, linking } from './query.js'
+import { executeQuery } from './queries/db.js';
+import { addQuery } from './queries/query.js'
+import { getAllLinking, linking } from './queries/joinQuery.js'
 
 import { CategoryService } from './categoryService.js';
 import { NeedyService } from './needyService.js';
@@ -13,13 +12,9 @@ export class LinkingService {
         console.log("idcategoryneediesgffghfghj")
 
         const queryidcategoryvolunteers = linking("idcategoryvolunteers", "categoryvolunteers", "volunteers", "idvolunteers", "usernamevolenteers")
-        console.log(queryidcategoryvolunteers)
         let idcategoryvolunteers = await executeQuery(queryidcategoryvolunteers, [usernamevolenteers, namecategory]);
-        console.log("idcategoryvolunteers", idcategoryvolunteers)
-        console.log("idcategoryneediesgffghfghj")
 
         const queryidcategoryneedies = linking("idcategoryneedies", "categoryneedies", "needies", "idneedies", "usernameneedies")
-        console.log(queryidcategoryneedies)
         let idcategoryneedies = await executeQuery(queryidcategoryneedies, [usernameneedies, namecategory]);
 
 
@@ -34,20 +29,15 @@ export class LinkingService {
         console.log(query)
         const result = await executeQuery(query, [idcategoryvolunteers[0].idcategoryvolunteers, idcategoryneedies[0].idcategoryneedies]);
         const idcategoryneedy = idcategoryneedies[0].idcategoryneedies
-       const idcategoryvolunteer = idcategoryvolunteers[0].idcategoryvolunteers
+        const idcategoryvolunteer = idcategoryvolunteers[0].idcategoryvolunteers
         return { result, idcategoryneedy, idcategoryvolunteer }
     }
 
     async get() {
         const queryalllinking = getAllLinking()
-        // console.log("her",queryalllinking)
         const result = await executeQuery(queryalllinking);
-        // console.log("result1.result[0]",result1.result[0]
         return { result }
     }
-
-   
-
 
     // async updatePassword(id, oldPassword, newPassword) {
     //     let queryPassword = loginQuery();

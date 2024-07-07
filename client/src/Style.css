@@ -1,83 +1,120 @@
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    /* line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
 }
-@media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
+
+@media (max-width: 900px) {
+
+    p {
+        display: none;
     }
-    .type {
-        flex: 0 0 50%;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-        display: inline-grid;
+
+    h1 {
+        font-size: 1.8em;
+        line-height: 1.1;
     }
-  }
+
+    .Header {
+        font-size: 0.8em;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+    }
+
+    input {
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+    }
+    .type button,
+    .type img,
+    .type button:hover {
+        height: 100px !important;
+    }
+}
+
 @keyframes backgroundAnimation {
     0% {
-        background-image: url('Photos/sky.jpg');
+        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url('Photos/sky.jpg');
     }
 
     100% {
-        background-image: url('Photos/sky.jpg');
+        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url('Photos/sky.jpg');
+    }
+}
+
+.backgroundAnimation {
+    opacity: 0.5;
+}
+
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(-100%);
     }
 
-    /* 100% {
-        background-image: url('Photos/image3.jpeg');
-    } */
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.Buttom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(81, 180, 251);
+    animation: moveLeftToRight 15s linear infinite;
 }
 
 h1 {
     font-size: 2.7em;
     line-height: 1.1;
 }
+
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgb(211, 244, 250);
+    background-color: rgb(246, 249, 251);
     background-image: url('Photos/sky.jpg');
     animation: backgroundAnimation 5s infinite;
-    margin: 0;
+    display: grid;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-}
-.backgroundAnimation{
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
 }
+
 button {
-    border-radius: 6px;
+    border-radius: 1px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: rgb(3, 175, 206);
+    background-color: rgb(81, 180, 251);
     cursor: pointer;
     transition: border-color 0.25s;
+}
+
+button:hover {
+    border-color: aliceblue;
+    background-color: rgb(81, 180, 251);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
 }
 
 label {
@@ -85,9 +122,7 @@ label {
 }
 
 input {
-    background-color: rgb(3, 175, 206);
-    border-radius: 1pc;
-    /* height: 2pc; */
+    background-color: rgb(81, 180, 251);
     border-radius: 14px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
@@ -99,14 +134,138 @@ input {
     margin-bottom: 5%;
 }
 
-button:hover {
-    border-color: aliceblue;
-    background-color: rgb(3, 175, 206);
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(81, 180, 251);
+    z-index: 1000;
+    /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* add a slight shadow for depth */
 }
 
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+.HeaderButton {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: rgb(81, 180, 251);
+    cursor: pointer;
+    transition: background-color 0.25s;
+    height: 50px;
+}
+
+.HeaderButton:hover {
+    background-color: rgb(246, 249, 251);
+}
+
+.divStyle,
+.divLogin {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    border-radius: 5px;
+    background-color: rgb(246, 249, 251);
+    padding: 20px;
+    gap: 10px;
+}
+
+.tableStyle {
+    background-color: rgb(246, 249, 251);
+}
+
+.tableStyle {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.divLogin {
+    animation: backgroundAnimation 5s infinite;
+    line-height: 2.5;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+form {
+    padding: 20px;
+    border: 1px solid #03AFCE;
+    border-radius: 5px;
+}
+
+.type {
+    flex: 0 0 50%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    display: inline-grid;
+}
+
+.type button,
+.type img,
+.type button:hover {
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    width: 350px;
+}
+
+.img1,
+.img3 {
+    opacity: 0.7;
+}
+
+.foodImg {
+    background-image: url('Photos/food2.webp');
+}
+
+.hostImg {
+    background-image: url('Photos/hosting.png');
+}
+
+.toysImg {
+    background-image: url('Photos/toys.jpg');
+}
+
+.babysitterImg {
+    background-image: url('Photos/babyS.jpg');
+}
+
+.logo {
+    background-image: url('./Photos/logo2.jpg');
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    width: 60px;
+    border-radius: 4px;
+}
+
+.custom-button:hover {
+    background-color: rgb(81, 180, 251) !important;
+    /* border-color: rgb(246, 249, 251) !important; */
+}
+
+.custom-button {
+    background-color: rgb(162, 223, 234) !important;
+    /* border-color: rgb(81, 180, 251) !important; */
 }
 
 .Header {
@@ -116,162 +275,9 @@ button:focus-visible {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(3, 175, 206);
-}
-@keyframes moveRightToLeft {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.Buttom {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(3, 175, 206);
-    animation: moveRightToLeft 15s linear infinite; /* Adjust duration for desired speed */
-}
-
-.HeaderButton {
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: rgb(3, 175, 206);
-    cursor: pointer;
-    transition: background-color 0.25s;
-    border-radius: 0%;
-    /* margin: 5px;  */
-    height: 50px;
-}
-
-.HeaderButton:hover {
-    border-color: aliceblue;
-    background-color: rgb(211, 244, 250);
-}
-.divStyle {
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    align-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    border-radius: 5px;
-    background-color: rgb(211, 244, 250);
-    padding: 20px;
-    /* font-size: 20px; */
-    /* line-height: 2.5; */
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;  */
-    gap: 10px;
-}
-.tableStyle{
-    /* display: flex; */
-    place-items: center;
-    justify-content: center;
-    align-items: center;
-    /* min-width: 320px;
-    min-height: 100vh; */
-    border-radius: 5px;
-    background-color: rgb(211, 244, 250);
-    padding: 20px;
-    /* line-height: 1; */
-    /* display: grid; */
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr; 
-    gap: 10px;
-}
-.divLogin{
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    align-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    border-radius: 5px;
-    /* background-color: #f2f2f2; */
-    animation: backgroundAnimation 5s infinite;
-    padding: 20px;
-    line-height: 2.5;
-}
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-form {
-    padding: '20px';
-    border: '1px solid #ccc';
-    border-radius: '5px';
-    /* background-color: rgb(3, 175, 206); */
-    border-color: rgb(3, 175, 206);
-    padding: '20px';
-}
-.type {
-    flex: 0 0 50%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    display: inline-grid;
-}
-.type button {
-    margin-right: 10px;
-    background-size: cover;
-    background-position: center; 
-    height: 250px;
-    width: 350px;
-}
-.type img {
-    margin-right: 10px;
-    background-size: cover;
-    background-position: center; 
-    height: 250px;
-    width: 350px;
-}
-.type button:hover {
-    margin-right: 10px;
-    background-size: cover;
-    background-position: center; 
-    height: 250px;
-    width: 350px;
-    /* opacity: 0.8; */
-}
-.img1{
-    opacity: 0.7;
-}
-.img3{
-    opacity: 0.7;
-}
-.foodImg{
-    background-image: url('Photos/food2.webp');
-}
-.hostImg{
-    background-image: url('Photos/hosting.png');
-}
-.toysImg{
-    background-image: url('Photos/toys.jpg');
-}
-.babysitterImg{
-    background-image: url('Photos/babyS.jpg');
-}
-.logo{
-    background-image: url('./Photos/logo2.jpg');
-    margin-right: 10px;
-    background-size: cover;
-    background-position: center; 
-    height: auto;
-    width: 60px;
-    border-radius: 4px;
+    background-color: rgb(81, 180, 251);
+    z-index: 1000;
+    /* ensure the header stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* add a slight shadow for depth */
 }

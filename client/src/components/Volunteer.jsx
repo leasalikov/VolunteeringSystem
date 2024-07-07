@@ -10,6 +10,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import { fetchDeleteReq } from '../fetchFile';
 import { fetchGetByReq } from '../fetchFile';
+import { PostEmail } from '../EmailFunction';
+import Logo from './Logo';
 // import { PostEmail } from '../EmailFunction';
 
 function Volunteer() {
@@ -55,7 +57,6 @@ function Volunteer() {
                 //post to linking
                 const response = await fetchPostReq("linking", paramsToSent);
                 linkingData = await response;
-                console.log("linkingdata  ", linkingData)
                 //result, idcategoryV, idcategoryN
             }
             catch (error) {
@@ -66,7 +67,6 @@ function Volunteer() {
                 const idcategoryvolunteer = linkingData.idcategoryvolunteer;
                 const response = await fetchDeleteReq("volunteer", idcategoryvolunteer);
                 const data1 = await response;
-                console.log("data1  ", data1)
             }
             catch (error) {
                 console.error(error);
@@ -76,7 +76,6 @@ function Volunteer() {
                 const idcategoryneedy = linkingData.idcategoryneedy;
                 const response = await fetchDeleteReq("needy", idcategoryneedy);
                 const data2 = await response;
-                console.log("data2  ", data2)
             }
             catch (error) {
                 console.error(error);
@@ -85,7 +84,7 @@ function Volunteer() {
                 setShowEndMassage(true)
                 setShowComponent(false)
             }
-            //req post Email
+            // req post Email
             // const response = PostEmail(linkUser.idUser, linkUser.name, linkUser.username, linkUser.email)
             // const emailData = await response;
             // console.log("emailData ", emailData);
@@ -102,14 +101,9 @@ function Volunteer() {
         setShowEndMassage(false);
         setShowComponent(true);
         const allArraysEmpty = data.every(innerArray => innerArray.length === 0);
-        console.log("allArraysEmpty  ", allArraysEmpty)
-        console.log("length  ", data[0].length, data[1].length, data[2].length)
         if (allArraysEmpty) {
-            console.log('All arrays in the main array are empty.');
             setShowEmptyArray(true);
             setShowComponent(false);
-        } else {
-            console.log('Not all arrays in the main array are empty.');
         }
     }
     function toHome() {
@@ -117,47 +111,46 @@ function Volunteer() {
     }
     return (
         <>
-            <div>
-                <Header />
-                <Buttom />
-                {showEndMassage &&
-                    <div>
-                        <h2>!תודה ותזכו למצוות<br />כעת נשלח לך מייל עם פרטי המזמין ליצירת קשר</h2>
-                        <button onClick={addVolunting}>להוספת התנדבות</button>
-                    </div>}
-                {showEmptyArray && <div>
-                    <h2>כעת אין בקשות עזרה בהתאם לקטגוריות שבחרתם, תודה על הרצון הטוב! נסו מאוחר יותר</h2>
-                    <button onClick={toHome}>חזרה לתפריט הראשי</button>
+            <Logo />
+            <Header />
+            <Buttom />
+            {showEndMassage &&
+                <div>
+                    <h2>!תודה ותזכו למצוות<br />כעת נשלח לך מייל עם פרטי המזמין ליצירת קשר</h2>
+                    <button onClick={addVolunting}>להוספת התנדבות</button>
                 </div>}
-                {showComponent && <div>
-                    <h1>שלום {currentUser.username}!!</h1>
-                    <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                    <table className='tableStyle'>
-                        <thead>
-                            <tr>
-                                <th>בחר</th>
-                                <th>קטגוריה</th>
-                                <th>טלפון</th>
-                                <th>מייל</th>
-                                <th>שם</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data && data.map((item) => (
-                                item.map((item, i) => (
-                                    <tr key={i}>
-                                        <td><button onClick={() => linking(item)}>V</button></td>
-                                        <td>{item.namecategory}</td>
-                                        <td>{item.phone}</td>
-                                        <td>{item.email}</td>
-                                        <td>{item.username}</td>
-                                    </tr>
-                                ))
-                            ))}
-                        </tbody>
-                    </table>
-                </div>}
-            </div >
+            {showEmptyArray && <div>
+                <h2>כעת אין בקשות עזרה בהתאם לקטגוריות שבחרתם, תודה על הרצון הטוב! נסו מאוחר יותר</h2>
+                <button onClick={toHome}>חזרה לתפריט הראשי</button>
+            </div>}
+            {showComponent && <div>
+                <h1>שלום {currentUser.username}!!</h1>
+                <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
+                <table className='tableStyle'>
+                    <thead>
+                        <tr>
+                            <th>בחר</th>
+                            <th>קטגוריה</th>
+                            <th>טלפון</th>
+                            <th>מייל</th>
+                            <th>שם</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data && data.map((item) => (
+                            item.map((item, i) => (
+                                <tr key={i}>
+                                    <td><button onClick={() => linking(item)}>V</button></td>
+                                    <td>{item.namecategory}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.username}</td>
+                                </tr>
+                            ))
+                        ))}
+                    </tbody>
+                </table>
+            </div>}
         </>
     )
 };
