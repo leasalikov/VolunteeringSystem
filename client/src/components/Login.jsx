@@ -29,6 +29,7 @@ const Login = () => {
       }
       const paramsToSend = { "username": userName, "password": password };
       const response = await fetchPostReq("login", paramsToSend);
+      console.log(response)
       if (response === "wrong details") {
         alert('please try again or register.');
       } else {

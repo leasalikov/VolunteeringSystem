@@ -8,6 +8,7 @@ export class LoginController {
     async checkPassword(req, res, next) {
         try {
             const loginService = new LoginService();
+            console.log("check passs")
             // let addUserName = true;
             // let numOfTries = 1;
             // loginTry.forEach((log) => { if (log.userName == req.body.userName) { log.num++; addUserName = false; numOfTries = log.num; } })

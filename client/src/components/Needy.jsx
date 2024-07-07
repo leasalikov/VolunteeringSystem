@@ -9,7 +9,7 @@ import { Card } from 'primereact/card';
 
 const ToNeedy = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [categoriesArray, setCategoriesArray] = useState([{ food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
+    const [categoriesArray, setCategoriesArray] = useState([{ אוכל: false }, { אירוח: false }, { משחקים: false }, { בייביסיטר: false }]);
     const navigate = useNavigate();
 
     return (
