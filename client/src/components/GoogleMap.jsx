@@ -284,14 +284,14 @@ export default function GoogleMap(props) {
                 ))}
             </MapContainer>
             {error && <div style={styles.error}>{error}</div>}
-            {selectionMessage && (
+            {/* {selectionMessage && (
                 <div className="modal">
                     <div className="modal-content">
                         <span className="close" onClick={closeModal}>&times;</span>
                         <p>{selectionMessage}</p>
                     </div>
                 </div>
-            )}
+            )} */}
         </>
     );
 };
