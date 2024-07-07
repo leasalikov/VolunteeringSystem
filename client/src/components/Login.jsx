@@ -29,7 +29,6 @@ const Login = () => {
       }
       const paramsToSend = { "username": userName, "password": password };
       const response = await fetchPostReq("login", paramsToSend);
-      console.log("response", response);
       if (response === "wrong details") {
         alert('please try again or register.');
       } else {
@@ -51,7 +50,7 @@ const Login = () => {
 
   return (
     <div className='p-d-flex p-jc-center p-ai-center' style={{ height: '100vh' }}>
-      <Logo/>
+      <Logo />
       <Navigate to={isLoggedInUser ? `/users/${currentUser.idUser}/home` : toRegister ? "/register" : "/login"} />
       <Card title="התחברות" style={{ width: '25rem' }}>
         <div className="p-fluid">

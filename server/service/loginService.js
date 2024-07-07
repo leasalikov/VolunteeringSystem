@@ -9,7 +9,7 @@ import 'dotenv/config'
 export class LoginService {
 
     async checkPassword(loginObj) {
-        
+
         console.log("loginObj", loginObj)
         const service = new UserService();
         const userName = loginObj.username;
@@ -30,16 +30,14 @@ export class LoginService {
 
 
     async register(loginObj) {
-       
+
         const queryRegister = registerQuery();
-        const result= await executeQuery(queryRegister, loginObj);
-        console.log("her",loginObj)
-       const token= this.generateToken(loginObj[1])
-       console.log("token",token)
-        return {result,token}
+        const result = await executeQuery(queryRegister, loginObj);
+        console.log("her", loginObj)
+        const token = this.generateToken(loginObj[1])
+        console.log("token", token)
+        return { result, token }
     }
-
-
 
     // async updatePassword(id, oldPassword, newPassword) {
     //     let queryPassword = loginQuery();
@@ -52,15 +50,14 @@ export class LoginService {
     //     }
     // }
 
-    
 
- generateToken = (userId) => {
-  // Create a token with user ID and a secret key
-  console.log("her",userId)
-  const token = jwt.sign({ userId: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  console.log("her",token)
-  return token;
-};
+    generateToken = (userId) => {
+        // Create a token with user ID and a secret key
+        console.log("her", userId)
+        const token = jwt.sign({ userId: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        console.log("her", token)
+        return token;
+    };
 
 
 }

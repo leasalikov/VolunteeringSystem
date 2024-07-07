@@ -2,11 +2,50 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .Buttom {
-        display: none; 
+        display: none;
+    }
+
+    .Header {
+        padding: 10px;
+        background-color: aqua;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+    }
+
+    input {
+        font-size: 0.9em; 
+        padding: 0.5em 1em;
+    }
+    .Header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: rgb(81, 180, 251);
+    }
+    .HeaderButton {
+        font-size: 1em;
+        font-weight: 500;
+        font-family: inherit;
+        background-color: rgb(81, 180, 251); 
+        cursor: pointer;
+        transition: background-color 0.25s;
+        height: 30px;
     }
 }
+
 @keyframes backgroundAnimation {
     0% {
         background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)) ,url('Photos/sky.jpg') ;
@@ -146,7 +185,6 @@ input {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
-
 .divLogin {
     animation: backgroundAnimation 5s infinite;
     line-height: 2.5;

@@ -6,7 +6,6 @@ async function fetchPostReq(route, body) {
             body: JSON.stringify(body),
             headers: { "Content-type": "application/json; charset=UTF-8", },
         })
-        console.log("body ", body)
         const json = await response.json();
         const data = await json;
         return data;

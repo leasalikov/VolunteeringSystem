@@ -25,8 +25,6 @@ export class NeedyService {
         return result;
     }
 
-    
-
     // async getneedycategory(sortByObj, tablename, column) {
     //     var result;
     //     console.log("sortByObj: ", sortByObj);
