@@ -14,7 +14,7 @@ export class EmailService {
 
 
     var mailOptions = {
-      from: 'toiby896@gmail.com',
+      from: 'leasalikov@gmail.com',
       to: 'chb8551@gmail.com',
       subject: 'Order Confirmation',
       text: 'text1 '

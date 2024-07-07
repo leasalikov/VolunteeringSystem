@@ -21,15 +21,9 @@ export class NeedyController {
     }
 
     async getNeedyByVolunteer(req, res, next) {
-        try {
-            
-         
-            console.log("idcategoryArray  ", req.params.array)
+        try {         
             const service = new NeedyService();
-            // const id = req.params.id;sfgd
             const resultItem = await service.getNeedyByVolunteer(req.params.array,req.params.name);
-            // delete resultItem[0].isActive;
-            // console.log("req: get Needy by id= " + id + ", res: successfull")
             res.status(200).json(resultItem);
         }
         catch (ex) {
@@ -60,7 +54,6 @@ export class NeedyController {
         try {
             const needyService = new NeedyService();
             const resultItem = await needyService.deleteNeedy( req.params.id);
-            console.log("req: delete Needy with id= " + resultItem.insertId + ", res: successfull")
             res.status(200).json(resultItem);
         }
         catch (ex) {
@@ -70,19 +63,4 @@ export class NeedyController {
             next(err);
         }
     }
-
-    // async updateNeedy(req, res, next) {
-    //     try {
-    //         const service = new Service();
-    //         await service.update(tableName, req.body, req.params.id);
-    //         console.log("req: update Needy with id= " + req.params.id + ", res: successfull")
-    //         res.status(200).json({ status: 200, data: req.params.id });
-    //     }
-    //     catch (ex) {
-    //         const err = {}
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err)
-    //     }
-    // }
 }

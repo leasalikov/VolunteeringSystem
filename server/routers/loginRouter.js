@@ -8,10 +8,6 @@ const logincontroller = new LoginController();
 
 loginRouter.post("/", logincontroller.checkPassword)
 
-// loginRouter.put("/:id", logincontroller.updatePassword)
-
-// app.get('/protectedRoute', authMiddleWare)
-
 export{
     loginRouter
 }

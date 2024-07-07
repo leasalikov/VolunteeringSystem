@@ -21,7 +21,6 @@ export default function GoogleMap() {
     useEffect(() => {
         const address = 'עלי הכהן';
 
-        
         axios.get('https://nominatim.openstreetmap.org/search', {
             params: {
                 q: address,

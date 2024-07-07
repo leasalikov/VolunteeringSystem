@@ -1,7 +1,6 @@
 
 import { VolunteerService } from "../service/volunteerService.js";
 
-
 const tableName = "volunteers";
 
 export class VolunteerController {
@@ -41,10 +40,8 @@ export class VolunteerController {
 
     async deleteVolunteer(req, res, next) {
         try {
-            console.log("her")
             const volunteerService = new VolunteerService();
             const resultItem = await volunteerService.deleteVolunteer( req.params.id);
-            console.log("req: delete volunteer with id= " + resultItem.insertId + ", res: successfull")
             res.status(200).json(resultItem);
         }
         catch (ex) {

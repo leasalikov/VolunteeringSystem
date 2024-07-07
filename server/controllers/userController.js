@@ -23,34 +23,4 @@ export class userController {
             next(err);
         }
     }
-
-    // async deleteUser(req, res, next) {
-    //     try {
-    //         const userService = new UserService();
-    //         const resultItem = await userService.deleteUser(tableName, req.params.id);
-    //         console.log("req: delete user with id= " + resultItem.insertId + ", res: successfull")
-    //         res.status(200).json(resultItem);
-    //     }
-    //     catch (ex) {
-    //         const err = {};
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err);
-    //     }
-    // }
-
-    // async updateUser(req, res, next) {
-    //     try {
-    //         const service = new Service();
-    //         await service.update(tableName, req.body, req.params.id);
-    //         console.log("req: update user with id= " + req.params.id + ", res: successfull")
-    //         res.status(200).json({ status: 200, data: req.params.id });
-    //     }
-    //     catch (ex) {
-    //         const err = {}
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err)
-    //     }
-    // }
 }
