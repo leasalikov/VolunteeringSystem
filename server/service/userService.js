@@ -11,13 +11,10 @@ export class UserService {
     // }
 
     async getBy(tableName, sortByObj) {
-        console.log("sortByObj",sortByObj)
         const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
         const query = getByQuery(tableName, keys);
-        console.log(query)
         const user= await executeQuery(query, values);
-        // console.log("a",a)
         return user;
     }
 
@@ -30,13 +27,10 @@ export class UserService {
         const query = addQuery(users, keys);
        
         const result= await executeQuery(query, values);
-        console.log("her",result)
         const id = result.insertId;
-        console.log(id)
         const loginService = new LoginService();
         const result3= await loginService.register([id, password]);
         const result2=result3.result
-        // const token = result3.token
         return{result,result2}
     }
 
