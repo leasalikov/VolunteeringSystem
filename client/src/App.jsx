@@ -18,6 +18,7 @@ import GoogleMap from './components/GoogleMap';
 export const UserContext = createContext();
 
 function App() {
+
   const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || null);
   return (
     <>

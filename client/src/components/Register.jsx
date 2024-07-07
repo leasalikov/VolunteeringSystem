@@ -132,6 +132,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -144,19 +145,19 @@ const Register = () => {
       alert('Please validate your password.');
       return;
     }
-    if (name === "" || username === "" || !checkEmail(email)) {
+    if (name === "" ||address===""|| username === "" || !checkEmail(email)) {
       alert("The parameters you entered are not correct");
       return;
     }
-    const newUser = { "name": name, "userName": username, "email": email, "phone": phone, "password": password };
+    const newUser = { "name": name, "userName": username, "email": email, "phone": phone, "password": password ,"address":address};
     const response = await fetchPostReq("user", newUser);
     const jsonUser = await response;
-    setCurrentUser({ "idUser": jsonUser.result.insertId, "name": name, "username": username, "email": email, "phone": phone });
+    setCurrentUser({ "idUser": jsonUser.result.insertId, "name": name, "username": username, "email": email, "phone": phone ,"address":address});
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     console.log("response", response);
-    let token = response.token;
-    console.log("token", token);
-    document.cookie = `token=${token}`;
+    // let token = response.token;
+    // console.log("token", token);
+    // document.cookie = `token=${token}`;
     navigate(`/users/${jsonUser.result.insertId}/home`, { state: { user: "user" } });
   }
 
@@ -198,6 +199,15 @@ const Register = () => {
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <div className="p-field">
+            <label htmlFor="address">כתובת</label>
+            <InputText
+              id="address"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
           <div className="p-field">

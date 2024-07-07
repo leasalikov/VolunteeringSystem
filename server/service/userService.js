@@ -15,9 +15,9 @@ export class UserService {
         const keys = Object.keys(sortByObj);
         const values = Object.values(sortByObj);
         const query = getByQuery(tableName, keys);
-        console.log(query)
+        console.log("her")
         const user= await executeQuery(query, values);
-        // console.log("a",a)
+        console.log("user",user)
         return user;
     }
 

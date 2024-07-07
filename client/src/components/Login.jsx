@@ -87,7 +87,7 @@ import { Card } from 'primereact/card';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import { PostEmail } from '../EmailFunction';
+// import { PostEmail } from '../EmailFunction';
 
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -114,9 +114,7 @@ const Login = () => {
         localStorage.setItem("currentUser", JSON.stringify(response.user[0]));
         setIsLoggedInUser(true);
         console.log(currentUser)
-        const responseEmail = PostEmail(response.user[0].idUser, response.user[0].name, response.user[0].username, response.user[0].email)
-        const emailData = await responseEmail;
-        console.log("emailData ", emailData);
+       
       }
       setUserName('');
       setPassword('');

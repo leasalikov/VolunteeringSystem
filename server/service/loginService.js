@@ -19,6 +19,7 @@ export class LoginService {
         if (userByName.length == 0) {
             return { "result": 0 };
         }
+        console.log("her")
         const loginDetails = { "userId": userByName[0].idUser, "password": loginObj.password };
         const queryLogin = loginQuery();
         const propertyValues = Object.values(loginDetails);
@@ -33,10 +34,10 @@ export class LoginService {
        
         const queryRegister = registerQuery();
         const result= await executeQuery(queryRegister, loginObj);
-        console.log("her",loginObj)
-       const token= this.generateToken(loginObj[1])
-       console.log("token",token)
-        return {result,token}
+    //     console.log("her",loginObj)
+    //    const token= this.generateToken(loginObj[1])
+    //    console.log("token",token)
+        return {result}
     }
 
 
@@ -54,13 +55,13 @@ export class LoginService {
 
     
 
- generateToken = (userId) => {
-  // Create a token with user ID and a secret key
-  console.log("her",userId)
-  const token = jwt.sign({ userId: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  console.log("her",token)
-  return token;
-};
+//  generateToken = (userId) => {
+//   // Create a token with user ID and a secret key
+//   console.log("her",userId)
+//   const token = jwt.sign({ userId: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+//   console.log("her",token)
+//   return token;
+// };
 
 
 }

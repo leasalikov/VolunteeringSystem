@@ -12,7 +12,7 @@ async function fetchPostReq(route, body) {
         console.log("hgjghjjjjjjjjjjj ", body)
         const json = await response.json();
         const data = await json;
-        
+
         return data;
     }
     catch (err) {
@@ -20,11 +20,11 @@ async function fetchPostReq(route, body) {
     }
 }
 
-async function GetByReq(route, idcategoryArray, usernamevolunteers) {
+async function fetchGetByReq(route, idcategoryArray, usernamevolunteers) {
     try {
-        // if(route!="login"&&route!="register"){
+        if(route!="login"&&route!="register"){
 
-        //     }
+            }
         const response = await fetch(`http://localhost:8080/${route}/${idcategoryArray}/${usernamevolunteers}`, {
             method: 'GET',
             // body: JSON.stringify(body),
@@ -73,4 +73,4 @@ async function fetchDeleteReq(route, params) {
 }
 
 // export { fetchPostReq, fetchGetReq, fetchGetByReq, fetchDeleteReq };
-export { fetchPostReq, fetchGetReq, fetchDeleteReq };
+export { fetchPostReq, fetchGetReq, fetchDeleteReq, fetchGetByReq };

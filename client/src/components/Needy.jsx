@@ -8,7 +8,7 @@ import Buttom from './Buttom';
 import Header from './Header';
 const ToNeedy = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [categoriesArray, setCategoriesArray] = useState([{ אוכל: false }, { אירוח: false }, { משחקים: false }, { בייביסיטר: false }]);
+    const [categoriesArray, setCategoriesArray] = useState([{  food: false }, { hosting: false }, { toys: false }, { babysitter: false }]);
     const navigate = useNavigate();
 
     return (

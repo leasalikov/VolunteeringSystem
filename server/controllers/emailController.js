@@ -5,6 +5,7 @@ import { EmailService } from '../service/emailService.js'
 export class EmailController {
     async postemail(req, res, next) {
         try {
+            console.log(req.body)
             const emailService = new EmailService();
             const resualt = await emailService.sendEmail(req, res, next);
             if (resualt == undefined)

@@ -4,13 +4,14 @@ import { useContext } from "react";
 import { UserContext } from '../App';
 import Header from './Header';
 import Buttom from './Buttom';
+import GoogleMap from './GoogleMap'
 
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import { fetchPostReq } from '../fetchFile';
 import { fetchDeleteReq } from '../fetchFile';
-// import { fetchGetByReq } from '../fetchFile';
-import { PostEmail } from '../EmailFunction';
+import { fetchGetByReq } from '../fetchFile';
+// import { PostEmail } from '../EmailFunction';
 // import { PostEmail } from '../EmailFunction';
 
 function Volunteer() {
@@ -32,7 +33,7 @@ function Volunteer() {
                 const fetchedData = await response;
                 setData(fetchedData);
                 const allArraysEmpty = fetchedData.every(innerArray => innerArray.length === 0);
-                console.log(allArraysEmpty)
+                console.log("allArraysEmpty ", allArraysEmpty)
                 if (allArraysEmpty) {
                     setShowEmptyArray(true);
                     setShowComponent(false);
@@ -51,8 +52,8 @@ function Volunteer() {
             "usernamevolenteers": currentUser.username, //volunteer username
         };
         let linkingData;
-        const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
-        if (result) {
+        // const result = window.confirm("האם אתה בטוח שברצונך להתנדב בהתנדבות זו?");
+        // if (result) {
             try {
                 //post to linking
                 const response = await fetchPostReq("linking", paramsToSent);
@@ -97,8 +98,9 @@ function Volunteer() {
                 .map(item => item.filter(item => (item.namecategory === linkUser.namecategory)
                     && (item.idUser === linkUser.idUser && item.namecategory !== linkUser.namecategory) || (item.namecategory !== linkUser.namecategory)));
             setData(updatedData);
+           
         }
-    }
+    // }
 
     function addVolunting() {
         setShowEndMassage(false);
@@ -134,7 +136,8 @@ function Volunteer() {
                 {showComponent && <div>
                     <h1>שלום {currentUser.username}!!</h1>
                     <h2>מעריכים אותך על נכונותך לעזור ולקחת חלק, לפניך האפשרויות הרלוונטיות בהתאם לבחירתך.</h2>
-                    <table className='tableStyle'>
+                  { data&& <GoogleMap addresses={data} linking={linking}/>}
+                    {/* <table className='tableStyle'>
                         <thead>
                             <tr>
                                 <th>בחר</th>
@@ -157,7 +160,7 @@ function Volunteer() {
                                 ))
                             ))}
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>}
             </div >
         </>

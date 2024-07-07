@@ -1,16 +1,21 @@
 
-
-export const PostEmail = async (id, name, pass, email) => {
-    console.log("her")
-    const h = { IdWorker: id, Name: name, Password: pass, Email: email }
-    // await PostUser()
-    fetch('http://localhost:8080/Email', {
-        method: 'POST', body: JSON.stringify(h)
-        , mode: 'cors', headers: {
-            'Content-Type': 'application/json'
-        },
-    }).then((response) => {
-        return response.json()
-    })
-        .catch(h => console.log(h));
+export const PostEmail = async (name, email, address) => {
+    console.log("her");
+    const h = { Name: name, Email: email, address: address };
+    
+    try {
+        const response = await fetch('http://localhost:8080/Email', {
+            method: 'POST',
+            body: JSON.stringify(h),
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        const emailData = await response.json();
+        return emailData;
+    } catch (error) {
+        console.error("Error sending email:", error);
+        throw error;
+    }
 }
